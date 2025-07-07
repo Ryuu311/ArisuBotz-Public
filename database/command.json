@@ -1,0 +1,22 @@
+[
+  {
+    "nama": "#setwelcome",
+    "count": 8
+  },
+  {
+    "nama": "#delsetwelcome",
+    "count": 6
+  },
+  {
+    "nama": "#setleft",
+    "count": 6
+  },
+  {
+    "nama": "#delsetleft",
+    "count": 5
+  },
+  {
+    "nama": "#welcome",
+    "count": 2
+  }
+]
