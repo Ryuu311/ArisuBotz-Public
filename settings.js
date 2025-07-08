@@ -104,9 +104,9 @@ global.creator = "6288246552068@s.whatsapp.net"
 //BATAS//
 
 //================== CPANEL FITUR ==========================\\
-global.domain = 'https://masvillxtamvannnn.anti-ddos.me' // Isi Domain Lu jangan kasih tanda / di akhir link
-global.apikey = 'ptla_9frdQv7NJso39nJ3mZfukA7dCA8iVrNAPHGfJ4aymtl' // Isi Apikey Ptla Lu
-global.capikey = 'ptlc_b8ZKBvBQo7t0Gw54yIxmvVp2MCqWTmRQAJvJFrdLlPU' // Isi Apikey Ptlc Lu
+global.domain = 'https://alfaajaxryuudev.vhon-offcial.biz.id' // Isi Domain Lu jangan kasih tanda / di akhir link
+global.apikey = 'ptla_cI0oWpwqwIlrtEp71R05Fdnq4s3Dt5PzlAMGhuMDntW' // Isi Apikey Ptla Lu
+global.capikey = 'ptlc_cjDuq2yfnJ2V5fkDEAqE4ZutKHtq7l2sMjnmYq2Eirb' // Isi Apikey Ptlc Lu
 /////////////////////////////////////////////////////////////////////////////////
 
 //BATAS//
