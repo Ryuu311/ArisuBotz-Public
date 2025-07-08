@@ -17,8 +17,8 @@ global.sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 //BATAS//
 
 //=========UBAH BAGIAN THUMBNAIL MENU & ALLMENU==========//
-global.gif = fs.readFileSync('./data/image/thumbvid.mp4'),
-global.thumb = fs.readFileSync("./data/image/thumbnail.jpg");
+global.gif = fs.readFileSync('./node_modules/Arisu-MD/data/image/thumbvid.mp4'),
+global.thumb = fs.readFileSync("./node_modules/Arisu-MD/data/image/thumbnail.jpg");
 global.thumbnail = 'https://files.catbox.moe/3zwcoj.jpg', //THUMB MENU KALIAN
 global.reinzzmenu = 'https://files.catbox.moe/3zwcoj.jpg', //THUMB MENU button KALIAN
 /////////////////////////////////////////////////////////////////////////////////
@@ -283,10 +283,10 @@ global.pref = true;
 global.sessionName = 'session' // Jangan di ubah takut nanti error
 global.hituet = 0
 //media target
-global.thum = fs.readFileSync("./data/image/thumb.jpg") //ur thumb pic
-global.log0 = fs.readFileSync("./data/image/thumb.jpg") //ur logo pic
-global.err4r = fs.readFileSync("./data/image/thumb.jpg") //ur error pic
-global.thumb = fs.readFileSync("./data/image/thumb.jpg") //ur thumb pic
+global.thum = fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") //ur thumb pic
+global.log0 = fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") //ur logo pic
+global.err4r = fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") //ur error pic
+global.thumb = fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") //ur thumb pic
 global.defaultpp = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60' //default pp wa
 
 //menu image maker
