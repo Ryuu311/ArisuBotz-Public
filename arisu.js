@@ -632,7 +632,7 @@ RyuuBotz.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt =
   }
 }
 RyuuBotz.ev.on('group-participants.update', async (anu) => {
-const { welcome } = require ('./node_modules/Arisu-MD/lib/welcome')
+const { welcome } = require ('./lib/welcome')
 const iswel = _welcome.includes(anu.id)
 const isLeft = _left.includes(anu.id)
 welcome(iswel, isLeft, RyuuBotz, anu)

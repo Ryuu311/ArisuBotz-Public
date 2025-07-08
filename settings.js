@@ -103,6 +103,7 @@ global.creator = "6288246552068@s.whatsapp.net"
 
 //BATAS//
 
+
 //================== CPANEL FITUR ==========================\\
 global.domain = 'https://alfaajaxryuudev.vhon-offcial.biz.id' // Isi Domain Lu jangan kasih tanda / di akhir link
 global.apikey = 'ptla_cI0oWpwqwIlrtEp71R05Fdnq4s3Dt5PzlAMGhuMDntW' // Isi Apikey Ptla Lu

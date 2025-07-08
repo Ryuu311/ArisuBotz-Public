@@ -2,7 +2,6 @@
 //JANGAN DI JUAL ULANG
 require('./settings')
 require('./lib/listmenu')
-const { jadibot, stopjadibot, listjadibot } = require('./lib/clone')
 const fs = require('fs');
 const { pasangan } = require('./lib/dataPacaran')
 const { ytdlv2 } = require('@leoo-vanth/zarv-vz')
@@ -5099,7 +5098,8 @@ case 'yytmp3': {
   }
 }
 break
-case 'stopjadibot': {
+//=====Cooming Soon=====\\
+/*case 'stopjadibot': {
 if (!isPrem) return replyprem(mess.premium)
 stopjadibot(RyuuBotz, m, m.chat)
 }
@@ -5113,7 +5113,7 @@ case 'listjadibot': {
 if (!isPrem) return reply(mess.premium)
     jadibot(RyuuBotz, m, m.chat)
 }
-break
+break*/
 case 'delweb': {
 if (!isRyuuTheCreator) return reply(mess.only.owner);
   if (!text) return example('<namaWeb>')
@@ -19709,6 +19709,101 @@ case 'nguli': {
       global.db.users[m.sender].lastnguli = new Date * 1
     } else reply('[💬] Anda sudah mengklaim upah nguli hari ini')
   }
+break;
+case "brat3": {
+    const tipe = args[0]?.toLowerCase();
+    const isImg = tipe === "img";
+    const isVid = tipe === "vid";
+    const teks = isImg || isVid ? args.slice(1).join(" ") : text;
+    if (!teks) return example(`vid/img teks`);
+    if (!isImg && !isVid) {
+        const button = [
+            {
+                name: "single_select",
+                buttonParamsJson: JSON.stringify({
+                    title: "Pilih Jenis Brat Sticker",
+                    sections: [
+                        {
+                            title: "Tipe Brat",
+                            highlight_label: "New",
+                            rows: [
+                                {
+                                    title: "Brat Video",
+                                    description: "Sticker GIF brat bergerak",
+                                    id: `.brat vid ${teks}`
+                                },
+                                {
+                                    title: "Brat Image",
+                                    description: "Sticker brat teks image",
+                                    id: `.brat img ${teks}`
+                                },
+                                {
+                                    title: "Brat Anime",
+                                    description: "Sticker brat teks dengan char anime",
+                                    id: `.bratnime ${teks}`
+                                }
+                            ]
+                        }
+                    ]
+                })
+            }
+        ];
+
+        const msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
+                    interactiveMessage: proto.Message.InteractiveMessage.create({
+                        body: proto.Message.InteractiveMessage.Body.create({ text: `Pilih jenis brat untuk\n*teks:* *${teks}*` }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({ text: global.foot }),
+                        header: { hasMediaAttachment: false },
+                        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                            buttons: button})})}}
+        }, { userJid: m.sender, quoted: m });
+
+        return await RyuuBotz.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
+    }try {
+        await RyuuBotz.sendMessage(m.chat, {
+            react: { text: "⏱️", key: m.key }
+        });
+        if (isImg) {
+            await RyuuBotz.sendImageAsSticker(m.chat, `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(text)}&isVideo=false&delay=500`, m, {
+                packname: global.packname,
+                author: global.author
+            });
+        } else if (isVid) {
+            const url = `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(text)}&isVideo=true&delay=500`;
+            const response = await axios.get(url, { responseType: "arraybuffer" });
+            await RyuuBotz.sendVideoAsSticker(m.chat, response.data, m, {
+                packname: global.packname,
+                author: global.author
+            });
+        }
+    } catch (err) {
+        console.error("BRAT ERROR:", err);
+        reply("[ x ] Gagal mengirim stiker brat.");
+    }
+}
+break;
+case 'bratnime': {
+  if (!text) return reply(`halo bro`);
+  if (text.length > 250) return reply(`Karakter terbatas, maksimal 250 huruf!`);
+await reactLoading(m);
+  try {
+    const res = await fetch(`https://fastrestapis.fasturl.cloud/maker/animbrat?text=${encodeURIComponent(text)}&position=center&mode=image`);
+    if (!res.ok) throw 'API error';
+
+    const buffer = await res.buffer();
+
+    await RyuuBotz.sendImageAsSticker(m.chat, buffer, m, {
+      packname: global.packname,
+      author: global.author
+    });
+  } catch (err) {
+    console.error(err);
+    balas('[ x ] Gagal mengambil stiker bratnime. Coba lagi nanti.');
+  }
+}
 break;
 // case 'brat': {
   // const quo = args.length >= 1 
