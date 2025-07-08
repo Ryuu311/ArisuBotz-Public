@@ -1,5 +1,5 @@
-require('./settings')
-const { modul } = require('./module');
+require('./node_modules/Arisu-MD/settings')
+const { modul } = require('./node_modules/Arisu-MD/module');
 const moment = require('moment-timezone');
 const { baileys, boom, chalk, fs, figlet, FileType, path, pino, process, PhoneNumber, axios, yargs, _ } = modul;
 const { Boom } = boom
@@ -26,25 +26,25 @@ const {
     proto
 } = require("@whiskeysockets/baileys")
 const cfonts = require('cfonts');
-const { color, bgcolor } = require('./lib/color')
-const { TelegraPh } = require('./lib/uploader')
+const { color, bgcolor } = require('./node_modules/Arisu-MD/lib/color')
+const { TelegraPh } = require('./node_modules/Arisu-MD/lib/uploader')
 const NodeCache = require("node-cache")
 const canvafy = require("canvafy")
 const { parsePhoneNumber } = require("libphonenumber-js")
-let _welcome = JSON.parse(fs.readFileSync('./database/welcome.json'))
-let _left = JSON.parse(fs.readFileSync('./database/left.json'))
+let _welcome = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/welcome.json'))
+let _left = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/left.json'))
 const makeWASocket = require("@whiskeysockets/baileys").default
 const Pino = require("pino")
 const readline = require("readline")
 const colors = require('colors')
-const { start } = require('./lib/spinner')
-const { uncache, nocache } = require('./lib/loader')
-const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
-const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep, reSize } = require('./lib/myfunc')
+const { start } = require('./node_modules/Arisu-MD/lib/spinner')
+const { uncache, nocache } = require('./node_modules/Arisu-MD/lib/loader')
+const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./node_modules/Arisu-MD/lib/exif')
+const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep, reSize } = require('./node_modules/Arisu-MD/lib/myfunc')
 
 const prefix = ''
 let phoneNumber = "916909137213"
-global.db = JSON.parse(fs.readFileSync('./database/database.json'))
+global.db = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/database.json'))
 if (global.db) global.db = {
 sticker: {},
 database: {}, 
@@ -59,16 +59,16 @@ settings: {},
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 
 const useMobile = process.argv.includes("--mobile")
-const owner = JSON.parse(fs.readFileSync('./database/owner.json'))
+const owner = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/owner.json'))
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 
 const question = (text) => new Promise((resolve) => rl.question(text, resolve))
-require('./RyuuID.js')
-nocache('../RyuuID.js', module => console.log(color('[ CHANGE ]', 'yellow'), color(`'${module}'`, 'yellow'), 'Updated'))
-require('./arisu.js')
-nocache('../arisu.js', module => console.log(color('[ CHANGE ]', 'blue'), color(`'${module}'`, 'blue'), 'Updated'))
+require('./node_modules/Arisu-MD/RyuuID.js')
+nocache('../node_modules/Arisu-MD/RyuuID.js', module => console.log(color('[ CHANGE ]', 'yellow'), color(`'${module}'`, 'yellow'), 'Updated'))
+require('./node_modules/Arisu-MD/arisu.js')
+nocache('../node_modules/Arisu-MD/arisu.js', module => console.log(color('[ CHANGE ]', 'blue'), color(`'${module}'`, 'blue'), 'Updated'))
 
 async function RyuuBotzInd() {
 	const {  saveCreds, state } = await useMultiFileAuthState(`./${sessionName}`)
@@ -263,7 +263,7 @@ await RyuuBotz.readMessages([kay.key]) }
 if (!RyuuBotz.public && !kay.key.fromMe && chatUpdate.type === 'notify') return
 if (kay.key.id.startsWith('BAE5') && kay.key.id.length === 16) return
 const m = smsg(RyuuBotz, kay, store)
-require('./RyuuID')(RyuuBotz, m, chatUpdate, store)
+require('./node_modules/Arisu-MD/RyuuID')(RyuuBotz, m, chatUpdate, store)
 } catch (err) {
 console.log(err)}})
     async function getMessage(key){
@@ -478,7 +478,7 @@ catch (e) { if (e.json) throw e.json }}
 let type = '', mimetype = mime, pathFile = filename
 if (options.asDocument) type = 'document'
 if (options.asSticker || /webp/.test(mime)) {
-let { writeExif } = require('./lib/exif')
+let { writeExif } = require('./node_modules/Arisu-MD/lib/exif')
 let media = { mimetype: mime, data }
 pathFile = await writeExif(media, { packname: options.packname ? options.packname : global.packname, author: options.author ? options.author : global.author, categories: options.categories ? options.categories : [] })
 await fs.promises.unlink(filename)
@@ -632,7 +632,7 @@ RyuuBotz.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt =
   }
 }
 RyuuBotz.ev.on('group-participants.update', async (anu) => {
-const { welcome } = require ('./lib/welcome')
+const { welcome } = require ('./node_modules/Arisu-MD/lib/welcome')
 const iswel = _welcome.includes(anu.id)
 const isLeft = _left.includes(anu.id)
 welcome(iswel, isLeft, RyuuBotz, anu)

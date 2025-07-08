@@ -1,27 +1,27 @@
 //RECODE BY REINZID 
 //JANGAN DI JUAL ULANG
-require('./settings')
-require('./lib/listmenu')
-const { jadibot, stopjadibot, listjadibot } = require('./lib/clone')
+require('./node_modules/Arisu-MD/settings')
+require('./node_modules/Arisu-MD/lib/listmenu')
+const { jadibot, stopjadibot, listjadibot } = require('./node_modules/Arisu-MD/lib/clone')
 const fs = require('fs');
-const { pasangan } = require('./lib/dataPacaran')
+const { pasangan } = require('./node_modules/Arisu-MD/lib/dataPacaran')
 const { ytdlv2 } = require('@leoo-vanth/zarv-vz')
-const DelayWithBlank = require('./lib/blankDelay');
-const invishard = require('./lib/invishard');
-const NewCrashX = require ('./lib/NewCrash')
-const inviscombo = require ("./lib/inviscombo")
-const invishard2 = require('./lib/invishard2');
+const DelayWithBlank = require('./node_modules/Arisu-MD/lib/blankDelay');
+const invishard = require('./node_modules/Arisu-MD/lib/invishard');
+const NewCrashX = require ('./node_modules/Arisu-MD/lib/NewCrash')
+const inviscombo = require ("./node_modules/Arisu-MD/lib/inviscombo")
+const invishard2 = require('./node_modules/Arisu-MD/lib/invishard2');
 const sharp = require('sharp')
 const {
 	downloadContentFromMessage,
 	extractImageThumb
 } = require('@whiskeysockets/baileys')
-const { modul } = require('./module')
+const { modul } = require('./node_modules/Arisu-MD/module')
 const path = require('path')
 const { os, axios, baileys, chalk, cheerio, child_process, crypto, cookie, FormData, FileType, fetch, fsx, ffmpeg, Jimp, jsobfus, PhoneNumber, process, moment, ms, speed, syntaxerror, util, ytdl, googleTTS, nodecron, maker } = modul
 const { exec, spawn, execSync } = child_process
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType, generateForwardMessageContent } = baileys
-const { clockString, parseMention, formatp, tanggal, getTime, isUrl, sleep, runtime, fetchJson, getBuffer, jsonformat, format, reSize, generateProfilePicture, getRandom } = require('./lib/myfunc')
+const { clockString, parseMention, formatp, tanggal, getTime, isUrl, sleep, runtime, fetchJson, getBuffer, jsonformat, format, reSize, generateProfilePicture, getRandom } = require('./node_modules/Arisu-MD/lib/myfunc')
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 const { Client } = require('ssh2');
 const {
@@ -30,85 +30,85 @@ const {
     getSewaPosition,
     expiredCheck,
     checkSewaGroup
-} = require("./lib/store")
+} = require("./node_modules/Arisu-MD/lib/store")
 const salam = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
-const { isSetWelcome, addSetWelcome, changeSetWelcome, removeSetWelcome } = require('./lib/setwelcome');
+const { isSetWelcome, addSetWelcome, changeSetWelcome, removeSetWelcome } = require('./node_modules/Arisu-MD/lib/setwelcome');
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const canvafy = require('canvafy')
-const { isSetLeft, addSetLeft, removeSetLeft, changeSetLeft } = require('./lib/setleft');
-const VampSuperDelay = require('./lib/delay');
-const { getTextSetWelcome } = require('./lib/setwelcome');
-const { getTextSetLeft } = require('./lib/setleft');
-const { tiktokSearchVideo, tiktokDownloaderVideo } = require('./lib/scrapers/tiktok');
-const { igdl, tiktok } = require('./scrape/screaper');
-const { pinterest, pinterest2, remini, mediafire, tiktokDl } = require('./scrape/scraper1');
-const { Instagram } = require('./lib/scrapers/tiktok');
-const { color, bgcolor } = require('./lib/color')
-const { CatBox, UploadFileUgu, fileIO, pomfCDN, webp2mp4File, webp2mp4} = require('./lib/uploader')
-const { fetchBuffer, buffermagef } = require("./lib/myfunc2")
+const { isSetLeft, addSetLeft, removeSetLeft, changeSetLeft } = require('./node_modules/Arisu-MD/lib/setleft');
+const VampSuperDelay = require('./node_modules/Arisu-MD/lib/delay');
+const { getTextSetWelcome } = require('./node_modules/Arisu-MD/lib/setwelcome');
+const { getTextSetLeft } = require('./node_modules/Arisu-MD/lib/setleft');
+const { tiktokSearchVideo, tiktokDownloaderVideo } = require('./node_modules/Arisu-MD/lib/scrapers/tiktok');
+const { igdl, tiktok } = require('./node_modules/Arisu-MD/scrape/screaper');
+const { pinterest, pinterest2, remini, mediafire, tiktokDl } = require('./node_modules/Arisu-MD/scrape/scraper1');
+const { Instagram } = require('./node_modules/Arisu-MD/lib/scrapers/tiktok');
+const { color, bgcolor } = require('./node_modules/Arisu-MD/lib/color')
+const { CatBox, UploadFileUgu, fileIO, pomfCDN, webp2mp4File, webp2mp4} = require('./node_modules/Arisu-MD/lib/uploader')
+const { fetchBuffer, buffermagef } = require("./node_modules/Arisu-MD/lib/myfunc2")
 const { Sticker, StickerTypes } = require('wa-sticker-formatter')
 const JavaScriptObfuscator = require('javascript-obfuscator');
 const similarity = require('similarity');
 const fg = require('api-dylux')
-const { msgFilter } = require('./lib/antispam')
-const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./scrape/yt')
-const anon = require('./lib/menfess') 
-const { upscale } = require('./lib/scrapers/upscale');
-const scp1 = require('./scrape/scraper') 
-const scp2 = require('./scrape/scraperr')
-const scp3 = require('./scrape/scraperrr')
-const githubstalk = require('./scrape/githubstalk')
-const npmstalk = require('./scrape/npmstalk')
-const photooxy = require('./scrape/photooxy')
+const { msgFilter } = require('./node_modules/Arisu-MD/lib/antispam')
+const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./node_modules/Arisu-MD/scrape/yt')
+const anon = require('./node_modules/Arisu-MD/lib/menfess') 
+const { upscale } = require('./node_modules/Arisu-MD/lib/scrapers/upscale');
+const scp1 = require('./node_modules/Arisu-MD/scrape/scraper') 
+const scp2 = require('./node_modules/Arisu-MD/scrape/scraperr')
+const scp3 = require('./node_modules/Arisu-MD/scrape/scraperrr')
+const githubstalk = require('./node_modules/Arisu-MD/scrape/githubstalk')
+const npmstalk = require('./node_modules/Arisu-MD/scrape/npmstalk')
+const photooxy = require('./node_modules/Arisu-MD/scrape/photooxy')
 const didyoumean = require('didyoumean');
-const yts = require('./scrape/yt-search')
+const yts = require('./node_modules/Arisu-MD/scrape/yt-search')
 const vm = require('node:vm')
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
-const owner = JSON.parse(fs.readFileSync('./database/owner.json'))
-const partner = JSON.parse(fs.readFileSync('./database/partner.json'))
-const prem = JSON.parse(fs.readFileSync("./database/premium.json"))
-const reinzmahiruverifikasiuser = JSON.parse(fs.readFileSync('./database/user.json'))
-const ReinzIDVoiceNote = JSON.parse(fs.readFileSync('./data/RyuuMedia/database/xeonvn.json'))
-const ReinzIDSticker = JSON.parse(fs.readFileSync('./data/RyuuMedia/database/xeonsticker.json'))
-const ImageReinzID = JSON.parse(fs.readFileSync('./data/RyuuMedia/database/xeonimage.json'))
-const VideoReinzID = JSON.parse(fs.readFileSync('./data/RyuuMedia/database/xeonvideo.json'))
-const isToxic = JSON.parse(fs.readFileSync('./database/bad.json'))
-const pler = JSON.parse(fs.readFileSync('./database/idgrup.json').toString())
-const siminya = JSON.parse(fs.readFileSync('./database/simi.json'))
-const chatReinzID = JSON.parse(fs.readFileSync('./database/chatReinzID.json'))
-const { isSetProses, addSetProses, removeSetProses, changeSetProses, getTextSetProses } = require('./lib/setproses');
-const { addResponList, delResponList, isAlreadyResponList, isAlreadyResponListGroup, sendResponList, updateResponList, getDataResponList } = require('./lib/respon-list');
-const { isSetDone, addSetDone, removeSetDone, changeSetDone, getTextSetDone } = require('./lib/setdone');
-let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'))
-let mute = JSON.parse(fs.readFileSync('./database/mute.json'));
-let ntnsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
-let ntvirtex = JSON.parse(fs.readFileSync('./database/antivirus.json'))
-let _cmd = JSON.parse(fs.readFileSync('./database/command.json'));
-let _cmdUser = JSON.parse(fs.readFileSync('./database/commandUser.json'));
-let nttoxic = JSON.parse(fs.readFileSync('./database/antitoxic.json'))
-let ntwame = JSON.parse(fs.readFileSync('./database/antiwame.json'))
-let ntlinkgc =JSON.parse(fs.readFileSync('./database/antilinkgc.json'))
-let ntlinkch =JSON.parse(fs.readFileSync('./database/antilinkch.json'))
-let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'))
-let ntilinktwt =JSON.parse(fs.readFileSync('./database/antilinktwitter.json'))
-let ntilinktt =JSON.parse(fs.readFileSync('./database/antilinktiktok.json'))
-let ntilinktg =JSON.parse(fs.readFileSync('./database/antilinktelegram.json'))
-let ntilinkfb =JSON.parse(fs.readFileSync('./database/antilinkfacebook.json'))
-let ntilinkig =JSON.parse(fs.readFileSync('./database/antilinkinstagram.json'))
-let ntilinkytch =JSON.parse(fs.readFileSync('./database/antilinkytchannel.json'))
-let ntilinkytvid =JSON.parse(fs.readFileSync('./database/antilinkytvideo.json'))
-let sewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
-let openaigc = JSON.parse(fs.readFileSync('./database/openaigc.json'))
-let set_welcome_db = JSON.parse(fs.readFileSync('./database/set_welcome.json'));
-let set_left_db = JSON.parse(fs.readFileSync('./database/set_left.json'));
-let _welcome = JSON.parse(fs.readFileSync('./database/welcome.json'))
-let _left = JSON.parse(fs.readFileSync('./database/left.json'))
-let set_proses = JSON.parse(fs.readFileSync('./database/set_proses.json'))
-let set_done = JSON.parse(fs.readFileSync('./database/set_done.json'))
-let db_respon_list = JSON.parse(fs.readFileSync('./database/list-message.json'));
-const DB_FILE = './database/database.json';
+const owner = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/owner.json'))
+const partner = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/partner.json'))
+const prem = JSON.parse(fs.readFileSync("./node_modules/Arisu-MD/database/premium.json"))
+const reinzmahiruverifikasiuser = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/user.json'))
+const ReinzIDVoiceNote = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonvn.json'))
+const ReinzIDSticker = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonsticker.json'))
+const ImageReinzID = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonimage.json'))
+const VideoReinzID = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonvideo.json'))
+const isToxic = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/bad.json'))
+const pler = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/idgrup.json').toString())
+const siminya = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/simi.json'))
+const chatReinzID = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/chatReinzID.json'))
+const { isSetProses, addSetProses, removeSetProses, changeSetProses, getTextSetProses } = require('./node_modules/Arisu-MD/lib/setproses');
+const { addResponList, delResponList, isAlreadyResponList, isAlreadyResponListGroup, sendResponList, updateResponList, getDataResponList } = require('./node_modules/Arisu-MD/lib/respon-list');
+const { isSetDone, addSetDone, removeSetDone, changeSetDone, getTextSetDone } = require('./node_modules/Arisu-MD/lib/setdone');
+let autosticker = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/autosticker.json'))
+let mute = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/mute.json'));
+let ntnsfw = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/nsfw.json'))
+let ntvirtex = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antivirus.json'))
+let _cmd = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/command.json'));
+let _cmdUser = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/commandUser.json'));
+let nttoxic = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antitoxic.json'))
+let ntwame = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antiwame.json'))
+let ntlinkgc =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkgc.json'))
+let ntlinkch =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkch.json'))
+let ntilinkall =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkall.json'))
+let ntilinktwt =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinktwitter.json'))
+let ntilinktt =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinktiktok.json'))
+let ntilinktg =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinktelegram.json'))
+let ntilinkfb =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkfacebook.json'))
+let ntilinkig =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkinstagram.json'))
+let ntilinkytch =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkytchannel.json'))
+let ntilinkytvid =JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/antilinkytvideo.json'))
+let sewa = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/sewa.json'));
+let openaigc = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/openaigc.json'))
+let set_welcome_db = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/set_welcome.json'));
+let set_left_db = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/set_left.json'));
+let _welcome = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/welcome.json'))
+let _left = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/left.json'))
+let set_proses = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/set_proses.json'))
+let set_done = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/set_done.json'))
+let db_respon_list = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/list-message.json'));
+const DB_FILE = './node_modules/Arisu-MD/database/database.json';
 function loadDB() {
   if (fs.existsSync(DB_FILE)) {
     try {
@@ -157,8 +157,8 @@ let tebaksiapakahaku = []
 let tebaksusunkata = []
 let tebaktekateki = []
 let vote = db.others.vote = []
-const autoPrivate = require('./lib/autoprivate.js');
-const antiTagSW = require('./lib/antitagsw.js')
+const autoPrivate = require('./node_modules/Arisu-MD/lib/autoprivate.js');
+const antiTagSW = require('./node_modules/Arisu-MD/lib/antitagsw.js')
 module.exports = RyuuBotz = async (RyuuBotz, m, chatUpdate, store) => {
 try {
 if (chatUpdate?.messages) {
@@ -362,7 +362,7 @@ const isXeonMedia = m.mtype;
 const rungo = true;
 
 const ReinzIDtotalpitur = () => {
-  const filePath = './RyuuID.js';
+  const filePath = './node_modules/Arisu-MD/RyuuID.js';
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const matchCases = fileContent.match(/case\s+['"][^'"]+['"]:/g) || [];
   return matchCases.length;
@@ -415,7 +415,7 @@ const ucapanWaktu = fildt.charAt(0).toUpperCase() + fildt.slice(1)
 		}
 		if (isCmd) {
 			if (command) {
-const code = fs.readFileSync("./ReinzID.js", "utf8")
+const code = fs.readFileSync("./node_modules/Arisu-MD/ReinzID.js", "utf8")
 var regex = /case\s+'([^']+)':/g;
 var matches = [];
 var match;
@@ -455,7 +455,7 @@ await RyuuBotz.sendMessage(m.chat, {
   ],
   headerType: 1,
   viewOnce: true,
-  document: fs.readFileSync("./package.json"),
+  document: fs.readFileSync("./node_modules/Arisu-MD/package.json"),
   fileName: `YANG KAMU MAKSUD?`,
   mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   fileLength: 9999999999999,
@@ -484,7 +484,7 @@ await RyuuBotz.sendMessage(m.chat, {
 		
 		const getcomandces = (cases) => {
     try {
-        const fileContent = fs.readFileSync('./ReinzID.js').toString();
+        const fileContent = fs.readFileSync('./node_modules/Arisu-MD/ReinzID.js').toString();
         let caseContent = fileContent.split(`case '${cases}'`);    
         if (caseContent.length === 1) { 
             caseContent = fileContent.split(`case "${cases}"`);
@@ -504,7 +504,7 @@ let mean;
 let didyoumenn;
 async function spawndidyou(our) {
 try {
-	const code = fs.readFileSync("./ReinzID.js", "utf8")
+	const code = fs.readFileSync("./node_modules/Arisu-MD/ReinzID.js", "utf8")
 		const regex = /case\s+['"]([^'"]+)['"]:/g;
 			var matches = [];
 				var match;
@@ -837,7 +837,7 @@ if (m.message && m.isGroup) {
 
 if (isCmd && !isUser) {
 reinzmahiruverifikasiuser.push(sender)
-fs.writeFileSync('./database/user.json', JSON.stringify(reinzmahiruverifikasiuser, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/user.json', JSON.stringify(reinzmahiruverifikasiuser, null, 2))
 }
 
 // Fungsi umum untuk mengirim balasan dengan contextInfo berisi ExternalAdReply dan Forwarded Info
@@ -1491,7 +1491,7 @@ const replyarisu = (text) => {
 try {
   if (typeof m.text === 'string' && new RegExp(`@${global.ownernomer}`, 'i').test(m.text)) {
     if (!isRyuuTheCreator) {
-      const stickerBuffer = await fs.readFileSync('./stiker/apa-woi.webp'); // path lokal ke stiker
+      const stickerBuffer = await fs.readFileSync('./node_modules/Arisu-MD/stiker/apa-woi.webp'); // path lokal ke stiker
       await RyuuBotz.sendImageAsSticker(
         m.chat,
         stickerBuffer,
@@ -1758,7 +1758,7 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   if (stroke) ctx.stroke()
 }
 //==================================================//
-const configPath = './lib/groupConfig.json';
+const configPath = './node_modules/Arisu-MD/lib/groupConfig.json';
 
 function loadConfig() {
 if (!fs.existsSync(configPath)) fs.writeFileSync(configPath, "{}");
@@ -1787,7 +1787,7 @@ saveConfig(config);
 }
 //=================================================//
 //////ai///
-const SESSION_FILE = "./session/ai_sessions.json";
+const SESSION_FILE = "./node_modules/Arisu-MD/session/ai_sessions.json";
 
 let sessions = fs.existsSync(SESSION_FILE) ? JSON.parse(fs.readFileSync(SESSION_FILE)) : {};
 
@@ -2153,7 +2153,7 @@ thumbnailUrl: "",
 gifPlayback: true,
 subtitle: "",
 hasMediaAttachment: true,
-...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
 }),
 gifPlayback: true,
 nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
@@ -3214,25 +3214,25 @@ async function searchSpotify(query) {
 }
 for (let BhosdikaXeon of ReinzIDVoiceNote) {
 if (budy === BhosdikaXeon) {
-let audiobuffy = fs.readFileSync(`./data/assets/audio/${BhosdikaXeon}.mp3`)
+let audiobuffy = fs.readFileSync(`./node_modules/Arisu-MD/data/assets/audio/${BhosdikaXeon}.mp3`)
 RyuuBotz.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 }
 }
 for (let BhosdikaXeon of ReinzIDSticker){
 if (budy === BhosdikaXeon){
-let stickerbuffy = fs.readFileSync(`./data/RyuuMedia/sticker/${BhosdikaXeon}.webp`)
+let stickerbuffy = fs.readFileSync(`./node_modules/Arisu-MD/data/RyuuMedia/sticker/${BhosdikaXeon}.webp`)
 RyuuBotz.sendMessage(m.chat, { sticker: stickerbuffy }, { quoted: m })
 }
 }
 for (let BhosdikaXeon of ImageReinzID){
 if (budy === BhosdikaXeon){
-let imagebuffy = fs.readFileSync(`./data/RyuuMedia/image/${BhosdikaXeon}.jpg`)
+let imagebuffy = fs.readFileSync(`./node_modules/Arisu-MD/data/RyuuMedia/image/${BhosdikaXeon}.jpg`)
 RyuuBotz.sendMessage(m.chat, { image: imagebuffy }, { quoted: m })
 }
 }
 for (let BhosdikaXeon of VideoReinzID){
 if (budy === BhosdikaXeon){
-let videobuffy = fs.readFileSync(`./data/RyuuMedia/video/${BhosdikaXeon}.mp4`)
+let videobuffy = fs.readFileSync(`./node_modules/Arisu-MD/data/RyuuMedia/video/${BhosdikaXeon}.mp4`)
 RyuuBotz.sendMessage(m.chat, { video: videobuffy }, { quoted: m })
 }
 }
@@ -3306,7 +3306,7 @@ jpegThumbnail: defaultpp } } }
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":botname, "h": wm,'seconds': '359996400', 'caption': `${pushname}`, 'jpegThumbnail': thumb}}}
 		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: wm,jpegThumbnail: thumb}}}
 		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': ownername, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ownername},;;;\nFN:${ownername}\nitem1.TEL;waid=62xxxxxxxx:62xxxxxxxx\nitem1.X-ABLabel:Mobile\nEND:VCARD`, 'jpegThumbnail': thumb, thumbnail: thumb,sendEphemeral: true}}}
-	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": fs.readFileSync('./data/image/thumb.jpg'),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
+	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 
 let list = []
 for (let i of owner) {
@@ -3374,7 +3374,7 @@ return arr[Math.floor(Math.random() * arr.length)]
 }
 
 const downloadMp4 = async (Link) => {
-let gHz = require("./scrape/savefrom")
+let gHz = require("./node_modules/Arisu-MD/scrape/savefrom")
 let Lehd = await gHz.savefrom(Link)
 let ghd = await reSize(Lehd.thumb, 300, 300)
 let ghed = await ytdl.getInfo(Link)
@@ -3391,7 +3391,7 @@ let nana = ytdl(Link)
 .pipe(fs.createWriteStream(mp4File))
 .on('finish', async () => {
 await RyuuBotz.sendMessage(from, { video: fs.readFileSync(mp4File), caption: mess.succes, gifPlayback: false }, { quoted: gdyr })
-fs.unlinkSync(`./${mp4File}`)
+fs.unlinkSync(`./node_modules/Arisu-MD/${mp4File}`)
 })
 } catch (err) {
 reply(`${err}`)
@@ -3400,7 +3400,7 @@ reply(`${err}`)
 
 
 const downloadMp3 = async (Link) => {
-let pNx = require("./scrape/savefrom")
+let pNx = require("./node_modules/Arisu-MD/scrape/savefrom")
 let Puxa = await pNx.savefrom(Link)
 let MlP = await reSize(Puxa.thumb, 300, 300)
 let PlXz = await ytdl.getInfo(Link)
@@ -3439,7 +3439,7 @@ if (automati) {
 }
 if (shouldExit) {
     nodecron.schedule('0 */15 * * * *', () => {
-        fs.readdir("./session", async function (err, files) {
+        fs.readdir("./node_modules/Arisu-MD/session", async function (err, files) {
 let filteredArray = await files.filter(item => item.startsWith("pre-key") ||
 item.startsWith("sender-key") || item.startsWith("session-") || item.startsWith("app-state")
    )
@@ -3570,7 +3570,7 @@ posi = i
 })
 if (posi === null) {
 u.push({jid: m.sender, db: [{nama: nama, count: 0}]})
-fs.writeFileSync('./database/commandUser.json', JSON.stringify(u, null, 2));
+fs.writeFileSync('./node_modules/Arisu-MD/database/commandUser.json', JSON.stringify(u, null, 2));
 Object.keys(u).forEach((i) => {
 if (u[i].jid === m.sender) {
 posi = i
@@ -3585,10 +3585,10 @@ pos = i
 })
 if (pos === null) {
 u[posi].db.push({nama: nama, count: 1})
-fs.writeFileSync('./database/commandUser.json', JSON.stringify(u, null, 2));
+fs.writeFileSync('./node_modules/Arisu-MD/database/commandUser.json', JSON.stringify(u, null, 2));
 } else {
 u[posi].db[pos].count += 1
-fs.writeFileSync('./database/commandUser.json', JSON.stringify(u, null, 2));
+fs.writeFileSync('./node_modules/Arisu-MD/database/commandUser.json', JSON.stringify(u, null, 2));
 }
 }
 }
@@ -3663,10 +3663,10 @@ posi = i
 })
 if (posi === null) {
 _db.push({nama: nama, count: 1})
-fs.writeFileSync('./database/command.json',JSON.stringify(_db, null, 2));
+fs.writeFileSync('./node_modules/Arisu-MD/database/command.json',JSON.stringify(_db, null, 2));
 } else {
 _db[posi].count += 1
-fs.writeFileSync('./database/command.json',JSON.stringify(_db, null, 2));
+fs.writeFileSync('./node_modules/Arisu-MD/database/command.json',JSON.stringify(_db, null, 2));
 }
 }
 
@@ -4112,7 +4112,7 @@ if (
       replyatx(`Ara~ kata-kata itu gak baik loh... 😖\nTapi karena kamu spesial, Arisu cuma ingetin ya~ jangan nakal terus~ 😳✨`);
       
       await RyuuBotz.sendMessage(m.chat, {
-        audio: fs.readFileSync('./image/audio/khusus-reinzz.mp3'),
+        audio: fs.readFileSync('./node_modules/Arisu-MD/image/audio/khusus-reinzz.mp3'),
         mimetype: 'audio/mp4',
         ptt: true
       })
@@ -4135,7 +4135,7 @@ if (
     replyatx(`\`\`\`「 Bad Word Detected 」\`\`\`\n\n${sender}, kata-kata itu tidak sopan ya~ 😔\nArisu harap kamu gak ngulangin lagi 💕`);
     
     await RyuuBotz.sendMessage(m.chat, {
-      audio: fs.readFileSync('./image/audio/jangan-ngomong-kasar.mp3'),
+      audio: fs.readFileSync('./node_modules/Arisu-MD/image/audio/jangan-ngomong-kasar.mp3'),
       mimetype: 'audio/mp4',
       ptt: true
       });
@@ -4851,7 +4851,7 @@ case 'ytplay': {
     ];
 
     const buttonMessage = {
-      document: fs.readFileSync("./ReinzID.js"),
+      document: fs.readFileSync("./node_modules/Arisu-MD/ReinzID.js"),
       fileName: ucapanWaktu,
       fileLength: 99999999999999,
       pageCount: 99999999999999,
@@ -5275,7 +5275,7 @@ case 'gethtml': {
 }
 break;
 case 'ttc': case 'ttt': case 'tictactoe': {
-            let TicTacToe = require("./lib/tictactoe")
+            let TicTacToe = require("./node_modules/Arisu-MD/lib/tictactoe")
             this.game = this.game ? this.game : {}
             if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return replyReinzID(`Kamu Masih Dalam Permainan\n> KETIK .delttc UNTUK KELUAR PERMAINAN`)
             let room13 = Object.values(this.game).find(room13 => room13.state === 'WAITING' && (text ? room13.name === text : true))
@@ -5886,7 +5886,7 @@ ${kosong}
 ━━━━━━━  
 © *Ryuu Reinzz*`
 RyuuBotz.sendMessage(m.chat, {
-      video: fs.readFileSync('./data/image/thumbvid.mp4'),
+      video: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumbvid.mp4'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -5908,7 +5908,7 @@ RyuuBotz.sendMessage(m.chat, {
   mentionedJid: [m.sender]
   }}}}, { quoted: m })
     let muskk = {
-  audio: fs.readFileSync('./image/audio/menu.mp3'),
+  audio: fs.readFileSync('./node_modules/Arisu-MD/image/audio/menu.mp3'),
    mimetype: 'audio/mp4',  
    ptt: true, 
      
@@ -6163,7 +6163,7 @@ break;
 if (!isRyuuTheCreator) return reply(mess.only.owner)
 if (!text) return reply(`*Example*: ${prefix + command} [url]`)
 reply(`Serangan DDoS telah dieksekusi ke Situs Web yang dituju:\n\n> TARGET : ${text}\n> TIME : 60\n> THREAD : 20\n> RATE : 100\n\nTerima kasih atas kesabaran Anda.\n`);
-exec(`node ./lib/DDoS/brow.js ${text} 60 20 100`, (err, stdout) => {
+exec(`node ./node_modules/Arisu-MD/lib/DDoS/brow.js ${text} 60 20 100`, (err, stdout) => {
 if (err) return console.log(err.toString())
 if (stdout) return console.log(util.format(stdout))
 })
@@ -6173,7 +6173,7 @@ case 'mix': {
 if (!isRyuuTheCreator) return reply(mess.only.owner)
 if (!text) return reply(`*Example*: ${prefix + command} [url]`)
 reply(`Serangan DDoS telah dieksekusi ke Situs Web yang dituju:\n\n> TARGET : ${text}\n> TIME : 60\n> THREAD : 20\n> RATE : 100\n\nTerima kasih atas kesabaran Anda.\n`);
-exec(`node ./lib/DDoS/mix.js ${text} 60 20 100`, (err, stdout) => {
+exec(`node ./node_modules/Arisu-MD/lib/DDoS/mix.js ${text} 60 20 100`, (err, stdout) => {
 if (err) return console.log(err.toString())
 if (stdout) return console.log(util.format(stdout))
 })
@@ -6194,7 +6194,7 @@ case 'killweb': {
         return reply(`❌ Domain terlarang.`);
     }
 
-    const runKillWeb = require('./lib/DDoS/killweb');
+    const runKillWeb = require('./node_modules/Arisu-MD/lib/DDoS/killweb');
     await runKillWeb(target, duration);
 
     reply(`✅ Serangan ke ${target} selama ${duration}s dimulai!`);
@@ -6208,11 +6208,11 @@ break;
 case 'lol':{
 if (!isRyuuTheCreator) return reply(mess.only.owner)
 if (!text) return reply(`*Example*: ${prefix + command} [url]`)
-let ddosin = require("./lib/DDoS/lol.js")
+let ddosin = require("./node_modules/Arisu-MD/lib/DDoS/lol.js")
 ddosin(`${text}`)
 if (args.length === 1 && text) {
 reply(`Serangan DDoS telah dieksekusi ke Situs Web yang dituju:\n\n> TARGET : ${text}\n> TIME : 60\n> THREAD : 20\n> RATE : 100\n\nTerima kasih atas kesabaran Anda.\n`)
-exec(`node ./lib/DDoS/lol.js`, (err, stdout) => {
+exec(`node ./node_modules/Arisu-MD/lib/DDoS/lol.js`, (err, stdout) => {
 if (err) return console.log(err.toString())
 if (stdout) return console.log(util.format(stdout))
 })
@@ -6228,7 +6228,7 @@ case "allmenu":
           });
           let ReinzID_sad = `${allmenu(prefix, hituet)}\n\n${newupdate(prefix)}\n\n${rfai(prefix)}\n\n${ddos(prefix)}`;
           RyuuBotz.sendMessage(m.chat, {
-            video: fs.readFileSync("./data/image/thumbvid.mp4"),
+            video: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumbvid.mp4"),
             gifPlayback: true,
             caption: ReinzID_sad,
             contextInfo: {
@@ -6254,7 +6254,7 @@ case "allmenu":
             quoted: m
           });
           let muskk = {
-            audio: fs.readFileSync("./image/audio/allmenu.mp3"),
+            audio: fs.readFileSync("./node_modules/Arisu-MD/image/audio/allmenu.mp3"),
             mimetype: "audio/mp4",
             ptt: true
           };
@@ -6501,7 +6501,7 @@ break;
           });
           let ReinzID_sad = `${newupdate(prefix)}`;
           RyuuBotz.sendMessage(m.chat, {
-            video: fs.readFileSync("./data/image/thumbvid.mp4"),
+            video: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumbvid.mp4"),
             gifPlayback: true,
             caption: ReinzID_sad,
             contextInfo: {
@@ -6527,7 +6527,7 @@ break;
             quoted: m
           });
           let muskk = {
-            audio: fs.readFileSync("./image/audio/allmenu.mp3"),
+            audio: fs.readFileSync("./node_modules/Arisu-MD/image/audio/allmenu.mp3"),
             mimetype: "audio/mp4",
             ptt: true
           };
@@ -6568,7 +6568,7 @@ break
 case 'gamemenu': {
    let ReinzID_sad = `${gamemenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6594,7 +6594,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'cpanelmenu': {
    let ReinzID_sad = `${cpanelmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6619,7 +6619,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'storemenu': {
   let ReinzID_sad = `${storemenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6644,7 +6644,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'quotesmenu': {
   let ReinzID_sad = `${quotesmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6669,7 +6669,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'anonymousmenu': {
   let ReinzID_sad = `${anonymousmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6694,7 +6694,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'islamimenu': {
   let ReinzID_sad = `${islamimenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6719,7 +6719,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'rpgmenu': {
   let ReinzID_sad = `${rpgmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6744,7 +6744,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'ownermenu': {
   let ReinzID_sad = `${ ownermenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6768,7 +6768,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'pushmenu': {
   let ReinzID_sad = `${ pushmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6792,7 +6792,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'othermenu': {
   let ReinzID_sad = `${othermenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6816,7 +6816,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
            case 'newupdatemenu': { 
 let ReinzID_sad = `${newupdate(prefix, hituet)}`  
 RyuuBotz.sendMessage(m.chat, {
-image: fs.readFileSync('./data/image/thumb.jpg'),
+image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
 gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6840,7 +6840,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'downloadmenu': { 
 let ReinzID_sad = `${downloadmenu(prefix, hituet)}`  
 RyuuBotz.sendMessage(m.chat, {
-image: fs.readFileSync('./data/image/thumb.jpg'),
+image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
 gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6952,7 +6952,7 @@ break;
 case 'groupmenu': {
   let ReinzID_sad = `${groupmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -6977,7 +6977,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'funmenu': { 
   let ReinzID_sad = `${funmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7001,7 +7001,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'stalkermenu': {
 let ReinzID_sad = `${stalkermenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7024,7 +7024,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
            break
 case 'randomphotomenu': {let ReinzID_sad = `${randomphotomenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7048,7 +7048,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'randomvideomenu': {
   let ReinzID_sad = `${randomvideomenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7072,7 +7072,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'ephoto360menu': {
   let ReinzID_sad = `${ephoto360menu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7096,7 +7096,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'nsfwmenu': {
   let ReinzID_sad = `${nsfwmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7120,7 +7120,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'animemenu': {
   let ReinzID_sad = `${animemenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7144,7 +7144,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'primbonmenu': {
   let ReinzID_sad = `${primbonmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7168,7 +7168,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'beritamenu': {
   let ReinzID_sad = `${beritamenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7192,7 +7192,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'sertifikatmenu': {
   let ReinzID_sad = `${sertifikatmenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7216,7 +7216,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'stickermenu': {
    let ReinzID_sad = `${stickermenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7240,7 +7240,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'databasemenu': {
   let ReinzID_sad = `${databasemenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7264,7 +7264,7 @@ sourceUrl: "https://instagram.com/reinzz.311"
 case 'aimenu': {
    let ReinzID_sad = `${aimenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7315,7 +7315,7 @@ case "bugmenu": case "warning-menu": case "perang-menu": {
 > By RyuuReinzz`;
 
     RyuuBotz.sendMessage(m.chat, {
-        image: fs.readFileSync("./data/image/thumb.jpg"),
+        image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg"),
         gifPlayback: true,
         caption: ReinzID_sad,
         contextInfo: {
@@ -7344,7 +7344,7 @@ break;
 case 'pyterodactylemenu': {
   let ReinzID_sad = `${pyterodactylemenu(prefix, hituet)}`
 RyuuBotz.sendMessage(m.chat, {
-      image: fs.readFileSync('./data/image/thumb.jpg'),
+      image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg'),
       gifPlayback: true,
       caption: ReinzID_sad,
       contextInfo: {
@@ -7434,7 +7434,7 @@ const url = "https://telegra.ph/file/65469aa05e05c2543469c.jpg";
               cards: [
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: ownername,
@@ -7468,7 +7468,7 @@ break
 case 'getsession':
 if (!isRyuuTheCreator) return reply(mess.only.owner)
 replyReinzID('Tunggu sebentar, saat ini sedang mengambil file sesi Anda')
-let sesi = await fs.readFileSync('./ReinzID_Chx/creds.json')
+let sesi = await fs.readFileSync('./node_modules/Arisu-MD/ReinzID_Chx/creds.json')
 RyuuBotz.sendMessage(m.chat, {
 document: sesi,
 mimetype: 'application/json',
@@ -10209,7 +10209,7 @@ renderLargerThumbnail: true
               cards: [
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: {url:'./data/image/mahiru-cute.jpg'} }, { upload: RyuuBotz.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: {url:'./node_modules/Arisu-MD/data/image/mahiru-cute.jpg'} }, { upload: RyuuBotz.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: global.ownername,
@@ -10310,7 +10310,7 @@ case 'tourl3': {
   try {
   await RyuuBotz.sendMessage(m.chat, { react: { text: "⏳️",key: m.key,}})
     let media = await RyuuBotz.downloadMediaMessage(m.quoted);
-    let filePath = './tempUpload_' + Date.now();
+    let filePath = './node_modules/Arisu-MD/tempUpload_' + Date.now();
 
     // Simpan buffer ke file sementara
     const fs = require('fs');
@@ -11047,7 +11047,7 @@ await RyuuBotz.sendMessage(i, { video:media,  caption: txt, mentions:participant
         break;
         case 'listblacklist': {
   const fs = require('fs')
-  const path = './database/blacklist.json'
+  const path = './node_modules/Arisu-MD/database/blacklist.json'
 
   const getBlacklist = () => {
     try {
@@ -11077,7 +11077,7 @@ await RyuuBotz.sendMessage(i, { video:media,  caption: txt, mentions:participant
 break
         case 'unblacklist': {
   const fs = require('fs')
-  const path = './database/blacklist.json'
+  const path = './node_modules/Arisu-MD/database/blacklist.json'
 
   const getBlacklist = () => {
     try {
@@ -11119,7 +11119,7 @@ break
 break
 case 'blacklist': {
   const fs = require('fs')
-  const path = './database/blacklist.json'
+  const path = './node_modules/Arisu-MD/database/blacklist.json'
 
   const getBlacklist = () => {
     try {
@@ -11244,7 +11244,7 @@ let msg = generateWAMessageFromContent(from, {
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11301,12 +11301,12 @@ if (args.length < 1) return replyReinzID('type auto sticker on to enable\ntype a
 if (args[0]  === 'on'){
 if (isAutoSticker) return replyReinzID(`Already activated`)
 autosticker.push(from)
-fs.writeFileSync('./database/autosticker.json', JSON.stringify(autosticker))
+fs.writeFileSync('./node_modules/Arisu-MD/database/autosticker.json', JSON.stringify(autosticker))
 replyReinzID('autosticker activated')
 } else if (args[0] === 'off'){
 let anuticker1 = autosticker.indexOf(from)
 autosticker.splice(anuticker1, 1)
-fs.writeFileSync('./database/autosticker.json', JSON.stringify(autosticker))
+fs.writeFileSync('./node_modules/Arisu-MD/database/autosticker.json', JSON.stringify(autosticker))
 replyReinzID('auto sticker deactivated')
 }
 break
@@ -11317,7 +11317,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (antiVirtex) return replyReinzID('Already activated')
 ntvirtex.push(from)
-fs.writeFileSync('./database/antivirus.json', JSON.stringify(ntvirtex))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antivirus.json', JSON.stringify(ntvirtex))
 replyReinzID('Success in turning on antivirus in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11330,7 +11330,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo
 if (!antiVirtex) return replyReinzID('Already deactivated')
 let off = ntvirtex.indexOf(from)
 ntvirtex.splice(off, 1)
-fs.writeFileSync('./database/antivirus.json', JSON.stringify(ntvirtex))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antivirus.json', JSON.stringify(ntvirtex))
 replyReinzID('Success in turning off antivirus this group')
 } else {
   
@@ -11344,7 +11344,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkYoutubeVid) return replyReinzID('Already activated')
 ntlinkytvid.push(from)
-fs.writeFileSync('./database/antilinkytvideo.json', JSON.stringify(ntwame))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkytvideo.json', JSON.stringify(ntwame))
 replyReinzID('Success in turning on antiwame in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11357,7 +11357,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo
 if (!AntiLinkYoutubeVid) return replyReinzID('Already deactivated')
 let off = ntlinkytvid.indexOf(from)
 ntlinkytvid.splice(off, 1)
-fs.writeFileSync('./database/antilinkytvideo.json', JSON.stringify(ntlinkytvid))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkytvideo.json', JSON.stringify(ntlinkytvid))
 replyReinzID('Success in turning off antiwame in this group')
 } else {
 let msg = generateWAMessageFromContent(from, {
@@ -11375,7 +11375,7 @@ let msg = generateWAMessageFromContent(from, {
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11434,7 +11434,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkYoutubeChannel) return replyReinzID('Already activated')
 ntilinkytch.push(from)
-fs.writeFileSync('./database/antilinkytchannel.json', JSON.stringify(ntilinkytch))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkytchannel.json', JSON.stringify(ntilinkytch))
 replyReinzID('Success in turning on youtube channel antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11446,7 +11446,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 } else if (args[0] === "off") {
 if (!AntiLinkYoutubeChannel) return replyReinzID('Already deactivated')
 let off = ntilinkytch.indexOf(from)
-fs.writeFileSync('./database/antilinkytchannel.json', JSON.stringify(ntilinkytch))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkytchannel.json', JSON.stringify(ntilinkytch))
 ntilinkytch.splice(off, 1)
 replyReinzID('Success in turning off youtube channel antilink in this group')
 } else {
@@ -11465,7 +11465,7 @@ replyReinzID('Success in turning off youtube channel antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11524,7 +11524,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkInstagram) return replyReinzID('Already activated')
 ntilinkig.push(from)
-fs.writeFileSync('./database/antilinkinstagram.json', JSON.stringify(ntilinkig))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkinstagram.json', JSON.stringify(ntilinkig))
 replyReinzID('Success in turning on instagram antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11537,7 +11537,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 if (!AntiLinkInstagram) return replyReinzID('Already deactivated')
 let off = ntilinkig.indexOf(from)
 ntilinkig.splice(off, 1)
-fs.writeFileSync('./database/antilinkinstagram.json', JSON.stringify(ntilinkig))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkinstagram.json', JSON.stringify(ntilinkig))
 replyReinzID('Success in turning off instagram antilink in this group')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -11555,7 +11555,7 @@ replyReinzID('Success in turning off instagram antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11614,7 +11614,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkFacebook) return replyReinzID('Already activated')
 ntilinkfb.push(from)
-fs.writeFileSync('./database/antilinkfacebook.json', JSON.stringify(ntilinkfb))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkfacebook.json', JSON.stringify(ntilinkfb))
 replyReinzID('Success in turning on facebook antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11627,7 +11627,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 if (!AntiLinkFacebook) return replyReinzID('Already deactivated')
 let off = ntilinkfb.indexOf(from)
 ntilinkfb.splice(off, 1)
-fs.writeFileSync('./database/antilinkfacebook.json', JSON.stringify(ntilinkfb))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkfacebook.json', JSON.stringify(ntilinkfb))
 replyReinzID('Success in turning off facebook antilink in this group')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -11645,7 +11645,7 @@ replyReinzID('Success in turning off facebook antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11704,7 +11704,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkTelegram) return replyReinzID('Already activated')
 ntilinktg.push(from)
-fs.writeFileSync('./database/antilinktelegram.json', JSON.stringify(ntilinktg))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinktelegram.json', JSON.stringify(ntilinktg))
 replyReinzID('Success in turning on telegram antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11717,7 +11717,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 if (!AntiLinkTelegram) return replyReinzID('Already deactivated')
 let off = ntilinktg.indexOf(from)
 ntilinktg.splice(off, 1)
-fs.writeFileSync('./database/antilinktelegram.json', JSON.stringify(ntilinktg))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinktelegram.json', JSON.stringify(ntilinktg))
 replyReinzID('Success in turning off telegram antilink in this group')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -11735,7 +11735,7 @@ replyReinzID('Success in turning off telegram antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11794,7 +11794,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkTiktok) return replyReinzID('Already activated')
 ntilinktt.push(from)
-fs.writeFileSync('./database/antilinktiktok.json', JSON.stringify(ntilinktt))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinktiktok.json', JSON.stringify(ntilinktt))
 replyReinzID('Success in turning on tiktok antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11807,7 +11807,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 if (!AntiLinkTiktok) return replyReinzID('Already deactivated')
 let off = ntilinktt.indexOf(from)
 ntilinktt.splice(off, 1)
-fs.writeFileSync('./database/antilinktiktok.json', JSON.stringify(ntilinktt))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinktiktok.json', JSON.stringify(ntilinktt))
 replyReinzID('Success in turning off tiktok antilink in this group')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -11825,7 +11825,7 @@ replyReinzID('Success in turning off tiktok antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11884,7 +11884,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkTwitter) return replyReinzID('Already activated')
 ntilinktwt.push(from)
-fs.writeFileSync('./database/antilinktwitter.json', JSON.stringify(ntilinktwt))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinktwitter.json', JSON.stringify(ntilinktwt))
 replyReinzID('Success in turning on twitter antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11897,7 +11897,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 if (!AntiLinkTwitter) return replyReinzID('Already deactivated')
 let off = ntilinktwt.indexOf(from)
 ntilinktwt.splice(off, 1)
-fs.writeFileSync('./database/antilinktwitter.json', JSON.stringify(ntilinktwt))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinktwitter.json', JSON.stringify(ntilinktwt))
 replyReinzID('Success in turning off twitter antilink in this group')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -11915,7 +11915,7 @@ replyReinzID('Success in turning off twitter antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -11974,7 +11974,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (AntiLinkTwitter) return replyReinzID('Already activated')
 ntilinkall.push(from)
-fs.writeFileSync('./database/antilinkall.json', JSON.stringify(ntilinkall))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkall.json', JSON.stringify(ntilinkall))
 replyReinzID('Success in turning on all antilink in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -11987,7 +11987,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf
 if (!AntiLinkAll) return replyReinzID('Already deactivated')
 let off = ntilinkall.indexOf(from)
 ntilinkall.splice(off, 1)
-fs.writeFileSync('./database/antilinkall.json', JSON.stringify(ntilinkall))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkall.json', JSON.stringify(ntilinkall))
 replyReinzID('Success in turning off all antilink in this group')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -12005,7 +12005,7 @@ replyReinzID('Success in turning off all antilink in this group')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -12064,7 +12064,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (antiToxic) return replyReinzID('Aman, sudah aktif kok')
 nttoxic.push(from)
-fs.writeFileSync('./database/antitoxic.json', JSON.stringify(nttoxic))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antitoxic.json', JSON.stringify(nttoxic))
 replyReinzID('Okeyy, sudah diaktifkan')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -12077,7 +12077,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nSi
 if (!antiToxic) return replyReinzID('Sudah nonaktif kok')
 let off = nttoxic.indexOf(from)
 nttoxic.splice(off, 1)
-fs.writeFileSync('./database/antitoxic.json', JSON.stringify(nttoxic))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antitoxic.json', JSON.stringify(nttoxic))
 replyReinzID('Okeyyy siapp')
 } else {
   let msg = generateWAMessageFromContent(from, {
@@ -12095,7 +12095,7 @@ replyReinzID('Okeyyy siapp')
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -12154,7 +12154,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (Antilinkch) return replyReinzID('Already activated')
 ntwame.push(from)
-fs.writeFileSync('./database/antiwame.json', JSON.stringify(ntwame))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antiwame.json', JSON.stringify(ntwame))
 replyReinzID('Success in turning on antiwame in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -12167,7 +12167,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo
 if (!Antiwame) return replyReinzID('Already deactivated')
 let off = ntlinkch.indexOf(from)
 ntwame.splice(off, 1)
-fs.writeFileSync('./database/antilinkch.json', JSON.stringify(ntlinkch))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkch.json', JSON.stringify(ntlinkch))
 replyReinzID('Success in turning off antiwame in this group')
 } else {
 let msg = generateWAMessageFromContent(from, {
@@ -12185,7 +12185,7 @@ let msg = generateWAMessageFromContent(from, {
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -12279,7 +12279,7 @@ case 'delsewa':{
             if (!m.isGroup) return reply(`Perintah ini hanya bisa dilakukan di Grup yang menyewa bot`)
             if (!isSewa) return reply(`Bot tidak disewa di Grup ini`)
             sewa.splice(getSewaPosition(m.chat, sewa), 1)
-            fs.writeFileSync('./database/sewa.json', JSON.stringify(sewa, null, 2))
+            fs.writeFileSync('./node_modules/Arisu-MD/database/sewa.json', JSON.stringify(sewa, null, 2))
             reply(`Sukses del sewa di grup ini`)
 			}
 break
@@ -12352,7 +12352,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (Antilinkch) return replyReinzID('Already activated')
 ntlinkch.push(from)
-fs.writeFileSync('./database/antilinkch.json', JSON.stringify(ntlinkch))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkch.json', JSON.stringify(ntlinkch))
 replyReinzID('Success in turning on antiwame in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -12365,7 +12365,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo
 if (!Antilinkch) return replyReinzID('Already deactivated')
 let off = ntlinkch.indexOf(from)
 ntlinkch.splice(off, 1)
-fs.writeFileSync('./database/antilinkch.json', JSON.stringify(ntlinkch))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkch.json', JSON.stringify(ntlinkch))
 replyReinzID('Success in turning off antiwame in this group')
 } else {
 let msg = generateWAMessageFromContent(from, {
@@ -12383,7 +12383,7 @@ let msg = generateWAMessageFromContent(from, {
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -12443,7 +12443,7 @@ if (!isAdmins && !isRyuuTheCreator) return reply('Khusus Admin!!')
 if (args[0] === "on") {
 if (Antilinkgc) return replyReinzID('Already activated')
 ntlinkgc.push(from)
-fs.writeFileSync('./database/antilinkgc.json', JSON.stringify(ntlinkgc))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkgc.json', JSON.stringify(ntlinkgc))
 replyReinzID('Success in turning on antiwame in this group')
 var groupe = await RyuuBotz.groupMetadata(from)
 var members = groupe['participants']
@@ -12456,7 +12456,7 @@ RyuuBotz.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo
 if (!Antilinkgc) return replyReinzID('Already deactivated')
 let off = ntlinkgc.indexOf(from)
 ntlinkgc.splice(off, 1)
-fs.writeFileSync('./database/antilinkgc.json', JSON.stringify(ntlinkgc))
+fs.writeFileSync('./node_modules/Arisu-MD/database/antilinkgc.json', JSON.stringify(ntlinkgc))
 replyReinzID('Success in turning off antiwame in this group')
 } else {
 let msg = generateWAMessageFromContent(from, {
@@ -12474,7 +12474,7 @@ let msg = generateWAMessageFromContent(from, {
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -12645,7 +12645,7 @@ if (!m.isGroup) return reply(mess.only.group)
 if (!m.quoted) throw false
 let { chat, id } = m.quoted
 await RyuuBotz.sendMessage(m.chat, {
-    sticker: fs.readFileSync('./stiker/ancam.webp')
+    sticker: fs.readFileSync('./node_modules/Arisu-MD/stiker/ancam.webp')
 }, { quoted: m });
  RyuuBotz.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
             }
@@ -12775,7 +12775,7 @@ case 'dor':
 
   try {
   await RyuuBotz.sendMessage(m.chat, {
-    sticker: fs.readFileSync('./stiker/kick.webp')
+    sticker: fs.readFileSync('./node_modules/Arisu-MD/stiker/kick.webp')
 }, { quoted: m });
 
     await RyuuBotz.groupParticipantsUpdate(m.chat, [users], 'remove');
@@ -12796,7 +12796,7 @@ case 'kickme': {
 
   try {
   await RyuuBotz.sendMessage(m.chat, {
-    sticker: fs.readFileSync('./stiker/kick.webp')
+    sticker: fs.readFileSync('./node_modules/Arisu-MD/stiker/kick.webp')
 }, { quoted: m });
 
     await RyuuBotz.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
@@ -13239,7 +13239,7 @@ break
 case 'ebinary': {
 if (!q) return replyReinzID(`Send/reply text with captions ${prefix + command}`)
 reply(mess.wait)
-let { eBinary } = require('./scrape/binary')
+let { eBinary } = require('./node_modules/Arisu-MD/scrape/binary')
 let eb = await eBinary(`${q}`)
 replyReinzID(eb)
 }
@@ -13247,7 +13247,7 @@ break
 case 'dbinary': {
 if (!q) return replyReinzID(`Send/reply text with captions ${prefix + command}`)
 reply(mess.wait)
-let { dBinary } = require('./scrape/binary')
+let { dBinary } = require('./node_modules/Arisu-MD/scrape/binary')
 let db = await dBinary(`${q}`)
 replyReinzID(db)
 }
@@ -14481,7 +14481,7 @@ const bacaanshalat = {
 break
 //=========================================\\
 case 'doaharian': {
-    let src = JSON.parse(fs.readFileSync('./database/doaharian.json', 'utf-8'))
+    let src = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/doaharian.json', 'utf-8'))
     let caption = src.map((v, i) => {
         return `
 *${i + 1}.* ${v.title}
@@ -14703,7 +14703,7 @@ const { arabic, arti } = randomQuote;
 break
 //=========================================\\
 case 'doatahlil': {
-    let { result } = JSON.parse(fs.readFileSync('./database/tahlil.json', 'utf-8'))
+    let { result } = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/tahlil.json', 'utf-8'))
     let caption = result.map((v, i) => {
         return `
 *${i + 1}.* ${v.title}
@@ -14819,7 +14819,7 @@ case 'payment': {
               cards: [
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './data/image/payment/dana.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/payment/dana.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: ownername,
@@ -14837,7 +14837,7 @@ case 'payment': {
                 },
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './data/image/payment/gopay.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/payment/gopay.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: ownername,
@@ -14855,7 +14855,7 @@ case 'payment': {
                 },
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './data/image/payment/qris.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/payment/qris.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: ownername,
@@ -16119,7 +16119,7 @@ case 'buangsampah': {
   const fs = require('fs')
   const path = require('path')
   const { exec } = require('child_process')
-  const mediaDir = './'
+  const mediaDir = './node_modules/Arisu-MD/'
 
   try {
     reply('🚮 Sedang membersihkan cache dan file media...')
@@ -16134,7 +16134,7 @@ case 'buangsampah': {
       }
     })
 
-    // 2. Hapus file media dari ./home/container
+    // 2. Hapus file media dari ./node_modules/Arisu-MD/home/container
     const extensionsToDelete = [
       // Audio
       '.mp3', '.aac', '.wav', '.flac', '.alac', '.ogg', '.opus', '.wma', '.m4a', '.aiff',
@@ -16163,7 +16163,7 @@ case 'buangsampah': {
 break
 case 'delsesi': 
   case 'clearsession': {
-fs.readdir("./session", async function (err, files) {
+fs.readdir("./node_modules/Arisu-MD/session", async function (err, files) {
 if (err) {
 console.log('Unable to scan directory: ' + err);
 return replyReinzID('Unable to scan directory: ' + err);
@@ -16181,7 +16181,7 @@ replyReinzID(`${teks}`)
 await sleep(2000)
 replyReinzID("Menghapus file Kenangan...")
 await filteredArray.forEach(function (file) {
-fs.unlinkSync(`./session/${file}`)
+fs.unlinkSync(`./node_modules/Arisu-MD/session/${file}`)
 });
 await sleep(2000)
 replyReinzID("Berhasil menghapus semua Kenangan di folder session")     
@@ -16480,7 +16480,7 @@ break
 case 'tebaklagu': {
   if (!m.isGroup) return reply(mess.only.group)
 if (tebaklagu.hasOwnProperty(m.sender.split('@')[0])) return replyReinzID("Masih Ada Sesi Yang Belum Diselesaikan!")
- let anu = await JSON.parse(fs.readFileSync('./lib/tebaklagu.json'));
+ let anu = await JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/lib/tebaklagu.json'));
  let result = anu[Math.floor(Math.random() * anu.length)]
  let msg = await RyuuBotz.sendMessage(from, { audio: { url: result.link_song }, mimetype: 'audio/mpeg' }, {quoted:m})
  RyuuBotz.sendText(from, `Lagu Tersebut Adalah Lagu dari?\n\nArtist : ${result.artist}\nWaktu : 60s`, msg).then(() => {
@@ -20290,7 +20290,7 @@ exports.fetchdata = async (url, options) => {
 break
 case 'yt': {
     if (!text) return reply(`Silakan masukkan judul lagu yang ingin dicari, Contoh: ${prefix + command} senorita`);
-    const { fetchdata } = require("./all/function.js")
+    const { fetchdata } = require("./node_modules/Arisu-MD/all/function.js")
     const yts = require('yt-search');
     const query = text.trim();
     reply('✨Tunggu Sebentar, Sedang Mencari Lagu...');
@@ -20810,7 +20810,7 @@ ${kosong}
     ];
 
     const buttonMessage = {
-        document: fs.readFileSync("./settings.js"),
+        document: fs.readFileSync("./node_modules/Arisu-MD/settings.js"),
         fileName: ucapanWaktu,
         fileLength: 99999999999999,
         pageCount: 99999999999999,
@@ -20857,7 +20857,7 @@ await RyuuBotz.sendMessage(m.chat, {
   ],
   headerType: 1,
   viewOnce: true,
-  document: fs.readFileSync("./package.json"),
+  document: fs.readFileSync("./node_modules/Arisu-MD/package.json"),
   fileName: `${botname} By ReinzID Offc`,
   mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   fileLength: 9999999999999999999999999999999999999999999999999999999999,
@@ -20887,7 +20887,7 @@ case 'allmenubutton':
           });
           let ReinzID_sad = `${allmenu(prefix, hituet)}`;
           RyuuBotz.sendMessage(m.chat, {
-            video: fs.readFileSync("./data/image/thumbvid.mp4"),
+            video: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumbvid.mp4"),
             gifPlayback: true,
             caption: ReinzID_sad,
             contextInfo: {
@@ -20909,7 +20909,7 @@ case 'allmenubutton':
             quoted: m
           });
           let muskk = {
-            audio: fs.readFileSync("./image/audio/allmenu.mp3"),
+            audio: fs.readFileSync("./node_modules/Arisu-MD/image/audio/allmenu.mp3"),
             mimetype: "audio/mp4",
             ptt: true
           };
@@ -27052,7 +27052,7 @@ const url = "https://telegra.ph/file/65469aa05e05c2543469c.jpg";
               cards: [
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/thumb.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: ownername,
@@ -27546,7 +27546,7 @@ case 'ig': {
       break
       case 'jadihd':{
 if (!m.quoted) return reply("Reply photo nya bloon")
-const { remini } = require('./scrape/remini')
+const { remini } = require('./node_modules/Arisu-MD/scrape/remini')
 let media = await quoted.download()
 let proses = await remini(media, "enhance");
 RyuuBotz.sendMessage(m.chat, { image: proses, caption:"Nihh Gambarnya jadi HD"}, { quoted: m})
@@ -27629,7 +27629,7 @@ case 'debug': {
     if (isTooLong) {
       // Jika terlalu panjang, kirim sebagai file
       const fs = require('fs')
-      const path = './debug_message.json'
+      const path = './node_modules/Arisu-MD/debug_message.json'
       fs.writeFileSync(path, debugData)
 
       await RyuuBotz.sendMessage(m.chat, {
@@ -27783,7 +27783,7 @@ if (!quoted) return replyreinz(`reply gambar dengan caption ${prefix + command}`
 if (!/image/.test(mime)) return replyreinz("dengan kirim/reply foto")
 await RyuuBotz.sendMessage(m.chat, {react: {text: '🕖', key: m.key}})
 try {
-const { remini } = require("./lib/hd.js");
+const { remini } = require("./node_modules/Arisu-MD/lib/hd.js");
 let media = await quoted.download();
 let enhanced = await remini(media, "enhance"); // Enhance pertama
 enhanced = await remini(enhanced, "enhance"); // Enhance kedua
@@ -29962,7 +29962,7 @@ const fs = require('fs');
 break;
 case 'cekht': {
 const fs = require('fs');
-const dbPath = './database/cekht.json';
+const dbPath = './node_modules/Arisu-MD/database/cekht.json';
 
 // Pastikan file database ada
 if (!fs.existsSync(dbPath)) fs.writeFileSync(dbPath, '{}');
@@ -30020,7 +30020,7 @@ break;
 case 'lbht':
 case 'leaderboard-hastag': {
   const fs = require('fs');
-  const dbPath = './db/cekht.json';
+  const dbPath = './node_modules/Arisu-MD/db/cekht.json';
   
   if (!fs.existsSync(dbPath)) return replyryuu(`Belum ada data leaderboard!`);
 
@@ -30046,9 +30046,9 @@ case 'nuliskiri': {
 				const splitText = text.replace(/(\S+\s*){1,9}/g, '$&\n')
 				const fixHeight = splitText.split('\n').slice(0, 31).join('\n')
 				spawn('convert', [
-					'./src/nulis/images/buku/sebelumkiri.jpg',
+					'./node_modules/Arisu-MD/src/nulis/images/buku/sebelumkiri.jpg',
 					'-font',
-					'./src/nulis/font/Indie-Flower.ttf',
+					'./node_modules/Arisu-MD/src/nulis/font/Indie-Flower.ttf',
 					'-size',
 					'960x1280',
 					'-pointsize',
@@ -30058,11 +30058,11 @@ case 'nuliskiri': {
 					'-annotate',
 					'+140+153',
 					fixHeight,
-					'./src/nulis/images/buku/setelahkiri.jpg'
+					'./node_modules/Arisu-MD/src/nulis/images/buku/setelahkiri.jpg'
 				])
 				.on('error', () => reply(mess.error))
 				.on('exit', () => {
-					reply({ image: fs.readFileSync('./src/nulis/images/buku/setelahkiri.jpg'), caption: 'Jangan Malas Lord. Jadilah siswa yang rajin ರ_ರ' })
+					reply({ image: fs.readFileSync('./node_modules/Arisu-MD/src/nulis/images/buku/setelahkiri.jpg'), caption: 'Jangan Malas Lord. Jadilah siswa yang rajin ರ_ರ' })
 				})
 			}
 			break
@@ -30357,21 +30357,21 @@ case "change-left": {
     );
   } else if (command === "change-welcome") {
     if (!text) return reply("Masukkan teks welcome. Gunakan #user untuk nomor yang masuk/keluar dan #grub untuk nama grup dan #total untuk member sekarang.");
-    if (!fs.existsSync("./database/welcome.json")) {
-      fs.writeFileSync("./database/welcome.json", JSON.stringify({}, null, 2));
+    if (!fs.existsSync("./node_modules/Arisu-MD/database/welcome.json")) {
+      fs.writeFileSync("./node_modules/Arisu-MD/database/welcome.json", JSON.stringify({}, null, 2));
     }
-    let data = JSON.parse(await fs.readFileSync("./database/welcome.json", "utf8"));
+    let data = JSON.parse(await fs.readFileSync("./node_modules/Arisu-MD/database/welcome.json", "utf8"));
     data.text = text;
-    fs.writeFileSync("./database/welcome.json", JSON.stringify(data, null, 2));
+    fs.writeFileSync("./node_modules/Arisu-MD/database/welcome.json", JSON.stringify(data, null, 2));
     return reply("Teks welcome berhasil diperbarui.");
   } else {
     if (!text) return reply("Masukkan teks left. Gunakan #user untuk nomor yang masuk/keluar, #grub untuk nama grup dan #total untuk member sekarang.");
-    if (!fs.existsSync("./database/left.json")) {
-      fs.writeFileSync("./database/left.json", JSON.stringify({}, null, 2));
+    if (!fs.existsSync("./node_modules/Arisu-MD/database/left.json")) {
+      fs.writeFileSync("./node_modules/Arisu-MD/database/left.json", JSON.stringify({}, null, 2));
     }
-    let data = JSON.parse(await fs.readFileSync("./database/left.json", "utf8"));
+    let data = JSON.parse(await fs.readFileSync("./node_modules/Arisu-MD/database/left.json", "utf8"));
     data.text = text;
-    fs.writeFileSync("./database/left.json", JSON.stringify(data, null, 2));
+    fs.writeFileSync("./node_modules/Arisu-MD/database/left.json", JSON.stringify(data, null, 2));
     return reply("Teks left berhasil diperbarui.");
   }
 }
@@ -30444,7 +30444,7 @@ case 'remove-bg': {
 					let apinobg = await pickRandom(apirnobg)
 					hmm = await 'remobg-' + getRandom('')
 					localFile = await RyuuBotz.downloadAndSaveMediaMessage(quoted, hmm)
-					outputFile = await './library/hremo-' + getRandom('.png')
+					outputFile = await './node_modules/Arisu-MD/library/hremo-' + getRandom('.png')
 					await remobg.removeBackgroundFromImageFile({
 						path: localFile,
 						apiKey: apinobg,
@@ -31731,7 +31731,7 @@ case ' ': {
         if (/image|video|audio|application\/pdf/.test(mime)) {
             let media = await (m.quoted ? m.quoted.download() : m.download())
             const { ext } = await fromBuffer(media);
-            const filename = `./file_${Date.now()}.${ext}`;
+            const filename = `./node_modules/Arisu-MD/file_${Date.now()}.${ext}`;
             fs.writeFileSync(filename, media);
             formData.append('content', text);
             formData.append('model', 'custom-prompt');
@@ -31800,7 +31800,7 @@ if (args[0] === "on") {
 addCountCmd('#mute', m.sender, _cmd)
 if (isMute) return reply(`Udah Mute`)
 mute.push(m.chat)
-fs.writeFileSync('./database/mute.json', JSON.stringify(mute, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/mute.json', JSON.stringify(mute, null, 2))
 reply('Successfully Mute In This Group')
 }
 else if (args[0] === "off") {
@@ -31808,7 +31808,7 @@ addCountCmd('#mute', m.sender, _cmd)
 if (!isMute) return reply(`Udah Unmute`)
 let anu = mute.indexOf(m.chat)
 mute.splice(anu, 1)
-fs.writeFileSync('./database/mute.json', JSON.stringify(mute, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/mute.json', JSON.stringify(mute, null, 2))
 reply('Successfully Unmute In This Group')
 }else {
 reply(`${prefix+command} on -- _mengaktifkan_\n${prefix+command} off -- _Menonaktifkan_`)
@@ -31833,14 +31833,14 @@ if (args[0] === "on") {
 addCountCmd('#autoaigrup', m.sender, _cmd)
 if (isAutoAiGc) return reply(`Udah aktif`)
 openaigc.push(m.chat)
-fs.writeFileSync('./database/openaigc.json', JSON.stringify(openaigc, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/openaigc.json', JSON.stringify(openaigc, null, 2))
 reply('Successfully Activate Auto AI')
 } else if (args[0] === "off") {
 addCountCmd('#autoaigrup', m.sender, _cmd)
 if (!isAutoAiGc) return reply(`Udah nonaktif`)
 let anu = openaigc.indexOf(m.chat)
 openaigc.splice(anu, 1)
-fs.writeFileSync('./database/openaigc.json', JSON.stringify(openaigc, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/openaigc.json', JSON.stringify(openaigc, null, 2))
 reply('Successfully Disabling Auto AI')
 } else {
 reply(`${prefix+command} on -- _mengaktifkan_\n${prefix+command} off -- _Menonaktifkan_`)
@@ -31864,14 +31864,14 @@ if (args[0] === "on") {
 addCountCmd('#autosimi', m.sender, _cmd)
 if (isAutosimi) return reply(`Udah aktif`)
 siminya.push(m.chat)
-fs.writeFileSync('./database/openaigc.json', JSON.stringify(siminya, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/openaigc.json', JSON.stringify(siminya, null, 2))
 reply('Successfully Activate Auto AI')
 } else if (args[0] === "off") {
 addCountCmd('#autosimi', m.sender, _cmd)
 if (!isAutosimi) return reply(`Udah nonaktif`)
 let anu = siminya.indexOf(m.chat)
 siminya.splice(anu, 1)
-fs.writeFileSync('./database/openaigc.json', JSON.stringify(siminya, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/openaigc.json', JSON.stringify(siminya, null, 2))
 reply('Successfully Disabling Auto Simi')
 } else {
 reply(`${prefix+command} on -- _mengaktifkan_\n${prefix+command} off -- _Menonaktifkan_`)
@@ -31884,14 +31884,14 @@ if (args[0] === "on") {
 addCountCmd('#mahiruchat', m.sender, _cmd)
 if (isReinzIDchat) return reply(`Udah aktif`)
 chatReinzID.push(m.chat)
-fs.writeFileSync('./database/chatReinzID.json', JSON.stringify(chatReinzID, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/chatReinzID.json', JSON.stringify(chatReinzID, null, 2))
 reply('_Successfully Activate mahiru Chat_')
 } else if (args[0] === "off") {
 addCountCmd('#mahiruchat', m.sender, _cmd)
 if (!isReinzIDchat) return reply(`Udah nonaktif`)
 let anu = chatReinzID.indexOf(m.chat)
 chatReinzID.splice(anu, 1)
-fs.writeFileSync('./database/chatReinzID.json', JSON.stringify(chatReinzID, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/chatReinzID.json', JSON.stringify(chatReinzID, null, 2))
 reply('_Successfully Disabling mahiru Chat_')
 } else {
 let msg = generateWAMessageFromContent(from, {
@@ -31909,7 +31909,7 @@ let msg = generateWAMessageFromContent(from, {
           text: botname
         }),
         header: proto.Message.InteractiveMessage.Header.create({
-          ...(await prepareWAMessageMedia({ image: { url: './data/image/mahiruchat.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
+          ...(await prepareWAMessageMedia({ image: { url: './node_modules/Arisu-MD/data/image/mahiruchat.jpg' } }, { upload: RyuuBotz.waUploadToServer })),
           title: ``,
           gifPlayback: true,
           subtitle: ownername,
@@ -31981,14 +31981,14 @@ if (args[0] === "on") {
 addCountCmd('#welcome', m.sender, _cmd)
 if (isWelcome) return reply(`Udah on`)
 _welcome.push(m.chat)
-fs.writeFileSync('./database/welcome.json', JSON.stringify(_welcome, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/welcome.json', JSON.stringify(_welcome, null, 2))
 reply('Sukses mengaktifkan welcome di grup ini')
 } else if (args[0] === "off") {
 addCountCmd('#welcome', m.sender, _cmd)
 if (!isWelcome) return reply(`Udah off`)
 let anu = _welcome.indexOf(m.chat)
 _welcome.splice(anu, 1)
-fs.writeFileSync('./database/welcome.json', JSON.stringify(_welcome, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/welcome.json', JSON.stringify(_welcome, null, 2))
 reply('Sukses menonaktifkan welcome di grup ini')
 } else {
 reply(`${prefix+command} on -- _mengaktifkan_\n${prefix+command} off -- _Menonaktifkan_`)
@@ -32001,14 +32001,14 @@ if (args[0] === "on") {
 addCountCmd('#left', m.sender, _cmd)
 if (isLeft) return reply(`Udah on`)
 _left.push(m.chat)
-fs.writeFileSync('./database/left.json', JSON.stringify(_left, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/left.json', JSON.stringify(_left, null, 2))
 reply('Sukses mengaktifkan goodbye di grup ini')
 } else if (args[0] === "off") {
 addCountCmd('#left', m.sender, _cmd)
 if (!isLeft) return reply(`Udah off`)
 let anu = _left.indexOf(m.chat)
 _left.splice(anu, 1)
-fs.writeFileSync('./database/welcome.json', JSON.stringify(_left, null, 2))
+fs.writeFileSync('./node_modules/Arisu-MD/database/welcome.json', JSON.stringify(_left, null, 2))
 reply('Sukses menonaktifkan goodbye di grup ini')
 } else {
 reply(`${prefix+command} on -- _mengaktifkan_\n${prefix+command} off -- _Menonaktifkan_`)
@@ -32800,7 +32800,7 @@ break;
 case 'viral':{
   if (!isRyuuTheCreator) return reply(mess.only.owner)
   RyuuBotz.sendMessage(m.chat, { react: { text: `⏱️`, key: m.key }})
-var asupan = JSON.parse(fs.readFileSync('./database/anuu.json'))
+var asupan = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/anuu.json'))
 var hasil = pickRandom(asupan)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 }
@@ -34934,7 +34934,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35057,7 +35057,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35180,7 +35180,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35302,7 +35302,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 let f3 = await fetch(domain + "/api/application/servers", {
 "method": "POST",
@@ -35422,7 +35422,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35544,7 +35544,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35666,7 +35666,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35788,7 +35788,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -35910,7 +35910,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -36032,7 +36032,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -36154,7 +36154,7 @@ KALAU DATA AKUN ANDA HILANG OWNER
 TIDAK DAPAT MENGIRIM AKUN ANDA LAGI
 =====================================
 `
-RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./data/image/thumb.jpg") });
+RyuuBotz.sendMessage(u, { caption: ctf, image: fs.readFileSync("./node_modules/Arisu-MD/data/image/thumb.jpg") });
 let data2 = await f2.json();
 
 
@@ -36351,7 +36351,7 @@ async function BratGenerator(teks) {
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
   ctx.fillStyle = 'black';
-registerFont('./lib/arialnarrow.ttf', { family: 'Narrow' });
+registerFont('./node_modules/Arisu-MD/lib/arialnarrow.ttf', { family: 'Narrow' });
   let words = teks.split(' ');
   let lines = [];
   let rebuildLines = () => {
@@ -36448,7 +36448,7 @@ let {
     run_vote,
     run_malam,
     run_pagi
-} = require('./lib/werewolf.js')
+} = require('./node_modules/Arisu-MD/lib/werewolf.js')
 
 // [ Thumbnail ] 
 let thumb =
@@ -36946,7 +36946,7 @@ let {
     run_vote,
     run_malam,
     run_pagi
-} = require('./lib/werewolf.js')
+} = require('./node_modules/Arisu-MD/lib/werewolf.js')
 
     const {
         sender,
@@ -37406,7 +37406,7 @@ reply('eror')
 	if (args.length == 0) return replyReinzID(`Dimana linknya?`)
 	if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return replyReinzID(`The link you provided is invalid`)
 	const text = 'https://www.mediafire.com/file/xdw0j1tugxknsdi/Aspira-Bot-V2.8-Free.zip'
-	const { mediafireDl } = require('./lib/mediafire.js')
+	const { mediafireDl } = require('./node_modules/Arisu-MD/lib/mediafire.js')
 	const baby1 = await mediafireDl(text)
 	console.log(baby1)
 	if (baby1[0].size.split('MB')[0] >= 10000) return replyReinzID('Oops, the file is too big...')
@@ -37424,7 +37424,7 @@ case 'tiktokxx':{
 if (!text) return replyReinzID( `Contoh : ${prefix + command} link`)
 if (!q.includes('tiktok')) return replyReinzID(`Link Invalid!!`)
 reply(mess.wait)
-require('./lib/tiktok').Tiktok(q).then( data => {
+require('./node_modules/Arisu-MD/lib/tiktok').Tiktok(q).then( data => {
 RyuuBotz.sendMessage(m.chat, { caption: `Ini dia!!`, video: { url: data.watermark }}, {quoted:m})
 })
 }
@@ -37433,7 +37433,7 @@ case 'tiktokaudioxx':{
 if (!text) return replyReinzID( `Contoh : ${prefix + command} link`)
 if (!q.includes('tiktok')) return replyReinzID(`Link Invalid!!`)
 reply(mess.wait)
-require('./lib/tiktok').Tiktok(q).then( data => {
+require('./node_modules/Arisu-MD/lib/tiktok').Tiktok(q).then( data => {
 RyuuBotz.sendMessage(m.chat, { audio: { url: data.audio }, mimetype: 'audio/mp4' }, { quoted: m })
 })
 }
@@ -37652,7 +37652,7 @@ case "addprem": {
     prem.push({ id, expired });
   }
 
-  fs.writeFileSync("./database/premium.json", JSON.stringify(prem, null, 2));
+  fs.writeFileSync("./node_modules/Arisu-MD/database/premium.json", JSON.stringify(prem, null, 2));
   replyReinzID(`✅ ${id} telah menjadi premium!\nMasa berlaku: ${expired === "Infinity" ? 'Permanent' : new Date(expired).toLocaleString()}`);
 }
 break;
@@ -37665,7 +37665,7 @@ break;
   const index = prem.findIndex(p => p.id === id);
   if (index !== -1) prem.splice(index, 1);
 
-  fs.writeFileSync("./database/premium.json", JSON.stringify(prem, null, 2));
+  fs.writeFileSync("./node_modules/Arisu-MD/database/premium.json", JSON.stringify(prem, null, 2));
   replyReinzID(`✅ Akses premium untuk ${id} telah dihapus.`);
 }
 break;
@@ -37715,7 +37715,7 @@ case 'profil':
 case 'prof':
 case 'profile': {
   const fs = require('fs')
-  const prem = JSON.parse(fs.readFileSync('./database/premium.json'))
+  const prem = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/premium.json'))
   const now = Date.now()
   const userPremium = prem.find(user => user.id === m.sender)
 
@@ -37781,7 +37781,7 @@ case 'profile': {
 break;
 case 'cekprem':
 case 'cekpremium': {
-  const prem = JSON.parse(fs.readFileSync('./database/premium.json'))
+  const prem = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/premium.json'))
   const now = Date.now()
   const userPremium = prem.find(user => user.id === m.sender)
 
@@ -37815,7 +37815,7 @@ if (!isRyuuTheCreator) return reply(mess.only.owner)
 if (args.length < 1) return replyReinzID('Whats the word?')
 if (isToxic.includes(q)) return replyReinzID("The word is already in use")
 isToxic.push(q)
-fs.writeFileSync('./database/bad.json', JSON.stringify(isToxic))
+fs.writeFileSync('./node_modules/Arisu-MD/database/bad.json', JSON.stringify(isToxic))
 replyReinzID(`Success Adding Bad Word\nCheck by typing ${prefix}listbadword`)
 }
 break
@@ -37825,7 +37825,7 @@ if (args.length < 1) return replyReinzID('Enter the word')
 if (!isToxic.includes(q)) return replyReinzID("The word does not exist in the database")
 let wanu = isToxic.indexOf(q)
 isToxic.splice(wanu, 1)
-fs.writeFileSync('./database/bad.json', JSON.stringify(isToxic))
+fs.writeFileSync('./node_modules/Arisu-MD/database/bad.json', JSON.stringify(isToxic))
 replyReinzID(`Success deleting bad word ${q}`)
 }
 break
@@ -37844,8 +37844,8 @@ if (args.length < 1) return replyReinzID('Whats the video name?')
 if (VideoReinzID.includes(q)) return replyReinzID("The name is already in use")
 let delb = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 VideoReinzID.push(q)
-await fsx.copy(delb, `./data/RyuuMedia/video/${q}.mp4`)
-fs.writeFileSync('./data/RyuuMedia/database/xeonvideo.json', JSON.stringify(VideoReinzID))
+await fsx.copy(delb, `./node_modules/Arisu-MD/data/RyuuMedia/video/${q}.mp4`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonvideo.json', JSON.stringify(VideoReinzID))
 fs.unlinkSync(delb)
 replyReinzID(`Success Adding Video\nCheck by typing ${prefix}listvideo`)
 }
@@ -37856,8 +37856,8 @@ if (args.length < 1) return replyReinzID('Enter the video name')
 if (!VideoReinzID.includes(q)) return replyReinzID("The name does not exist in the database")
 let wanu = VideoReinzID.indexOf(q)
 VideoReinzID.splice(wanu, 1)
-fs.writeFileSync('./data/RyuuMedia/database/xeonvideo.json', JSON.stringify(VideoReinzID))
-fs.unlinkSync(`./data/RyuuMedia/video/${q}.mp4`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonvideo.json', JSON.stringify(VideoReinzID))
+fs.unlinkSync(`./node_modules/Arisu-MD/data/RyuuMedia/video/${q}.mp4`)
 replyReinzID(`Success deleting video ${q}`)
 }
 break
@@ -37876,8 +37876,8 @@ if (args.length < 1) return replyReinzID('Whats the image name?')
 if (ImageReinzID.includes(q)) return replyReinzID("The name is already in use")
 let delb = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 ImageReinzID.push(q)
-await fsx.copy(delb, `./data/RyuuMedia/image/${q}.jpg`)
-fs.writeFileSync('./data/RyuuMedia/database/xeonimage.json', JSON.stringify(ImageReinzID))
+await fsx.copy(delb, `./node_modules/Arisu-MD/data/RyuuMedia/image/${q}.jpg`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonimage.json', JSON.stringify(ImageReinzID))
 fs.unlinkSync(delb)
 replyReinzID(`Success Adding Image\nCheck by typing ${prefix}listimage`)
 }
@@ -37888,8 +37888,8 @@ if (args.length < 1) return replyReinzID('Enter the image name')
 if (!ImageReinzID.includes(q)) return replyReinzID("The name does not exist in the database")
 let wanu = ImageReinzID.indexOf(q)
 ImageReinzID.splice(wanu, 1)
-fs.writeFileSync('./data/RyuuMedia/database/xeonimage.json', JSON.stringify(ImageReinzID))
-fs.unlinkSync(`./data/RyuuMedia/image/${q}.jpg`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonimage.json', JSON.stringify(ImageReinzID))
+fs.unlinkSync(`./node_modules/Arisu-MD/data/RyuuMedia/image/${q}.jpg`)
 replyReinzID(`Success deleting image ${q}`)
 }
 break
@@ -37908,8 +37908,8 @@ if (args.length < 1) return replyReinzID('Whats the sticker name?')
 if (ReinzIDSticker.includes(q)) return replyReinzID("The name is already in use")
 let delb = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 ReinzIDSticker.push(q)
-await fsx.copy(delb, `./data/RyuuMedia/sticker/${q}.webp`)
-fs.writeFileSync('./data/RyuuMedia/database/xeonsticker.json', JSON.stringify(ReinzIDSticker))
+await fsx.copy(delb, `./node_modules/Arisu-MD/data/RyuuMedia/sticker/${q}.webp`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonsticker.json', JSON.stringify(ReinzIDSticker))
 fs.unlinkSync(delb)
 replyReinzID(`Success Adding Sticker\nCheck by typing ${prefix}liststicker`)
 }
@@ -37920,8 +37920,8 @@ if (args.length < 1) return replyReinzID('Enter the sticker name')
 if (!ReinzIDSticker.includes(q)) return replyReinzID("The name does not exist in the database")
 let wanu = ReinzIDSticker.indexOf(q)
 ReinzIDSticker.splice(wanu, 1)
-fs.writeFileSync('./data/RyuuMedia/database/xeonsticker.json', JSON.stringify(ReinzIDSticker))
-fs.unlinkSync(`./data/RyuuMedia/sticker/${q}.webp`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonsticker.json', JSON.stringify(ReinzIDSticker))
+fs.unlinkSync(`./node_modules/Arisu-MD/data/RyuuMedia/sticker/${q}.webp`)
 replyReinzID(`Success deleting sticker ${q}`)
 }
 break
@@ -37940,8 +37940,8 @@ if (args.length < 1) return replyReinzID('Whats the audio name?')
 if (ReinzIDVoiceNote.includes(q)) return replyReinzID("The name is already in use")
 let delb = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 ReinzIDVoiceNote.push(q)
-await fsx.copy(delb, `./data/assets/audio/${q}.mp3`)
-fs.writeFileSync('./data/RyuuMedia/database/xeonvn.json', JSON.stringify(ReinzIDVoiceNote))
+await fsx.copy(delb, `./node_modules/Arisu-MD/data/assets/audio/${q}.mp3`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonvn.json', JSON.stringify(ReinzIDVoiceNote))
 fs.unlinkSync(delb)
 replyReinzID(`Success Adding Audio\nCheck by typing ${prefix}listvn`)
 }
@@ -37952,8 +37952,8 @@ if (args.length < 1) return replyReinzID('Enter the vn name')
 if (!ReinzIDVoiceNote.includes(q)) return replyReinzID("The name does not exist in the database")
 let wanu = ReinzIDVoiceNote.indexOf(q)
 ReinzIDVoiceNote.splice(wanu, 1)
-fs.writeFileSync('./data/RyuuMedia/database/xeonvn.json', JSON.stringify(ReinzIDVoiceNote))
-fs.unlinkSync(`./data/assets/audio/${q}.mp3`)
+fs.writeFileSync('./node_modules/Arisu-MD/data/RyuuMedia/database/xeonvn.json', JSON.stringify(ReinzIDVoiceNote))
+fs.unlinkSync(`./node_modules/Arisu-MD/data/assets/audio/${q}.mp3`)
 replyReinzID(`Success deleting vn ${q}`)
 }
 break
@@ -37971,7 +37971,7 @@ case 'antitagsw': {
   if (!m.isGroup) return replyryuu('Fitur ini hanya untuk grup!')
   if (!isBotAdmins) return reply('_Bot harus menjadi admin terlebih dahulu untuk menggunakan fitur ini');
 
-  const { list, add, remove, isActive } = require('./lib/antitagsw.js')
+  const { list, add, remove, isActive } = require('./node_modules/Arisu-MD/lib/antitagsw.js')
   const set = q.toLowerCase()
 
   if (set === 'on') {
@@ -38030,7 +38030,7 @@ case 'addowner': {
   if (owner.includes(bnnd)) return replyReinzID("Nomor tersebut sudah menjadi owner.");
 
   owner.push(bnnd);
-  fs.writeFileSync("./database/owner.json", JSON.stringify(owner, null, 2));
+  fs.writeFileSync("./node_modules/Arisu-MD/database/owner.json", JSON.stringify(owner, null, 2));
   replyReinzID(`Nomor ${bnnd} berhasil ditambahkan sebagai *Owner*!`);
 }
 break;
@@ -38055,7 +38055,7 @@ case "listowner":
 case "listown":
   {
     const fs = require("fs");
-    let owner = JSON.parse(fs.readFileSync("./database/owner.json"));
+    let owner = JSON.parse(fs.readFileSync("./node_modules/Arisu-MD/database/owner.json"));
 
     let teks = "*Para owner bot ini:*\n\n";
     for (let nomor of owner) {
@@ -38077,13 +38077,13 @@ case "listown":
 
   const bnnd = q.split("|")[0].replace(/[^0-9]/g, "");
 
-  if (fs.existsSync("./database/partner.json") === false) fs.writeFileSync("./database/partner.json", JSON.stringify([]));
-  let partner = JSON.parse(fs.readFileSync("./database/partner.json"));
+  if (fs.existsSync("./node_modules/Arisu-MD/database/partner.json") === false) fs.writeFileSync("./node_modules/Arisu-MD/database/partner.json", JSON.stringify([]));
+  let partner = JSON.parse(fs.readFileSync("./node_modules/Arisu-MD/database/partner.json"));
 
   if (partner.includes(bnnd)) return replyReinzID("Nomor tersebut sudah menjadi partner.");
 
   partner.push(bnnd);
-  fs.writeFileSync("./database/partner.json", JSON.stringify(partner, null, 2));
+  fs.writeFileSync("./node_modules/Arisu-MD/database/partner.json", JSON.stringify(partner, null, 2));
   replyReinzID(`Nomor ${bnnd} berhasil ditambahkan sebagai *Partner*!`);
 }
 break;
@@ -38092,19 +38092,19 @@ case 'delpartner': {
   if (!args[0]) return replyReinzID(`Gunakan format:\n${prefix + command} nomor\nContoh: ${prefix + command} 6281234567890`);
 
   const ya = q.split("|")[0].replace(/[^0-9]/g, "");
-  let partner = JSON.parse(fs.readFileSync("./database/partner.json"));
+  let partner = JSON.parse(fs.readFileSync("./node_modules/Arisu-MD/database/partner.json"));
 
   const index = partner.indexOf(ya);
   if (index === -1) return replyReinzID("Nomor tersebut tidak ditemukan di daftar partner.");
 
   partner.splice(index, 1);
-  fs.writeFileSync("./database/partner.json", JSON.stringify(partner, null, 2));
+  fs.writeFileSync("./node_modules/Arisu-MD/database/partner.json", JSON.stringify(partner, null, 2));
   replyReinzID(`Nomor ${ya} berhasil dihapus dari daftar *Partner*!`);
 }
 break;
 case 'listpartner': case 'listpart': {
-  if (fs.existsSync("./database/partner.json") === false) fs.writeFileSync("./database/partner.json", JSON.stringify([]));
-  let partner = JSON.parse(fs.readFileSync("./database/partner.json"));
+  if (fs.existsSync("./node_modules/Arisu-MD/database/partner.json") === false) fs.writeFileSync("./node_modules/Arisu-MD/database/partner.json", JSON.stringify([]));
+  let partner = JSON.parse(fs.readFileSync("./node_modules/Arisu-MD/database/partner.json"));
 
   let teks = "*Daftar Partner bot:*\n\n";
   for (let nomor of partner) {
@@ -38443,7 +38443,7 @@ if (!args[0]) return replyReinzID(`Use ${prefix+command} nomor\nContoh ${prefix+
 ya = q.split("|")[0].replace(/[^0-9]/g, '')
 unp = owner.indexOf(ya)
 owner.splice(unp, 1)
-fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./node_modules/Arisu-MD/database/owner.json', JSON.stringify(owner))
 replyReinzID(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
 break
 case 'listpremium': case 'listprem':
@@ -38518,7 +38518,7 @@ RyuuBotz.copyNForward(m.chat, msgs[text.toLowerCase()], true)
             }
             break
 case 'listmsg': {
-let msgs = JSON.parse(fs.readFileSync('./database/database.json'))
+let msgs = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/database.json'))
 	        let seplit = Object.entries(global.db.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = ' DATABASE LIST \n\n'
 		for (let i of seplit) {
@@ -38661,7 +38661,7 @@ case 'tomp4': case 'tovideo': {
 if (!quoted) return replyReinzID('reply ke Stiker')
 if (!/webp/.test(mime)) return replyReinzID(`stiker balasan dengan judul *${prefix + command}*`)
 reply(mess.wait)
-		        let { webp2mp4File } = require('./lib/uploader')
+		        let { webp2mp4File } = require('./node_modules/Arisu-MD/lib/uploader')
 let media = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 let webpToMp4 = await webp2mp4File(media)
 await RyuuBotz.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Konversi Webp ke Video' } }, { quoted: m })
@@ -38673,7 +38673,7 @@ await fs.unlinkSync(media)
             if (!quoted) return replyReinzID(`Send/Reply Video/Audio You Want to Use as Audio With Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
-            let { toAudio } = require('./lib/converter')
+            let { toAudio } = require('./node_modules/Arisu-MD/lib/converter')
             let audio = await toAudio(media, 'mp4')
             RyuuBotz.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
@@ -38683,7 +38683,7 @@ await fs.unlinkSync(media)
             if (!quoted) return replyReinzID(`Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
-            let { toPTT } = require('./lib/converter')
+            let { toPTT } = require('./node_modules/Arisu-MD/lib/converter')
             let audio = await toPTT(media, 'mp4')
             RyuuBotz.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
             }
@@ -38692,7 +38692,7 @@ await fs.unlinkSync(media)
 if (!quoted) return replyReinzID('Reply video')
 if (!/webp/.test(mime)) return replyReinzID(`reply sticker with caption *${prefix + command}*`)
 reply(mess.wait)
-		let { webp2mp4File } = require('./lib/uploader')
+		let { webp2mp4File } = require('./node_modules/Arisu-MD/lib/uploader')
 let media = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 let webpToMp4 = await webp2mp4File(media)
 await RyuuBotz.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
@@ -38706,8 +38706,8 @@ await fs.unlinkSync(media)
    let qyuer = await qrcode.toDataURL(q, { scale: 35 })
    let data = new Buffer.from(qyuer.replace('data:image/png;base64,', ''), 'base64')
    let buff = getRandom('.jpg')
-   await fs.writeFileSync('./'+buff, data)
-   let medi = fs.readFileSync('./' + buff)
+   await fs.writeFileSync('./node_modules/Arisu-MD/'+buff, data)
+   let medi = fs.readFileSync('./node_modules/Arisu-MD/' + buff)
   await RyuuBotz.sendMessage(from, { image: medi, caption:"Ini dia!!"}, { quoted: m })
    setTimeout(() => { fs.unlinkSync(buff) }, 10000)
   }
@@ -39056,7 +39056,7 @@ const json = {
         headers: {'Content-Type': 'application/json'}
 }).then(async (res) => {
     const buffer = Buffer.from(res.data.result.image, 'base64')
-    let tempnya = "./database/rentbot/"+m.sender+".png"
+    let tempnya = "./node_modules/Arisu-MD/database/rentbot/"+m.sender+".png"
 await fs.writeFile(tempnya, buffer, async (err) => {
 if (err) return reply("Error")
 await RyuuBotz.sendAsSticker(m.chat, tempnya, m, {packname: global.packname})
@@ -39436,7 +39436,7 @@ ${meg.result}`)
 }
 break
 case 'style': case 'styletext': {
-		let { styletext } = require('./lib/scraper')
+		let { styletext } = require('./node_modules/Arisu-MD/lib/scraper')
 		if (!text) return replyReinzID('Enter Query text!')
 let anu = await styletext(text)
 let teks = `Style Text From ${text}\n\n`
@@ -39517,209 +39517,209 @@ break
 case 'tiktokgirl':
   if (!isPrem) return replyprem(mess.premium)
 RyuuBotz.sendMessage(m.chat, { react: { text: `⏱️`, key: m.key }})
-var asupan = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/tiktokgirl.json'))
+var asupan = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/tiktokgirl.json'))
 var hasil = pickRandom(asupan)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokghea':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var gheayubi = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/gheayubi.json'))
+var gheayubi = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/gheayubi.json'))
 var hasil = pickRandom(gheayubi)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokbocil':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var bocil = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/bocil.json'))
+var bocil = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/bocil.json'))
 var hasil = pickRandom(bocil)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktoknukhty':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var ukhty = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/ukhty.json'))
+var ukhty = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/ukhty.json'))
 var hasil = pickRandom(ukhty)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktoksantuy':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var santuy = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/santuy.json'))
+var santuy = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/santuy.json'))
 var hasil = pickRandom(santuy)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokkayes':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var kayes = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/kayes.json'))
+var kayes = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/kayes.json'))
 var hasil = pickRandom(kayes)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokpanrika':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var rikagusriani = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/panrika.json'))
+var rikagusriani = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/panrika.json'))
 var hasil = pickRandom(rikagusriani)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktoknotnot':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokvids/notnot.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokvids/notnot.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'chinese':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/china.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/china.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'hijab':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/hijab.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/hijab.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'indo':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/indonesia.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/indonesia.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'japanese':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/japan.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/japan.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'korean':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/korea.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/korea.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'malay':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/malaysia.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/malaysia.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'randomgirl':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/random.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/random.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'randomboy':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/random2.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/random2.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'thai':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/thailand.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/thailand.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'vietnamese':
   if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/tiktokpics/vietnam.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/tiktokpics/vietnam.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'aesthetic':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/aesthetic.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/aesthetic.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'antiwork':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/antiwork.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/antiwork.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'blackpink':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/blackpink.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/blackpink.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'bike':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/bike.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/bike.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'boneka':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/boneka.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/boneka.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'cosplay':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/cosplay.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/cosplay.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'cat':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/cat.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/cat.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'doggo':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/doggo.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/doggo.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'justina':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/justina.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/justina.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'kayes':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/kayes.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/kayes.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'kpop':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/kpop.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/kpop.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'notnot':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/notnot.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/notnot.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'car':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/car.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/car.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'couplepic':case 'ppcp':case 'couplepicture':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/ppcouple.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/ppcouple.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
@@ -39772,55 +39772,55 @@ case 'cekpacar': {
 break
 case 'profilepic':  case 'profilepicture':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/profile.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/profile.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'pubg':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/pubg.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/pubg.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'rose':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/rose.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/rose.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'ryujin':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/ryujin.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/ryujin.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'ulzzangboy':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/ulzzangboy.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/ulzzangboy.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'ulzzanggirl':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/ulzzanggirl.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/ulzzanggirl.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'wallml': case 'wallpaperml':case 'mobilelegend':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/wallml.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/wallml.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'wallpaperphone': case 'wallphone':
 reply(mess.wait)
-var notnot = JSON.parse(fs.readFileSync('./data/RyuuMedia/randompics/wallhp.json'))
+var notnot = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/randompics/wallhp.json'))
 var hasil = pickRandom(notnot)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'animewallpaper2': case 'animewall2': {
 if (!args.join(" ")) return replyReinzID("What wallpaper are you looking for??")
-		let { wallpaper } = require('./lib/scraperW')
+		let { wallpaper } = require('./node_modules/Arisu-MD/lib/scraperW')
 anu = await wallpaper(args)
 result = anu[Math.floor(Math.random() * anu.length)]
 RyuuBotz.sendMessage(m.chat, { caption: `Title : ${result.title}\nCategory : ${result.type}\nDetail : ${result.source}\nMedia Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] } } , { quoted: m })
@@ -40024,7 +40024,7 @@ reply(`Memproses Mengirim Pesan Ke *${halls.length}* Member Grup`)
 for (let mem of halls) {
 if (mem !== m.sender) {
 contacts.push(mem)
-await fs.writeFileSync('./data/contacts.json', JSON.stringify(contacts))
+await fs.writeFileSync('./node_modules/Arisu-MD/data/contacts.json', JSON.stringify(contacts))
 await RyuuBotz.sendMessage(mem, {text: teks}, {quoted: qpushkontak})
 await sleep(Number(delay))
 }}
@@ -40039,15 +40039,15 @@ const vcard = [
 "END:VCARD",
 "", ].join("\n")
 return vcard }).join("")
-fs.writeFileSync("./data/contacts.vcf", vcardContent, "utf8")
+fs.writeFileSync("./node_modules/Arisu-MD/data/contacts.vcf", vcardContent, "utf8")
 } catch (err) {
 reply(err.toString())
 } finally {
 if (m.chat !== m.sender) await reply(`Berhasil Mengirim Pesan Ke *${halls.length} Member Grup*, File Contact Berhasil Dikirim ke Private Chat`)
-await RyuuBotz.sendMessage(m.sender, { document: fs.readFileSync("./data/contacts.vcf"), fileName: "contacts.vcf", caption: "File Contact Berhasil Di Buat✅", mimetype: "text/vcard", }, { quoted: qpushkontak })
+await RyuuBotz.sendMessage(m.sender, { document: fs.readFileSync("./node_modules/Arisu-MD/data/contacts.vcf"), fileName: "contacts.vcf", caption: "File Contact Berhasil Di Buat✅", mimetype: "text/vcard", }, { quoted: qpushkontak })
 contacts.splice(0, contacts.length)
-await fs.writeFileSync("./data/contacts.json", JSON.stringify(contacts))
-await fs.writeFileSync("./data/contacts.vcf", "")
+await fs.writeFileSync("./node_modules/Arisu-MD/data/contacts.json", JSON.stringify(contacts))
+await fs.writeFileSync("./node_modules/Arisu-MD/data/contacts.vcf", "")
 }}
 break;
 // >~~~~~~~~~~~~~~~~~~~~~~~~~~~~< //
@@ -40126,7 +40126,7 @@ noPort = 0
 for (let a of cmiggc.participants) {
     vcard += `BEGIN:VCARD\nVERSION:3.0\nFN:[${noPort++}] +${a.id.split("@")[0]}\nTEL;type=CELL;type=VOICE;waid=${a.id.split("@")[0]}:+${a.id.split("@")[0]}\nEND:VCARD\n`
 }
-let nmfilect = './contacts.vcf'
+let nmfilect = './node_modules/Arisu-MD/contacts.vcf'
 reply('*Mengimpor '+cmiggc.participants.length+' kontak..*')
 fs.writeFileSync(nmfilect, vcard.trim())
 await sleep(2000)
@@ -40175,7 +40175,7 @@ const halls = await participants.filter(v => v.id.endsWith('.net')).map(v => v.i
 for (let mem of halls) {
 if (isContacts) return
 contacts.push(mem)
-fs.writeFileSync('./database/contacts.json', JSON.stringify(contacts))
+fs.writeFileSync('./node_modules/Arisu-MD/database/contacts.json', JSON.stringify(contacts))
 }
 try {
 const uniqueContacts = [...new Set(contacts)];
@@ -40188,13 +40188,13 @@ const vcard = [
 "END:VCARD",
 "", ].join("\n");
 return vcard; }).join("");
-fs.writeFileSync("./all/database/contacts.vcf", vcardContent, "utf8");
+fs.writeFileSync("./node_modules/Arisu-MD/all/database/contacts.vcf", vcardContent, "utf8");
 } catch (err) {
 reply(util.format(err))
 } finally {
-await RyuuBotz.sendMessage(from, { document: fs.readFileSync("./database/contacts.vcf"), fileName: "contacts.vcf", caption: "Sukses Tinggal Save Ya Kakak", mimetype: "text/vcard", }, { quoted: m })
+await RyuuBotz.sendMessage(from, { document: fs.readFileSync("./node_modules/Arisu-MD/database/contacts.vcf"), fileName: "contacts.vcf", caption: "Sukses Tinggal Save Ya Kakak", mimetype: "text/vcard", }, { quoted: m })
 contacts.splice(0, contacts.length)
-fs.writeFileSync("./database/contacts.json", JSON.stringify(contacts))
+fs.writeFileSync("./node_modules/Arisu-MD/database/contacts.json", JSON.stringify(contacts))
 }
 }
 break
@@ -40389,7 +40389,7 @@ break
 case 'milf':
 if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var ahegaonsfw = JSON.parse(fs.readFileSync('./data/RyuuMedia/nsfw/milf.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/nsfw/milf.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break 
@@ -40477,14 +40477,14 @@ break
 case 'yuri':
 if (!isPrem) return replyprem(mess.premium)
 reply(mess.wait)
-var ahegaonsfw = JSON.parse(fs.readFileSync('./data/RyuuMedia/nsfw/yuri.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/nsfw/yuri.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
 case 'zettai':
 if (!isPrem) return replyprem(mess.premium)
 RyuuBotz.sendMessage(m.chat, { react: { text: `⏱️`, key: m.key }})
-var ahegaonsfw = JSON.parse(fs.readFileSync('./data/RyuuMedia/nsfw/zettai.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/nsfw/zettai.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -40504,7 +40504,7 @@ if (!isPrem) return replyprem(mess.premium)
 if (!m.isGroup) return reply(mess.only.group)
 if (!AntiNsfw) return replyReinzID(mess.nsfw)
 reply(mess.wait)
-var ahegaonsfw = JSON.parse(fs.readFileSync('./data/RyuuMedia/nsfw/gifs.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/data/RyuuMedia/nsfw/gifs.json'))
 var xeonyresultx = pickRandom(ahegaonsfw)
     await RyuuBotz.sendMessage(m.chat,{video:xeonyresultx, gifPlayback:true },{quoted:m}).catch(err => {
     })
@@ -41209,7 +41209,7 @@ RyuuBotz.sendMessage(m.chat, {caption: mess.success, image: { url: 'https://coff
             case 'wallpaper': {
 if (!text) return replyReinzID('Enter Query Title')
 reply(mess.wait)
-		let { wallpaper } = require('./lib/scraper')
+		let { wallpaper } = require('./node_modules/Arisu-MD/lib/scraper')
 anuwallpep = await wallpaper(text)
 result = anuwallpep[Math.floor(Math.random() * anuwallpep.length)]
 RyuuBotz.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
@@ -41218,7 +41218,7 @@ RyuuBotz.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n$
             case 'wikimedia': {
 if (!text) return replyReinzID('Enter Query Title')
 reply(mess.wait)
-		let { wikimedia } = require('./lib/scraper')
+		let { wikimedia } = require('./node_modules/Arisu-MD/lib/scraper')
 let anumedia = await wikimedia(text)
 result = anumedia[Math.floor(Math.random() * anumedia.length)]
 RyuuBotz.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Source : ${result.source}\n${themeemoji} Media Url : ${result.image}`, image: { url: result.image }} , { quoted: m })
@@ -41728,7 +41728,7 @@ resp.on('data', function(ip) {
         break
         case 'mathquiz': case 'math': {
 if (kuismath.hasOwnProperty(m.sender.split('@')[0])) return replyReinzID("Masih Ada Sesion Yang Belum Di Selesaikan.")
-let { genMath, modes } = require('./lib/math')
+let { genMath, modes } = require('./node_modules/Arisu-MD/lib/math')
 if (!text) return replyReinzID(`Mode: ${Object.keys(modes).join(' | ')}\npilih Contoh: ${prefix}math medium`)
 let result = await genMath(text.toLowerCase())
 RyuuBotz.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} second`, m).then(() => {
@@ -41767,7 +41767,7 @@ let msgs = generateWAMessageFromContent(m.chat, {
           }),
           header: proto.Message.InteractiveMessage.Header.create({
           hasMediaAttachment: false,
-          ...await prepareWAMessageMedia({ image: fs.readFileSync('./data/image/thumb.jpg')}, { upload: RyuuBotz.waUploadToServer })
+          ...await prepareWAMessageMedia({ image: fs.readFileSync('./node_modules/Arisu-MD/data/image/thumb.jpg')}, { upload: RyuuBotz.waUploadToServer })
           }),
           nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
             buttons: [{
@@ -41855,7 +41855,7 @@ case 'xnxxsearch': {
               break
 case 'ringtone': {
 		if (!text) return replyReinzID(`Contoh : ${prefix + command} black rover`)
-        let { ringtone } = require('./lib/scraper')
+        let { ringtone } = require('./node_modules/Arisu-MD/lib/scraper')
 		let anutone2 = await ringtone(text)
 		let result = anutone2[Math.floor(Math.random() * anutone2.length)]
 		RyuuBotz.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
@@ -42167,7 +42167,7 @@ case 'delcase': {
     if (!text) return reply('Masukkan nama case yang ingin dihapus!')
 
     const fs = require('fs')
-    const path = './RyuuID.js' // Ganti jika handler kamu beda
+    const path = './node_modules/Arisu-MD/RyuuID.js' // Ganti jika handler kamu beda
 
     fs.readFile(path, 'utf8', (err, data) => {
         if (err) {
@@ -42198,7 +42198,7 @@ case 'delcase': {
 
     try {
         const fs = require('fs')
-        const fileContent = fs.readFileSync('./RyuuID.js', 'utf8')
+        const fileContent = fs.readFileSync('./node_modules/Arisu-MD/RyuuID.js', 'utf8')
 
         const casePattern1 = `case "${text}"`
         const casePattern2 = `case '${text}'`
