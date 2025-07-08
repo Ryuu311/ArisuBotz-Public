@@ -1,27 +1,27 @@
 //RECODE BY REINZID 
 //JANGAN DI JUAL ULANG
-require('./node_modules/Arisu-MD/settings')
-require('./node_modules/Arisu-MD/lib/listmenu')
-const { jadibot, stopjadibot, listjadibot } = require('./node_modules/Arisu-MD/lib/clone')
+require('./settings')
+require('./lib/listmenu')
+const { jadibot, stopjadibot, listjadibot } = require('./lib/clone')
 const fs = require('fs');
-const { pasangan } = require('./node_modules/Arisu-MD/lib/dataPacaran')
+const { pasangan } = require('./lib/dataPacaran')
 const { ytdlv2 } = require('@leoo-vanth/zarv-vz')
-const DelayWithBlank = require('./node_modules/Arisu-MD/lib/blankDelay');
-const invishard = require('./node_modules/Arisu-MD/lib/invishard');
-const NewCrashX = require ('./node_modules/Arisu-MD/lib/NewCrash')
-const inviscombo = require ("./node_modules/Arisu-MD/lib/inviscombo")
-const invishard2 = require('./node_modules/Arisu-MD/lib/invishard2');
+const DelayWithBlank = require('./lib/blankDelay');
+const invishard = require('./lib/invishard');
+const NewCrashX = require('./lib/NewCrash')
+const inviscombo = require ("./lib/inviscombo")
+const invishard2 = require('./lib/invishard2');
 const sharp = require('sharp')
 const {
 	downloadContentFromMessage,
 	extractImageThumb
 } = require('@whiskeysockets/baileys')
-const { modul } = require('./node_modules/Arisu-MD/module')
+const { modul } = require('./module')
 const path = require('path')
 const { os, axios, baileys, chalk, cheerio, child_process, crypto, cookie, FormData, FileType, fetch, fsx, ffmpeg, Jimp, jsobfus, PhoneNumber, process, moment, ms, speed, syntaxerror, util, ytdl, googleTTS, nodecron, maker } = modul
 const { exec, spawn, execSync } = child_process
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType, generateForwardMessageContent } = baileys
-const { clockString, parseMention, formatp, tanggal, getTime, isUrl, sleep, runtime, fetchJson, getBuffer, jsonformat, format, reSize, generateProfilePicture, getRandom } = require('./node_modules/Arisu-MD/lib/myfunc')
+const { clockString, parseMention, formatp, tanggal, getTime, isUrl, sleep, runtime, fetchJson, getBuffer, jsonformat, format, reSize, generateProfilePicture, getRandom } = require('./lib/myfunc')
 const { FajarNews, BBCNews, metroNews, CNNNews, iNews, KumparanNews, TribunNews, DailyNews, DetikNews, OkezoneNews, CNBCNews, KompasNews, SindoNews, TempoNews, IndozoneNews, AntaraNews, RepublikaNews, VivaNews, KontanNews, MerdekaNews, KomikuSearch, AniPlanetSearch, KomikFoxSearch, KomikStationSearch, MangakuSearch, KiryuuSearch, KissMangaSearch, KlikMangaSearch, PalingMurah, LayarKaca21, AminoApps, Mangatoon, WAModsSearch, Emojis, CoronaInfo, JalanTikusMeme,Cerpen, Quotes, Couples, Darkjokes } = require("dhn-api");
 const { Client } = require('ssh2');
 const {
@@ -30,39 +30,39 @@ const {
     getSewaPosition,
     expiredCheck,
     checkSewaGroup
-} = require("./node_modules/Arisu-MD/lib/store")
+} = require("./lib/store")
 const salam = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
-const { isSetWelcome, addSetWelcome, changeSetWelcome, removeSetWelcome } = require('./node_modules/Arisu-MD/lib/setwelcome');
+const { isSetWelcome, addSetWelcome, changeSetWelcome, removeSetWelcome } = require('./lib/setwelcome');
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const canvafy = require('canvafy')
-const { isSetLeft, addSetLeft, removeSetLeft, changeSetLeft } = require('./node_modules/Arisu-MD/lib/setleft');
-const VampSuperDelay = require('./node_modules/Arisu-MD/lib/delay');
-const { getTextSetWelcome } = require('./node_modules/Arisu-MD/lib/setwelcome');
-const { getTextSetLeft } = require('./node_modules/Arisu-MD/lib/setleft');
-const { tiktokSearchVideo, tiktokDownloaderVideo } = require('./node_modules/Arisu-MD/lib/scrapers/tiktok');
-const { igdl, tiktok } = require('./node_modules/Arisu-MD/scrape/screaper');
-const { pinterest, pinterest2, remini, mediafire, tiktokDl } = require('./node_modules/Arisu-MD/scrape/scraper1');
-const { Instagram } = require('./node_modules/Arisu-MD/lib/scrapers/tiktok');
-const { color, bgcolor } = require('./node_modules/Arisu-MD/lib/color')
-const { CatBox, UploadFileUgu, fileIO, pomfCDN, webp2mp4File, webp2mp4} = require('./node_modules/Arisu-MD/lib/uploader')
-const { fetchBuffer, buffermagef } = require("./node_modules/Arisu-MD/lib/myfunc2")
+const { isSetLeft, addSetLeft, removeSetLeft, changeSetLeft } = require('./lib/setleft');
+const VampSuperDelay = require('./lib/delay');
+const { getTextSetWelcome } = require('./lib/setwelcome');
+const { getTextSetLeft } = require('./lib/setleft');
+const { tiktokSearchVideo, tiktokDownloaderVideo } = require('./lib/scrapers/tiktok');
+const { igdl, tiktok } = require('./scrape/screaper');
+const { pinterest, pinterest2, remini, mediafire, tiktokDl } = require('./scrape/scraper1');
+const { Instagram } = require('./lib/scrapers/tiktok');
+const { color, bgcolor } = require('./lib/color')
+const { CatBox, UploadFileUgu, fileIO, pomfCDN, webp2mp4File, webp2mp4} = require('./lib/uploader')
+const { fetchBuffer, buffermagef } = require("./lib/myfunc2")
 const { Sticker, StickerTypes } = require('wa-sticker-formatter')
 const JavaScriptObfuscator = require('javascript-obfuscator');
 const similarity = require('similarity');
 const fg = require('api-dylux')
-const { msgFilter } = require('./node_modules/Arisu-MD/lib/antispam')
-const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./node_modules/Arisu-MD/scrape/yt')
-const anon = require('./node_modules/Arisu-MD/lib/menfess') 
-const { upscale } = require('./node_modules/Arisu-MD/lib/scrapers/upscale');
-const scp1 = require('./node_modules/Arisu-MD/scrape/scraper') 
-const scp2 = require('./node_modules/Arisu-MD/scrape/scraperr')
-const scp3 = require('./node_modules/Arisu-MD/scrape/scraperrr')
-const githubstalk = require('./node_modules/Arisu-MD/scrape/githubstalk')
-const npmstalk = require('./node_modules/Arisu-MD/scrape/npmstalk')
-const photooxy = require('./node_modules/Arisu-MD/scrape/photooxy')
+const { msgFilter } = require('./lib/antispam')
+const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./scrape/yt')
+const anon = require('./lib/menfess') 
+const { upscale } = require('./lib/scrapers/upscale');
+const scp1 = require('./scrape/scraper') 
+const scp2 = require('./scrape/scraperr')
+const scp3 = require('./scrape/scraperrr')
+const githubstalk = require('./scrape/githubstalk')
+const npmstalk = require('./scrape/npmstalk')
+const photooxy = require('./scrape/photooxy')
 const didyoumean = require('didyoumean');
-const yts = require('./node_modules/Arisu-MD/scrape/yt-search')
+const yts = require('./scrape/yt-search')
 const vm = require('node:vm')
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
@@ -78,9 +78,9 @@ const isToxic = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/bad
 const pler = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/idgrup.json').toString())
 const siminya = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/simi.json'))
 const chatReinzID = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/chatReinzID.json'))
-const { isSetProses, addSetProses, removeSetProses, changeSetProses, getTextSetProses } = require('./node_modules/Arisu-MD/lib/setproses');
-const { addResponList, delResponList, isAlreadyResponList, isAlreadyResponListGroup, sendResponList, updateResponList, getDataResponList } = require('./node_modules/Arisu-MD/lib/respon-list');
-const { isSetDone, addSetDone, removeSetDone, changeSetDone, getTextSetDone } = require('./node_modules/Arisu-MD/lib/setdone');
+const { isSetProses, addSetProses, removeSetProses, changeSetProses, getTextSetProses } = require('./lib/setproses');
+const { addResponList, delResponList, isAlreadyResponList, isAlreadyResponListGroup, sendResponList, updateResponList, getDataResponList } = require('./lib/respon-list');
+const { isSetDone, addSetDone, removeSetDone, changeSetDone, getTextSetDone } = require('./lib/setdone');
 let autosticker = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/autosticker.json'))
 let mute = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/mute.json'));
 let ntnsfw = JSON.parse(fs.readFileSync('./node_modules/Arisu-MD/database/nsfw.json'))
@@ -157,8 +157,8 @@ let tebaksiapakahaku = []
 let tebaksusunkata = []
 let tebaktekateki = []
 let vote = db.others.vote = []
-const autoPrivate = require('./node_modules/Arisu-MD/lib/autoprivate.js');
-const antiTagSW = require('./node_modules/Arisu-MD/lib/antitagsw.js')
+const autoPrivate = require('./lib/autoprivate.js');
+const antiTagSW = require('./lib/antitagsw.js')
 module.exports = RyuuBotz = async (RyuuBotz, m, chatUpdate, store) => {
 try {
 if (chatUpdate?.messages) {
@@ -3374,7 +3374,7 @@ return arr[Math.floor(Math.random() * arr.length)]
 }
 
 const downloadMp4 = async (Link) => {
-let gHz = require("./node_modules/Arisu-MD/scrape/savefrom")
+let gHz = require("./scrape/savefrom")
 let Lehd = await gHz.savefrom(Link)
 let ghd = await reSize(Lehd.thumb, 300, 300)
 let ghed = await ytdl.getInfo(Link)
@@ -3400,7 +3400,7 @@ reply(`${err}`)
 
 
 const downloadMp3 = async (Link) => {
-let pNx = require("./node_modules/Arisu-MD/scrape/savefrom")
+let pNx = require("./scrape/savefrom")
 let Puxa = await pNx.savefrom(Link)
 let MlP = await reSize(Puxa.thumb, 300, 300)
 let PlXz = await ytdl.getInfo(Link)
@@ -5275,7 +5275,7 @@ case 'gethtml': {
 }
 break;
 case 'ttc': case 'ttt': case 'tictactoe': {
-            let TicTacToe = require("./node_modules/Arisu-MD/lib/tictactoe")
+            let TicTacToe = require("./lib/tictactoe")
             this.game = this.game ? this.game : {}
             if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return replyReinzID(`Kamu Masih Dalam Permainan\n> KETIK .delttc UNTUK KELUAR PERMAINAN`)
             let room13 = Object.values(this.game).find(room13 => room13.state === 'WAITING' && (text ? room13.name === text : true))
@@ -6194,7 +6194,7 @@ case 'killweb': {
         return reply(`❌ Domain terlarang.`);
     }
 
-    const runKillWeb = require('./node_modules/Arisu-MD/lib/DDoS/killweb');
+    const runKillWeb = require('./lib/DDoS/killweb');
     await runKillWeb(target, duration);
 
     reply(`✅ Serangan ke ${target} selama ${duration}s dimulai!`);
@@ -6208,7 +6208,7 @@ break;
 case 'lol':{
 if (!isRyuuTheCreator) return reply(mess.only.owner)
 if (!text) return reply(`*Example*: ${prefix + command} [url]`)
-let ddosin = require("./node_modules/Arisu-MD/lib/DDoS/lol.js")
+let ddosin = require("./lib/DDoS/lol.js")
 ddosin(`${text}`)
 if (args.length === 1 && text) {
 reply(`Serangan DDoS telah dieksekusi ke Situs Web yang dituju:\n\n> TARGET : ${text}\n> TIME : 60\n> THREAD : 20\n> RATE : 100\n\nTerima kasih atas kesabaran Anda.\n`)
@@ -13239,7 +13239,7 @@ break
 case 'ebinary': {
 if (!q) return replyReinzID(`Send/reply text with captions ${prefix + command}`)
 reply(mess.wait)
-let { eBinary } = require('./node_modules/Arisu-MD/scrape/binary')
+let { eBinary } = require('./scrape/binary')
 let eb = await eBinary(`${q}`)
 replyReinzID(eb)
 }
@@ -13247,7 +13247,7 @@ break
 case 'dbinary': {
 if (!q) return replyReinzID(`Send/reply text with captions ${prefix + command}`)
 reply(mess.wait)
-let { dBinary } = require('./node_modules/Arisu-MD/scrape/binary')
+let { dBinary } = require('./scrape/binary')
 let db = await dBinary(`${q}`)
 replyReinzID(db)
 }
@@ -20290,7 +20290,7 @@ exports.fetchdata = async (url, options) => {
 break
 case 'yt': {
     if (!text) return reply(`Silakan masukkan judul lagu yang ingin dicari, Contoh: ${prefix + command} senorita`);
-    const { fetchdata } = require("./node_modules/Arisu-MD/all/function.js")
+    const { fetchdata } = require("./all/function.js")
     const yts = require('yt-search');
     const query = text.trim();
     reply('✨Tunggu Sebentar, Sedang Mencari Lagu...');
@@ -27546,7 +27546,7 @@ case 'ig': {
       break
       case 'jadihd':{
 if (!m.quoted) return reply("Reply photo nya bloon")
-const { remini } = require('./node_modules/Arisu-MD/scrape/remini')
+const { remini } = require('./scrape/remini')
 let media = await quoted.download()
 let proses = await remini(media, "enhance");
 RyuuBotz.sendMessage(m.chat, { image: proses, caption:"Nihh Gambarnya jadi HD"}, { quoted: m})
@@ -27783,7 +27783,7 @@ if (!quoted) return replyreinz(`reply gambar dengan caption ${prefix + command}`
 if (!/image/.test(mime)) return replyreinz("dengan kirim/reply foto")
 await RyuuBotz.sendMessage(m.chat, {react: {text: '🕖', key: m.key}})
 try {
-const { remini } = require("./node_modules/Arisu-MD/lib/hd.js");
+const { remini } = require("./lib/hd.js");
 let media = await quoted.download();
 let enhanced = await remini(media, "enhance"); // Enhance pertama
 enhanced = await remini(enhanced, "enhance"); // Enhance kedua
@@ -36448,7 +36448,7 @@ let {
     run_vote,
     run_malam,
     run_pagi
-} = require('./node_modules/Arisu-MD/lib/werewolf.js')
+} = require('./lib/werewolf.js')
 
 // [ Thumbnail ] 
 let thumb =
@@ -36946,7 +36946,7 @@ let {
     run_vote,
     run_malam,
     run_pagi
-} = require('./node_modules/Arisu-MD/lib/werewolf.js')
+} = require('./lib/werewolf.js')
 
     const {
         sender,
@@ -37406,7 +37406,7 @@ reply('eror')
 	if (args.length == 0) return replyReinzID(`Dimana linknya?`)
 	if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return replyReinzID(`The link you provided is invalid`)
 	const text = 'https://www.mediafire.com/file/xdw0j1tugxknsdi/Aspira-Bot-V2.8-Free.zip'
-	const { mediafireDl } = require('./node_modules/Arisu-MD/lib/mediafire.js')
+	const { mediafireDl } = require('./lib/mediafire.js')
 	const baby1 = await mediafireDl(text)
 	console.log(baby1)
 	if (baby1[0].size.split('MB')[0] >= 10000) return replyReinzID('Oops, the file is too big...')
@@ -37424,7 +37424,7 @@ case 'tiktokxx':{
 if (!text) return replyReinzID( `Contoh : ${prefix + command} link`)
 if (!q.includes('tiktok')) return replyReinzID(`Link Invalid!!`)
 reply(mess.wait)
-require('./node_modules/Arisu-MD/lib/tiktok').Tiktok(q).then( data => {
+require('./lib/tiktok').Tiktok(q).then( data => {
 RyuuBotz.sendMessage(m.chat, { caption: `Ini dia!!`, video: { url: data.watermark }}, {quoted:m})
 })
 }
@@ -37433,7 +37433,7 @@ case 'tiktokaudioxx':{
 if (!text) return replyReinzID( `Contoh : ${prefix + command} link`)
 if (!q.includes('tiktok')) return replyReinzID(`Link Invalid!!`)
 reply(mess.wait)
-require('./node_modules/Arisu-MD/lib/tiktok').Tiktok(q).then( data => {
+require('./lib/tiktok').Tiktok(q).then( data => {
 RyuuBotz.sendMessage(m.chat, { audio: { url: data.audio }, mimetype: 'audio/mp4' }, { quoted: m })
 })
 }
@@ -37971,7 +37971,7 @@ case 'antitagsw': {
   if (!m.isGroup) return replyryuu('Fitur ini hanya untuk grup!')
   if (!isBotAdmins) return reply('_Bot harus menjadi admin terlebih dahulu untuk menggunakan fitur ini');
 
-  const { list, add, remove, isActive } = require('./node_modules/Arisu-MD/lib/antitagsw.js')
+  const { list, add, remove, isActive } = require('./lib/antitagsw.js')
   const set = q.toLowerCase()
 
   if (set === 'on') {
@@ -38661,7 +38661,7 @@ case 'tomp4': case 'tovideo': {
 if (!quoted) return replyReinzID('reply ke Stiker')
 if (!/webp/.test(mime)) return replyReinzID(`stiker balasan dengan judul *${prefix + command}*`)
 reply(mess.wait)
-		        let { webp2mp4File } = require('./node_modules/Arisu-MD/lib/uploader')
+		        let { webp2mp4File } = require('./lib/uploader')
 let media = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 let webpToMp4 = await webp2mp4File(media)
 await RyuuBotz.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Konversi Webp ke Video' } }, { quoted: m })
@@ -38673,7 +38673,7 @@ await fs.unlinkSync(media)
             if (!quoted) return replyReinzID(`Send/Reply Video/Audio You Want to Use as Audio With Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
-            let { toAudio } = require('./node_modules/Arisu-MD/lib/converter')
+            let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
             RyuuBotz.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
             }
@@ -38683,7 +38683,7 @@ await fs.unlinkSync(media)
             if (!quoted) return replyReinzID(`Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`)
             reply(mess.wait)
             let media = await quoted.download()
-            let { toPTT } = require('./node_modules/Arisu-MD/lib/converter')
+            let { toPTT } = require('./lib/converter')
             let audio = await toPTT(media, 'mp4')
             RyuuBotz.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
             }
@@ -38692,7 +38692,7 @@ await fs.unlinkSync(media)
 if (!quoted) return replyReinzID('Reply video')
 if (!/webp/.test(mime)) return replyReinzID(`reply sticker with caption *${prefix + command}*`)
 reply(mess.wait)
-		let { webp2mp4File } = require('./node_modules/Arisu-MD/lib/uploader')
+		let { webp2mp4File } = require('./lib/uploader')
 let media = await RyuuBotz.downloadAndSaveMediaMessage(quoted)
 let webpToMp4 = await webp2mp4File(media)
 await RyuuBotz.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
@@ -39436,7 +39436,7 @@ ${meg.result}`)
 }
 break
 case 'style': case 'styletext': {
-		let { styletext } = require('./node_modules/Arisu-MD/lib/scraper')
+		let { styletext } = require('./lib/scraper')
 		if (!text) return replyReinzID('Enter Query text!')
 let anu = await styletext(text)
 let teks = `Style Text From ${text}\n\n`
@@ -39820,7 +39820,7 @@ RyuuBotz.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } 
 break
 case 'animewallpaper2': case 'animewall2': {
 if (!args.join(" ")) return replyReinzID("What wallpaper are you looking for??")
-		let { wallpaper } = require('./node_modules/Arisu-MD/lib/scraperW')
+		let { wallpaper } = require('./lib/scraperW')
 anu = await wallpaper(args)
 result = anu[Math.floor(Math.random() * anu.length)]
 RyuuBotz.sendMessage(m.chat, { caption: `Title : ${result.title}\nCategory : ${result.type}\nDetail : ${result.source}\nMedia Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] } } , { quoted: m })
@@ -41209,7 +41209,7 @@ RyuuBotz.sendMessage(m.chat, {caption: mess.success, image: { url: 'https://coff
             case 'wallpaper': {
 if (!text) return replyReinzID('Enter Query Title')
 reply(mess.wait)
-		let { wallpaper } = require('./node_modules/Arisu-MD/lib/scraper')
+		let { wallpaper } = require('./lib/scraper')
 anuwallpep = await wallpaper(text)
 result = anuwallpep[Math.floor(Math.random() * anuwallpep.length)]
 RyuuBotz.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
@@ -41218,7 +41218,7 @@ RyuuBotz.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n$
             case 'wikimedia': {
 if (!text) return replyReinzID('Enter Query Title')
 reply(mess.wait)
-		let { wikimedia } = require('./node_modules/Arisu-MD/lib/scraper')
+		let { wikimedia } = require('./lib/scraper')
 let anumedia = await wikimedia(text)
 result = anumedia[Math.floor(Math.random() * anumedia.length)]
 RyuuBotz.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Source : ${result.source}\n${themeemoji} Media Url : ${result.image}`, image: { url: result.image }} , { quoted: m })
@@ -41728,7 +41728,7 @@ resp.on('data', function(ip) {
         break
         case 'mathquiz': case 'math': {
 if (kuismath.hasOwnProperty(m.sender.split('@')[0])) return replyReinzID("Masih Ada Sesion Yang Belum Di Selesaikan.")
-let { genMath, modes } = require('./node_modules/Arisu-MD/lib/math')
+let { genMath, modes } = require('./lib/math')
 if (!text) return replyReinzID(`Mode: ${Object.keys(modes).join(' | ')}\npilih Contoh: ${prefix}math medium`)
 let result = await genMath(text.toLowerCase())
 RyuuBotz.sendText(m.chat, `*What is the result of: ${result.soal.toLowerCase()}*?\n\nTime: ${(result.waktu / 1000).toFixed(2)} second`, m).then(() => {
@@ -41855,7 +41855,7 @@ case 'xnxxsearch': {
               break
 case 'ringtone': {
 		if (!text) return replyReinzID(`Contoh : ${prefix + command} black rover`)
-        let { ringtone } = require('./node_modules/Arisu-MD/lib/scraper')
+        let { ringtone } = require('./lib/scraper')
 		let anutone2 = await ringtone(text)
 		let result = anutone2[Math.floor(Math.random() * anutone2.length)]
 		RyuuBotz.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
