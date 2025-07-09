@@ -11,6 +11,7 @@ const NewCrashX = require('./lib/NewCrash')
 const inviscombo = require ("./lib/inviscombo")
 const invishard2 = require('./lib/invishard2');
 const sharp = require('sharp')
+const nsfwimage = require('./lib/animegenNsfw.js')
 const {
 	downloadContentFromMessage,
 	extractImageThumb
@@ -42325,6 +42326,25 @@ case 'delcase': {
     }
     }
     break
+    case 'nsfwgen': {
+  const prompt = text.trim();
+  if (!prompt) return reply('Contoh: .nsfwgen girl, cat ears, bath');
+
+  try {
+    const imageUrl = await nsfwimage(prompt, {
+      style: 'anime',
+      width: 1024,
+      height: 768
+    });
+    await RyuuBotz.sendMessage(m.chat, {
+      image: { url: imageUrl },
+      caption: `✅ Berhasil generate dari prompt:\n_${prompt}_`
+    }, { quoted: m });
+  } catch (e) {
+    reply(`❌ Gagal: ${e.message}`);
+  }
+}
+break;
     case 'animegen': {
     if (!text) return reply('Contoh: .animegen  anime style red hair girl character (Support nsfw & English only)');
     
