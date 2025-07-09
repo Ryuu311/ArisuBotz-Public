@@ -18,6 +18,7 @@
     "@google/generative-ai": "^0.24.0",
     "@hapi/boom": "^10.0.1",
     "@leoo-vanth/zarv-vz": "latest",
+    "@rynn-k/proxy-agent": "latest",
     "@saipulanuar/jadianime-ts": "^2.0.0",
     "@whiskeysockets/baileys": "github:Ryuu311/RyuuBails",
     "anime-wallpaper": "^1.0.2",
