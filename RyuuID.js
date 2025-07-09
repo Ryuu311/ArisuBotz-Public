@@ -42250,7 +42250,8 @@ case 'delcase': {
     case 'nsfwimage': {
   const prompt = text.trim();
   if (!prompt) return reply('Contoh: .nsfwgen girl, cat ears, bath');
-
+    await RyuuBotz.sendMessage(m.chat, {
+    react: { text: "⏱️", key: m.key }
   try {
     const imageUrl = await nsfwimage(prompt, {
       style: 'anime',
