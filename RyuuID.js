@@ -4711,85 +4711,6 @@ case 'gethtml': {
     }
 }
 break
-case 'nsfwimage': {
-    try {
-        await RyuuBotz.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
-        if (!text) return reply(`Masukkan prompt!\nContoh: *.nsfwimage 1girl, Shiroko (Blue Archive), take a bath*`);
-
-        const prompt = text;
-        const style = 'anime'; // default style
-        const width = 1024;
-        const height = 1024;
-
-        const axios = require('axios');
-        const HttpsProxyAgent = require('https-proxy-agent');
-
-        // Fetch proxy
-        let proxyList = [];
-        let proxyUrl = null;
-        try {
-            const proxyRes = await axios.get('https://api.nekorinn.my.id/tools/freeproxy');
-            if (proxyRes.data.status && proxyRes.data.result.length) {
-                proxyList = proxyRes.data.result
-                    .filter(p => p.https === 'yes')
-                    .map(p => `http://${p.ip}:${p.port}`);
-                if (proxyList.length === 0) {
-                    proxyList = proxyRes.data.result.map(p => `http://${p.ip}:${p.port}`);
-                }
-                proxyUrl = proxyList[Math.floor(Math.random() * proxyList.length)];
-            }
-        } catch (err) {
-            console.log('[WARN] Gagal ambil proxy, lanjut tanpa proxy');
-        }
-
-        let axiosConfig = {};
-        if (proxyUrl) {
-            axiosConfig = {
-                httpsAgent: new HttpsProxyAgent(proxyUrl),
-                proxy: false
-            };
-        }
-
-        const negative_prompt = 'lowres, bad anatomy, bad hands, text, error, missing finger, extra digits, fewer digits, cropped, worst quality, low quality, low score, bad score, average score, signature, watermark, username, blurry';
-        const session_hash = Math.random().toString(36).substring(2);
-
-        await axios.post(`https://heartsync-nsfw-uncensored.hf.space/gradio_api/queue/join?`, {
-            data: [
-                prompt,
-                negative_prompt,
-                0,
-                true,
-                width,
-                height,
-                7,
-                28
-            ],
-            event_data: null,
-            fn_index: 2,
-            trigger_id: 16,
-            session_hash: session_hash
-        }, axiosConfig);
-
-        const { data } = await axios.get(`https://heartsync-nsfw-uncensored.hf.space/gradio_api/queue/data?session_hash=${session_hash}`, axiosConfig);
-
-        let result;
-        const lines = data.split('\n\n');
-        for (const line of lines) {
-            if (line.startsWith('data:')) {
-                const d = JSON.parse(line.substring(6));
-                if (d.msg === 'process_completed') result = d.output.data[0].url;
-            }
-        }
-
-        if (!result) return reply('❌ Gagal mendapatkan gambar.');
-        RyuuBotz.sendFile(m.chat, result, 'nsfwimage.jpg', `✅ Selesai!\nPrompt: ${prompt}`, m);
-
-    } catch (e) {
-        console.error(e);
-        reply(`❌ Error: ${e.message}`);
-        }
-    }
-    break;
 case 'play':
 case 'ytplay': {
   if (!text) return reply("⚠️ Masukkan judul lagu/video YouTube!");
@@ -42326,7 +42247,7 @@ case 'delcase': {
     }
     }
     break
-    case 'nsfwgen': {
+    case 'nsfwimage': {
   const prompt = text.trim();
   if (!prompt) return reply('Contoh: .nsfwgen girl, cat ears, bath');
 
