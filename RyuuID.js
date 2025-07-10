@@ -157,7 +157,6 @@ let tebaksiapakahaku = []
 let tebaksusunkata = []
 let tebaktekateki = []
 let vote = db.others.vote = []
-const autoPrivate = require('./lib/autoprivate.js');
 const antiTagSW = require('./lib/antitagsw.js')
 module.exports = RyuuBotz = async (RyuuBotz, m, chatUpdate, store) => {
 try {
@@ -211,17 +210,7 @@ const thumbnails = [
     }, { quoted: m });
 };
 
-  await autoPrivate(RyuuBotz, m, replyryuu);
-        async function sendViewOnceMessages(sock, jid, message) {
-    const viewOnceMessage = {
-        message: {
-            viewOnceMessage: {
-                message: message.message,
-            }
-        }
-    }
-    await RyuuBotz.sendMessage(jid, viewOnceMessage);
-}   const { type, quotedMsg, mentioned, now, fromMe } = m
+    const { type, quotedMsg, mentioned, now, fromMe } = m
         const body =
   (m.mtype === 'conversation' && m.message.conversation) ||
   (m.mtype === 'imageMessage' && m.message.imageMessage.caption) ||

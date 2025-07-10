@@ -10,7 +10,6 @@ global.autoRecord = false //auto recording (true to on, false to off)
 global.autoblockmorroco = true //auto block 212 (true to on, false to off)
 global.autokickmorroco = true //auto kick 212 (true to on, false to off) 
 global.antispam = false//auto kick spammer (true to on, false to off)
-global.aiAutoReply = false //ai auto reply
 global.sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 //////////////////////////////////////////////////////////////////////////////////
 
