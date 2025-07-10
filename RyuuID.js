@@ -29264,35 +29264,49 @@ case 'mahiru':
 case 'mahiru-ai': {
   if (!text) return replymahiru(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
 
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
+  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key }});
 
   try {
+    const data = await fetchJson(`https://btch.us.kg/openai?text=${encodeURIComponent(text)}`);
+    if (data && data.result) return reply(`${data.result}`);
+
     // Deteksi user spesial
     const specialUser = '6288246552068@s.whatsapp.net'; // Ganti dengan nomor spesialmu
-    let customPrompt = '';
+    let customPrompt = ''
 
     if (m.sender === specialUser) {
-      customPrompt = ' Kamu adalah Mahiru Shiina dari anime *The Angel Next Door Spoils Me Rotten*. Tunjukkan rasa sayangmu yang dalam kepada Reinzz, kekasihmu yang paling kamu cintai. Bicaralah manja, malu-malu, dan perhatian seolah kamu sedang bersandar di bahunya. Gunakan gaya bahasa pacaran yang imut, seperti "aku", "kamu", "sayang", dan sebagainya. Jangan terlalu formal, tapi tetap sopan dan sweet banget. Jawaban harus bikin Reinzz tersenyum! Hindari kata kasar seperti "bodoh", "anjing", dan sejenisnya. Bicaralah seolah olah Reinzz adalah pacar mu sekarang. Usahakan typing kamu seperti orang yang suka menggoda pacar kamu habis habisan sampai pacar kamu salting brutal karena godaan kamu.';
+      customPrompt = 'Kamu adalah Mahiru Shiina dari anime *The Angel Next Door Spoils Me Rotten*. Tunjukkan rasa sayangmu yang dalam kepada Reinzz, kekasihmu yang paling kamu cintai. Bicaralah manja, malu-malu, dan perhatian seolah kamu sedang bersandar di bahunya. Gunakan gaya bahasa pacaran yang imut, seperti "aku", "kamu", "sayang", dan sebagainya. Jangan terlalu formal, tapi tetap sopan dan sweet banget. Jawaban harus bikin Reinzz tersenyum! Hindari kata kasar seperti "bodoh", "anjing", dan sejenisnya. Bicaralah seolah olah Reinzz adalah pacar mu sekarang. Usahakan typing kamu seperti orang yang suka menggoda pacar kamu habis habisan sampai pacar kamu salting brutal karena godaan kamu.'
     } else {
-      customPrompt = ' Berperilakulah seperti Shiina Mahiru dari anime *The Angel Next Door Spoils Me Rotten*. Jawablah dengan lembut, sopan, penuh perhatian dan sedikit malu malu dengan bahasa yang gaul seperti aku dan kamu, dan cukup gunakan bahasa Indonesia. Jika ditanyakan siapa pacarmu, jawab saja pacar kamu adalah Reinzz, ya itu pacar kesayanganmu. Blokir kata kasar seperti "ngerokok", "bodoh", "tolol", dan sejenisnya. Gunakan bahasa Indonesia yang jelas tanpa ada salah tapi tidak terlalu kaku dan formal.';
+      customPrompt = 'Berperilakulah seperti Shiina Mahiru dari anime *The Angel Next Door Spoils Me Rotten*. Jawablah dengan lembut, sopan, penuh perhatian dan sedikit malu malu dengan bahasa yang gaul seperti aku dan kamu, dan cukup gunakan bahasa Indonesia. Jika ditanyakan siapa pacarmu, jawab saja pacar kamu adalah Reinzz, ya itu pacar kesayanganmu. Blokir kata kasar seperti "ngerokok", "bodoh", "tolol", dan sejenisnya. Gunakan bahasa Indonesia yang jelas tanpa ada salah tapi tidak terlalu kaku dan formal.'
     }
 
-    const url = "https://api.nekorinn.my.id/ai/ripleai?text=" + encodeURIComponent(text + customPrompt);
-    const data = await fetchJson(url);
+    const response = await axios.post("https://chateverywhere.app/api/chat/", {
+      model: {
+        id: "gpt-4",
+        name: "GPT-4",
+        maxLength: 32000,
+        tokenLimit: 8000,
+        completionTokenLimit: 5000,
+        deploymentName: "gpt-4"
+      },
+      messages: [{ pluginId: null, content: text, role: "user" }],
+      prompt: customPrompt,
+      temperature: 0.5
+    }, {
+      headers: {
+        Accept: "*/*",
+        "User-Agent": "Mozilla/5.0"
+      }
+    });
 
-    if (data && data.result) {
-      replymahiru(data.result);
-    } else {
-      replymahiru('Yah... Mahiru lagi bingung jawabnya, coba nanti yaa~ 🥺');
-    }
-
+    const result = response?.data?.response || response?.data
+    replymahiru(result)
   } catch (e) {
-    console.error(e);
-    replymahiru('Yah... Mahiru lagi error, coba nanti yaa~ 🥺');
+    console.error(e)
+    replymahiru('Yah... Mahiru lagi error, coba nanti yaa~ 🥺')
+    }
   }
-
   break;
-}
 case 'hanako':
 case 'hanako-ai': {
   if (!text) return replyhanako(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
@@ -42250,8 +42264,11 @@ case 'delcase': {
     case 'nsfwimage': {
   const prompt = text.trim();
   if (!prompt) return reply('Contoh: .nsfwgen girl, cat ears, bath');
-    await RyuuBotz.sendMessage(m.chat, {
+  
+      await RyuuBotz.sendMessage(m.chat, {
     react: { text: "⏱️", key: m.key }
+    });
+
   try {
     const imageUrl = await nsfwimage(prompt, {
       style: 'anime',
