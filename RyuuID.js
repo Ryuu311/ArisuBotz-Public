@@ -812,7 +812,7 @@ if (m.message && m.isGroup) {
 │ 📝 Message   : ${chalk.blue(budy || m.mtype)}
 │ 👤 Sender    : ${chalk.magenta(pushname)} (${chalk.cyan(m.sender)})
 │ 🏠 Group     : ${chalk.yellow(groupName)} (${chalk.cyan(m.chat)})
-└────────────────────────────────────────┘
+└────────────────────────────────────┘
     `);
 } else {
     console.log(`
@@ -820,7 +820,7 @@ if (m.message && m.isGroup) {
 │ 🕒 Time      : ${chalk.green(new Date().toISOString().slice(0, 19).replace('T', ' '))}
 │ 📝 Message   : ${chalk.blue(budy || m.mtype)}
 │ 👤 Sender    : ${chalk.magenta(pushname)} (${chalk.cyan(m.sender)})
-└────────────────────────────────────────┘
+└───────────────────────────────────┘
     `);
 }
 
@@ -1607,79 +1607,7 @@ Ketik *surrender* untuk menyerah dan mengaku kalah`
 	    }
 	    }
 
-        //Suit PvP
-	    this.suit = this.suit ? this.suit : {}
-	    let roof = Object.values(this.suit).find(roof => roof.id && roof.status && [roof.p, roof.p2].includes(m.sender))
-	    if (roof) {
-	    let win = ''
-	    let tie = false
-	    if (m.sender == roof.p2 && /^(acc(ept)?|accept|yes|okay?|reject|no|later|nop(e.)?yes|y)/i.test(m.text) && m.isGroup && roof.status == 'wait') {
-	    if (/^(reject|no|later|n|nop(e.)?yes)/i.test(m.text)) {
-	    RyuuBotz.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} rejected the suit, the suit is canceled`, m)
-	    delete this.suit[roof.id]
-	    return !0
-	    }
-	    roof.status = 'play'
-	    roof.asal = m.chat
-	    clearTimeout(roof.waktu)
-	    //delete roof[roof.id].waktu
-	    RyuuBotz.sendText(m.chat, `Jas telah dikirim ke obrolan
 
-@${roof.p.split`@`[0]} 
-and 
-@${roof.p2.split`@`[0]}
-
-Silahkan pilih suit di chat masing-masing"
-click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
-	    if (!roof.pilih) RyuuBotz.sendText(roof.p, `Silahkan pilih \n\nBatu\nKertas\nGunting`, m)
-	    if (!roof.pilih2) RyuuBotz.sendText(roof.p2, `Silahkan pilih \n\nBatu\nKertas\nGunting`, m)
-	    roof.waktu_milih = setTimeout(() => {
-	    if (!roof.pilih && !roof.pilih2) RyuuBotz.sendText(m.chat, `Kedua Pemain Tidak Ingin Bermain,\nSuit Dibatalkan`)
-	    else if (!roof.pilih || !roof.pilih2) {
-	    win = !roof.pilih ? roof.p2 : roof.p
-	    RyuuBotz.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} Tidak Memilih Suit, Game Over!`, m)
-	    }
-	    delete this.suit[roof.id]
-	    return !0
-	    }, roof.timeout)
-	    }
-	    let jwb = m.sender == roof.p
-	    let jwb2 = m.sender == roof.p2
-	    let g = /Gunting/i
-	    let b = /Batu/i
-	    let k = /Kertas/i
-	    let reg = /^(Gunting|Batu|Kertas)/i
-	    if (jwb && reg.test(m.text) && !roof.pilih && !m.isGroup) {
-	    roof.pilih = reg.exec(m.text.toLowerCase())[0]
-	    roof.text = m.text
-	    reply(`Kamu telah memilih ${m.text} ${!roof.pilih2 ? `\n\n Menunggu lawan untuk memilih` : ''}`)
-	    if (!roof.pilih2) RyuuBotz.sendText(roof.p2, '_Lawan telah memilih\kSekarang giliranmu', 0)
-	    }
-	    if (jwb2 && reg.test(m.text) && !roof.pilih2 && !m.isGroup) {
-	    roof.pilih2 = reg.exec(m.text.toLowerCase())[0]
-	    roof.text2 = m.text
-	    reply(`_Kamu telah memilih ${m.text} ${!roof.pilih ? `\n\n Menunggu lawan untuk memilih_` : ''}`)
-	    if (!roof.pilih) RyuuBotz.sendText(roof.p, '_ Lawan telah memilih Sekarang giliranmu_', 0)
-	    }
-	    let stage = roof.pilih
-	    let stage2 = roof.pilih2
-	    if (roof.pilih && roof.pilih2) {
-	    clearTimeout(roof.waktu_milih)
-	    if (b.test(stage) && g.test(stage2)) win = roof.p
-	    else if (b.test(stage) && k.test(stage2)) win = roof.p2
-	    else if (g.test(stage) && k.test(stage2)) win = roof.p
-	    else if (g.test(stage) && b.test(stage2)) win = roof.p2
-	    else if (k.test(stage) && b.test(stage2)) win = roof.p
-	    else if (k.test(stage) && g.test(stage2)) win = roof.p2
-	    else if (stage == stage2) tie = true
-	    RyuuBotz.sendText(roof.asal, `_*Hasil Suit*_${tie ? '\nSERIES' : ''}
-
-@${roof.p.split`@`[0]} (${roof.text}) ${tie ? '' : roof.p == win ? ` Win \n` : ` Lost \n`}
-@${roof.p2.split`@`[0]} (${roof.text2}) ${tie ? '' : roof.p2 == win ? ` Win \n` : ` Lost  \n`}
-`.trim(), m, { mentions: [roof.p, roof.p2] })
-	    delete this.suit[roof.id]
-	    }
-	    } //end
 	    
   
 function clockString(ms) {
@@ -1896,7 +1824,7 @@ RyuuBotz.autosholat = RyuuBotz.autosholat ? RyuuBotz.autosholat : {};
 											newsletterJid: idch,
 										},
 										externalAdReply: {
-											showAdAttribution: true,
+											//showAdAttribution: true,
 											title: `Selamat Beribadah, Kak! 🕌`,
 											body: 'Pontianak, Indonesia',
 											previewType: "PHOTO",
@@ -3429,9 +3357,22 @@ if (automati) {
 if (shouldExit) {
     nodecron.schedule('0 */15 * * * *', () => {
         fs.readdir("./node_modules/Arisu-MD/session", async function (err, files) {
-let filteredArray = await files.filter(item => item.startsWith("pre-key") ||
-item.startsWith("sender-key") || item.startsWith("session-") || item.startsWith("app-state")
-   )
+try {
+  const files = await fs.readdir('./session');
+  if (Array.isArray(files)) {
+    let filteredArray = files.filter(item =>
+      item.startsWith("pre-key") ||
+      item.startsWith("sender-key") ||
+      item.startsWith("session-") ||
+      item.startsWith("app-state")
+    );
+    console.log(filteredArray);
+  } else {
+    console.log("📂 Tidak ada file ditemukan.");
+  }
+} catch (err) {
+  console.error("❌ Gagal membaca folder:", err.message);
+}
 if(filteredArray.length == 0) return console.log(`${teks}`)
 filteredArray.map(function(e, i){
 teks += (i+1)+`. ${e}\n`
@@ -4615,400 +4556,51 @@ let msg = {
 }
 RyuuBotz.ev.emit('messages.upsert', msg)
 }
- 
+const { ytmp3, ytmp4, yytmp3, yytmp4 } = require('./command/ytdownloader')
+const tts = require('./command/tts')
+const { handleSuitCommand, handleSuitAnswer } = require('./command/suitpvp')
+        //Suit PvP
+        handleSuitAnswer(m, { RyuuBotz, replyReinzID, botNumber })
+         //end
+const { addweb, delweb, listweb, gethtml } = require('./command/webDevelopment')
+
 switch (command) {
 case 'otakudesu': {
-  try {
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
-
-    const res = await fetch(`https://zenzxz.dpdns.org/anime/otakudesu`);
-    const json = await res.json();
-
-    if (!json.status || !json.result) {
-      await RyuuBotz.sendMessage(m.chat, { text: '❌ *Gagal mengambil data anime!*', quoted: m });
-      break;
-    }
-
-    const list = json.result.slice(0, 10);
-    let teks = `🎌 *Otakudesu - Anime Terbaru*\n\n`;
-    for (const anime of list) {
-      teks += `✨ *Anime Baru!* ✨\n`;
-      teks += `🎬 *Judul:* *${anime.title}*\n`;
-      teks += `🗓️ *Rilis: _${anime.published}_*\n`;
-      teks += `🔗 *Tonton: ${anime.url}*\n`;
-      teks += `*━━━━━━━━━━━━━━━━━━━━*\n`;
-    }
-
-    await RyuuBotz.sendMessage(m.chat, {
-      text: teks.trim(),
-      contextInfo: {
-        externalAdReply: {
-          title: '✨ Info by Otakudesu',
-          body: 'Anime Sub Indo Terbaru!',
-          mediaType: 1,
-          thumbnailUrl: 'https://files.cloudkuimages.guru/images/iG0w3HTX.jpg',
-          sourceUrl: 'https://otakudesu.cloud/',
-          renderLargerThumbnail: true
-        }
-      }
-    }, { quoted: m });
-  } catch (e) {
-    await RyuuBotz.sendMessage(m.chat, {
-      text: typeof e === 'string' ? e : '🚫 *Terjadi kesalahan saat memproses permintaan.*',
-      quoted: m
-    });
-  } finally {
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '', key: m.key } });
-  }
+  const otakudesu = require('./command/otakudesu')
+  otakudesu(m, RyuuBotz)
 }
 break;
 case 'gethtml': {
-    if (!text) return replyryuu(`Masukkan URL-nya!\nContoh: ${prefix}gethtml https://example.com`)
-    if (!/^https?:\/\//.test(text)) return replyryuu('URL harus diawali dengan http:// atau https://')
-
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
-
-    try {
-        const res = await fetch(text)
-        if (!res.ok) return replyryuu(`Gagal mengambil HTML: ${res.status} ${res.statusText}`)
-        
-        const html = await res.text()
-        
-        if (html.length > 4000) {
-            const path = require('path')
-            const fs = require('fs')
-            const filePath = path.join(__dirname, '../tmp', `source-${Date.now()}.html`)
-            
-            // Pastikan folder tmp ada
-            if (!fs.existsSync(path.dirname(filePath))) fs.mkdirSync(path.dirname(filePath), { recursive: true })
-
-            fs.writeFileSync(filePath, html)
-
-            await RyuuBotz.sendMessage(m.chat, {
-                document: { url: filePath },
-                mimetype: 'text/html',
-                fileName: `source-${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.html`
-            }, { quoted: m })
-
-            fs.unlinkSync(filePath) // Hapus file setelah dikirim
-        } else {
-            replyryuu(html)
-        }
-    } catch (e) {
-        console.error(e)
-        replyryuu('Terjadi kesalahan saat mengambil HTML.')
-    }
+      const getHtml = require('./command/getHtml')
+  getHtml(m, RyuuBotz, text, prefix, replyryuu)
 }
 break
 case 'play':
 case 'ytplay': {
-  if (!text) return reply("⚠️ Masukkan judul lagu/video YouTube!");
-  await RyuuBotz.sendMessage(m.chat, { react: { text: '🕖', key: m.key } })
-
-  const fetch = require('node-fetch');
-  const fs = require('fs');
-
-  try {
-    // Ganti endpoint ke yang baru
-    let anu = `https://api.nekorinn.my.id/downloader/ytplay?q=${encodeURIComponent(text)}`;
-
-    let res;
-    try {
-      res = await fetch(anu);
-    } catch (fetchErr) {
-      console.error("❌ Error saat fetch API:", fetchErr);
-      return reply("❌ Gagal terhubung ke API.");
-    }
-
-    let response;
-    try {
-      response = await res.json();
-    } catch (jsonErr) {
-      console.error("❌ Error saat parsing JSON:", jsonErr);
-      return reply("❌ Gagal membaca respon dari API.");
-    }
-
-    if (!response.status || !response.result) {
-      console.error("❌ API mengembalikan status gagal:", response);
-      return reply("❌ Video tidak ditemukan atau API error.");
-    }
-
-    // Mengambil data dari response.result.metadata
-    let { title, channel, duration, cover, url } = response.result.metadata;
-    let menu = `🎵 *${title}*\n\n📺 Channel: ${channel}\n⏳ Durasi: ${duration}\n\n🔗 Link: ${url}`;
-
-    try {
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
-      await RyuuBotz.sendMessage(m.chat, {
-        image: { url: cover },
-        caption: `${menu}\n\n> Note: Jika menu button tidak muncul, gunakan:\n> .ytmp4 <link>\n> .ytmp3 <link>`
-      }, { quoted: m });
-    } catch (thumbErr) {
-      console.error("❌ Error kirim thumbnail:", thumbErr);
-      reply("⚠️ Thumbnail gagal dikirim, lanjut ke tombol menu...");
-    }
-
-    // Tombol
-    const buttons = [
-      {
-        buttonId: `.ytmp4 ${url}`,
-        buttonText: { displayText: '🎥 Video' }
-      },
-      {
-        buttonId: `.ytmp3 ${url}`,
-        buttonText: { displayText: '🎤 Audio' }
-      }
-    ];
-
-    const buttonMessage = {
-      document: fs.readFileSync("./node_modules/Arisu-MD/ReinzID.js"),
-      fileName: ucapanWaktu,
-      fileLength: 99999999999999,
-      pageCount: 99999999999999,
-      mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      caption: menu,
-      footer: `\n© ${global.ownername} - 2025`,
-      buttons: buttons,
-      headerType: 1,
-      contextInfo: {
-        externalAdReply: {
-          containsAutoReply: true,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          thumbnailUrl: cover,
-          title: `© ${global.ownername} - 2025`,
-          body: "Asisten Virtual"
-        }
-      },
-      viewOnce: true
-    };
-
-    // NativeFlow
-    const flowActions = [
-      {
-        buttonId: `${prefix}owner`,
-        buttonText: { displayText: 'Owner' },
-        type: 4,
-        nativeFlowInfo: {
-          name: 'single_select',
-          paramsJson: JSON.stringify({
-            title: "MENU DOWNLOAD V2",
-            sections: [
-              {
-                title: "Menu Audio Download",
-                highlight_label: "Type Audio",
-                rows: [
-                  { title: "🎤 Mp3 Download", description: "Audio Download", id: `.yytmp3 ${url}` }
-                ]
-              },
-              {
-                title: "Menu Video Download",
-                highlight_label: "Type Video",
-                rows: [
-                  { title: "🎥 Mp4 Download", description: "Video Download", id: `.yytmp4 ${url}` }
-                ]
-              }
-            ]
-          })
-        },
-        viewOnce: true
-      }
-    ];
-
-    buttonMessage.buttons.push(...flowActions);
-
-    try {
-      await RyuuBotz.sendMessage(m.chat, buttonMessage, { quoted: m });
-    } catch (buttonErr) {
-      console.error("❌ Error kirim button message:", buttonErr);
-      return reply("❌ Gagal mengirim tombol menu.");
-    }
-
-  } catch (err) {
-    console.error("❌ Error umum:", err);
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply("❌ Terjadi kesalahan, coba lagi nanti.");
+const ytplay = require('./command/play')
+  ytplay(m, RyuuBotz, text, prefix, reply, ucapanWaktu);
   }
-}
-break;
+  break;
 case 'ytmp3': {
-  if (!text) return reply(`*Example:* ${prefix}ytmp3 https://youtube.com/watch?v=czQ2KID9plQ`)
-  if (!text.includes('youtu')) return reply('Masukkan link YouTube yang valid!')
-await RyuuBotz.sendMessage(m.chat, { react: { text: '🕖', key: m.key } })
-  try {
-    const res = await fetch(`https://api.nekorinn.my.id/downloader/youtube?url=${encodeURIComponent(text)}&format=192&type=audio`)
-    if (!res.ok) throw await res.text()
-    const json = await res.json()
-    
-    if (!json.status || !json.result || !json.result.downloadUrl) {
-      return reply('Gagal mengambil audio. Pastikan link valid dan coba lagi.')
-    }
-
-    const { title, cover, downloadUrl, format } = json.result
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
-    await RyuuBotz.sendMessage(m.chat, {
-      image: { url: cover },
-      caption: `🎧 *YouTube Audio Found!*\n\n` +
-               `🎵 *Title:* ${title}\n` +
-               `🎚️ *Bitrate:* ${format}kbps\n` +
-               `🔗 *Download:* ${downloadUrl}\n\n` +
-               `_Mengirim audio..._`
-    }, { quoted: m })
-
-    await RyuuBotz.sendMessage(m.chat, {
-      audio: { url: downloadUrl },
-      mimetype: "audio/mpeg",
-      ptt: true,
-      fileName: `${title}.mp3`,
-      contextInfo: {
-        externalAdReply: {
-          title: title,
-          body: format,
-          thumbnailUrl: cover,
-          mediaUrl: downloadUrl,
-          mediaType: 1,
-          renderLargerThumbnail: true
-        }
-      }
-    }, { quoted: m });
-
-  } catch (err) {
-    console.log('YTMP3 Error:', err)
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply(`Terjadi kesalahan saat memproses audio. Coba lagi nanti.\nError: ${err.message}\n*Error? coba pakai V2*`)
-  }
-}
-break
+//const ytmp3 = require('./command/ytdownloader')
+ ytmp3(m, RyuuBotz, text, prefix, reply);
+ } 
+break;
 case 'ytmp4': {
-  if (!text) return reply(`*Example:* ${prefix}ytmp4 https://youtube.com/watch?v=czQ2KID9plQ`)
-  if (!text.includes('youtu')) return reply('Masukkan link YouTube yang valid!')
-await RyuuBotz.sendMessage(m.chat, { react: { text: '🕖', key: m.key } })
-  try {
-    const res = await fetch(`https://api.nekorinn.my.id/downloader/youtube?url=${encodeURIComponent(text)}&format=480&type=video`)
-    if (!res.ok) throw await res.text()
-    const json = await res.json()
-    
-    if (!json.status || !json.result || !json.result.downloadUrl) {
-      return reply('Gagal mengambil video. Pastikan link valid dan coba lagi.')
-    }
-
-    const { title, cover, downloadUrl, format } = json.result   
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
-    await RyuuBotz.sendMessage(m.chat, {
-      image: { url: cover },
-      caption: `🎬 *YouTube Video Found!*\n\n` +
-               `📌 *Title:* ${title}\n` +
-               `📥 *Format:* ${format}p\n` +
-               `🔗 *Download Link:* ${downloadUrl}\n\n` +
-               `_Mengirim video..._`
-    }, { quoted: m })
-
-    await RyuuBotz.sendMessage(m.chat, {
-      video: { url: downloadUrl },
-      caption: `✅ *Berhasil mengunduh video!*\n🎬 ${title}`
-    }, { quoted: m })
-
-  } catch (err) {
-    console.log('YTMP4 Error:', err)
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply(`Terjadi kesalahan saat memproses video. Coba lagi nanti.\nError: ${err.message}\n*Error? coba pakai V2*`)
-  }
+//const ytmp4 = require('./command/ytdownloader')
+ytmp4(m, RyuuBotz, text, prefix, reply);
 }
-break
-case 'yytmp4': {
-  if (!text) return reply(`*Example:* ${prefix}ytmp4 https://youtube.com/watch?v=cari-apa-lu-:v`)
-  if (!text.includes('youtu')) return reply('Masukkan link YouTube yang valid!')
-  await RyuuBotz.sendMessage(m.chat, { react: { text: '🕖', key: m.key } })
-  
-  try {
-    const res = await fetch(`https://api.ditss.cloud/download/ytmp4?apikey=DitssGanteng&url=${encodeURIComponent(text)}`)
-    if (!res.ok) throw await res.text()
-    const json = await res.json()
-
-    if (!json.status || !json.result?.link) return reply('Gagal mengambil video. Pasrah aja udh :v')
-
-    const { title, link, thumb, requested_url } = json.result
-    const fallbackThumb = thumb || 'https://files.catbox.moe/m2xkzf.jpg' // default thumbnail
-    const sourceUrl = requested_url || text
-
-    await RyuuBotz.sendMessage(m.chat, {
-      text: `🎬 *YouTube Video Found!*\n\n` +
-            `📌 *Title:* ${title}\n` +
-            `🌐 *Source:* YouTube\n\n` +
-            `_Mengirim video..._`,
-      contextInfo: {
-        externalAdReply: {
-          title: title,
-          body: `YouTube Video`,
-          thumbnailUrl: fallbackThumb,
-          sourceUrl: sourceUrl,
-          mediaType: 2,
-          renderLargerThumbnail: true,
-          showAdAttribution: true
-        }
-      }
-    }, { quoted: m })
-
-    await RyuuBotz.sendMessage(m.chat, {
-      video: { url: link },
-      caption: `✅ *Berhasil mengunduh video!*\n🎬 ${title}`
-    }, { quoted: m })
-
-  } catch (err) {
-    console.log('YTMP4 Error:', err)
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply(`Terjadi kesalahan saat memproses video. Coba lagi nanti.\nError: ${err.message || err}`)
-  }
+ break;
+case 'yytmp3': {
+//const yytmp3 = require('./command/ytdownloader')
+yytmp3(m, RyuuBotz, text, prefix, reply); 
 }
 break;
-case 'yytmp3': {
-  if (!text) return reply(`*Example:* ${prefix}ytmp3 https://youtube.com/watch?v=cari-apa-lu-:v`)
-  if (!text.includes('youtu')) return reply('Masukkan link YouTube yang valid!')
-  await RyuuBotz.sendMessage(m.chat, { react: { text: '🕖', key: m.key } })
-
-  try {
-    const res = await fetch(`https://api.ditss.cloud/download/ytmp3?apikey=DitssGanteng&url=${encodeURIComponent(text)}`)
-    if (!res.ok) throw await res.text()
-    const json = await res.json()
-
-    if (!json.status || !json.result?.link) return reply('Gagal mengambil audio. Pasrah aja udh :v')
-
-    const { title, link, thumb, requested_url } = json.result
-    const fallbackThumb = thumb || 'https://files.catbox.moe/m2xkzf.jpg'
-    const sourceUrl = requested_url || text
-
-    await RyuuBotz.sendMessage(m.chat, {
-      text: `🎧 *YouTube Audio Found!*\n\n` +
-            `🎵 *Title:* ${title}\n` +
-            `🌐 *Source:* YouTube\n\n` +
-            `_Mengirim audio..._`,
-      contextInfo: {
-        externalAdReply: {
-          title: title,
-          body: `YouTube Audio`,
-          thumbnailUrl: fallbackThumb,
-          sourceUrl: sourceUrl,
-          mediaType: 1,
-          renderLargerThumbnail: true,
-          showAdAttribution: true
-        }
-      }
-    }, { quoted: m })
-
-    await RyuuBotz.sendMessage(m.chat, {
-      audio: { url: link },
-      mimetype: "audio/mp4",
-      ptt: true,
-      fileName: `${title}.mp3`
-    }, { quoted: m })
-
-  } catch (err) {
-    console.log('YTMP3 Error:', err)
-    await RyuuBotz.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply(`Terjadi kesalahan saat memproses audio. Coba lagi nanti.\nError: ${err.message || err}`)
-  }
+case 'yytmp4': {
+//const yytmp4 = require('./command/ytdownloader')
+yytmp4(m, RyuuBotz, text, prefix, reply); 
 }
-break
+break;
 //=====Cooming Soon=====\\
 /*case 'stopjadibot': {
 if (!isPrem) return replyprem(mess.premium)
@@ -5025,257 +4617,40 @@ if (!isPrem) return reply(mess.premium)
     jadibot(RyuuBotz, m, m.chat)
 }
 break*/
+case 'addweb': {
+addweb(m, RyuuBotz, text, prefix, reply, qmsg, isRyuuTheCreator, mess, example); }
+break;
 case 'delweb': {
-if (!isRyuuTheCreator) return reply(mess.only.owner);
-  if (!text) return example('<namaWeb>')
-  const webName = text.trim().toLowerCase()
-
-  const headers = {
-    Authorization: `Bearer ${global.vercelToken}`
-  }
-
-  try {
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
-    const response = await fetch(`https://api.vercel.com/v9/projects/${webName}`, {
-      method: 'DELETE',
-      headers
-    })
-
-    if (response.status === 200 || response.status === 204) {
-      return reply(`[ ✓ ] Website *${webName}* berhasil dihapus dari Vercel.`)
-    } else if (response.status === 404) {
-      return reply(`[ x ] Website *${webName}* tidak ditemukan di akun Vercel kamu.`)
-    } else if (response.status === 403 || response.status === 401) {
-      return reply(`[ ! ] Token Vercel tidak valid atau tidak punya akses ke project ini.`)
-    } else {
-      let result = {}
-      try {
-        result = await response.json()
-      } catch (e) {}
-      return reply(`[ x ] Gagal menghapus website:\n${result.error?.message || 'Tidak diketahui'}`)
-    }
-
-  } catch (err) {
-    console.error(err)
-    reply(`Terjadi kesalahan saat mencoba menghapus:\n${err.message}`)
-  }
-}
+delweb(m, RyuuBotz, text, reply, isRyuuTheCreator, mess); }
 break;
 case 'listweb': {
-if (!isRyuuTheCreator) return reply(mess.only.owner);
-  const headers = {
-    Authorization: `Bearer ${global.vercelToken}`
-  }
-  const res = await fetch('https://api.vercel.com/v9/projects', { headers })
-  const data = await res.json()
-
-  if (!data.projects || data.projects.length === 0) return reply('Tidak ada website yang ditemukan.')
-
-  let teks = '*🌐 Daftar Website Anda:*\n\n'
-  for (let proj of data.projects) {
-    teks += `• ${proj.name} → https://${proj.name}.vercel.app\n`
-  }
-
-  reply(teks)
-}
-break;
-case 'addweb': {
-  if (!isRyuuTheCreator) return reply(mess.only.owner);
-  if (!text) return example('<namaWeb>')
-  if (!qmsg || !/zip|html/.test(qmsg.mimetype)) return reply('Reply file .zip atau .html')
-
-  const webName = text.trim().toLowerCase().replace(/[^a-z0-9-_]/g, '')
-  const domainCheckUrl = `https://${webName}.vercel.app`
-
-  try {
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
-    const check = await fetch(domainCheckUrl)
-    if (check.status === 200) return reply(`[ x ] Nama web *${webName}* sudah digunakan. Silakan gunakan nama lain.`)
-  } catch (e) {}
-
-  const quotedFile = await RyuuBotz.downloadMediaMessage(qmsg)
-  const filesToUpload = []
-
-  if (qmsg.mimetype.includes('zip')) {
-    const unzipper = require('unzipper')
-    const zipBuffer = Buffer.from(quotedFile)
-    const directory = await unzipper.Open.buffer(zipBuffer)
-
-    for (const file of directory.files) {
-      if (file.type === 'File') {
-        const content = await file.buffer()
-        const filePath = file.path.replace(/^\/+/, '').replace(/\\/g, '/')
-        filesToUpload.push({
-          file: filePath,
-          data: content.toString('base64'),
-          encoding: 'base64'
-        })
-      }
-    }
-
-    if (!filesToUpload.some(x => x.file.toLowerCase().endsWith('index.html'))) {
-      return reply('File index.html tidak ditemukan dalam struktur ZIP.')
-    }
-
-  } else if (qmsg.mimetype.includes('html')) {
-    filesToUpload.push({
-      file: 'index.html',
-      data: Buffer.from(quotedFile).toString('base64'),
-      encoding: 'base64'
-    })
-  } else {
-    return reply('File tidak dikenali. Kirim file .zip atau .html.')
-  }
-
-  const headers = {
-    Authorization: `Bearer ${global.vercelToken}`,
-    'Content-Type': 'application/json'
-  }
-
-  await fetch('https://api.vercel.com/v9/projects', {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ name: webName })
-  }).catch(() => {})
-
-  const deployRes = await fetch('https://api.vercel.com/v13/deployments', {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      name: webName,
-      project: webName,
-      files: filesToUpload,
-      projectSettings: { framework: null }
-    })
-  })
-
-  const deployData = await deployRes.json().catch(() => null)
-  if (!deployData || !deployData.url) {
-    console.log('Deploy Error:', deployData)
-    return reply(`Gagal deploy ke Vercel:\n${JSON.stringify(deployData)}`)
-  }
-
-  reply(`[ ✓ ] Website berhasil dibuat!\n\n🌐 URL: https://${webName}.vercel.app`)
-}
+listweb(m, reply, isRyuuTheCreator, mess); }
 break;
 case 'scweb':
 case 'gethtml': {
-    if (!isRyuuTheCreator) return reply(mess.only.owner);
-    if (!text) return reply(`mana domain nya`);
-
-    try {
-    await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
-        let res = await fetch(text);
-        if (!res.ok) return reply('[ x ] Gagal mengambil data dari URL tersebut');
-        let html = await res.text();
-
-        const filePath = path.join(__dirname, '../temp/html_dump.html');
-        fs.writeFileSync(filePath, html);
-
-        await RyuuBotz.sendMessage(m.chat, {
-            document: fs.readFileSync(filePath),
-            mimetype: 'text/html',
-            fileName: 'source.html'
-        }, { quoted: m });
-
-        fs.unlinkSync(filePath); // hapus setelah terkirim
-    } catch (e) {
-        console.error(e);
-        reply('[ x ] Terjadi kesalahan saat mengambil HTML\n'+e.message);
-    }
+gethtml(m, RyuuBotz, text, reply, isRyuuTheCreator, mess); 
 }
 break;
-case 'ttc': case 'ttt': case 'tictactoe': {
-            let TicTacToe = require("./lib/tictactoe")
-            this.game = this.game ? this.game : {}
-            if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return replyReinzID(`Kamu Masih Dalam Permainan\n> KETIK .delttc UNTUK KELUAR PERMAINAN`)
-            let room13 = Object.values(this.game).find(room13 => room13.state === 'WAITING' && (text ? room13.name === text : true))
-            if (room13) {
-            room13.o = m.chat
-            room13.game.playerO = m.sender
-            room13.state = 'PLAYING'
-            let arr = room13.game.render().map(v => {
-            return {
-            X: '❌',
-            O: '⭕',
-            1: '1️⃣',
-            2: '2️⃣',
-            3: '3️⃣',
-            4: '4️⃣',
-            5: '5️⃣',
-            6: '6️⃣',
-            7: '7️⃣',
-            8: '8️⃣',
-            9: '9️⃣',
-            }[v]
-            })
-            let str = `room13 ID: ${room13.id}
-
-${arr.slice(0, 3).join('')}
-${arr.slice(3, 6).join('')}
-${arr.slice(6).join('')}
-
-Menunggu @${room13.game.currentTurn.split('@')[0]}
-
-Ketik *surrender* untuk menyerah dan mengakui kekalahan`
-            if (room13.x !== room13.o) await RyuuBotz.sendText(room13.x, str, m, { mentions: parseMention(str) } )
-            await RyuuBotz.sendText(room13.o, str, m, { mentions: parseMention(str) } )
-            } else {
-            room13 = {
-            id: 'tictactoe-' + (+new Date),
-            x: m.chat,
-            o: '',
-            game: new TicTacToe(m.sender, 'o'),
-            state: 'WAITING'
-            }
-            if (text) room13.name = text
-            replyReinzID('Tag pasangan ttc\n> Contoh: .ttc @reinz' + (text ? `\n\n𝗧𝗘𝗞𝗦 𝗗𝗜 𝗔𝗧𝗔𝗦 𝗔𝗕𝗔𝗜𝗞𝗔𝗡 𝗦𝗔𝗝𝗔\n YANG DITAG WAJIB KETIK *${prefix}${command}* UNTUK BERMAIN` : ''))
-            this.game[room13.id] = room13
-            }
-            }
-            break
-            case 'delttc': case 'delttt': {
-            this.game = this.game ? this.game : {}
-            try {
-            if (this.game) {
-            delete this.game
-            RyuuBotz.sendText(m.chat, `Successfully deleted TicTacToe session`, m)
-            } else if (!this.game) {
-            replyReinzID(`Session TicTacToe🎮 does not exist`)
-            } else throw '?'
-            } catch (e) {
-            replyReinzID('damaged')
-            }
-            }
-            break
-            case 'suitpvp':case 'rps': case 'rockpaperscissors':case 'suit': {
-            this.suit = this.suit ? this.suit : {}
-            let poin = 10
-            let poin_lose = 10
-            let timeout = 60000
-            if (Object.values(this.suit).find(roof => roof.id.startsWith('suit') && [roof.p, roof.p2].includes(m.sender))) replyReinzID(`Complete your previous game`)
-	    if (m.mentionedJid[0] === m.sender) return replyReinzID(`Can't play with myself !`)
-            if (!m.mentionedJid[0]) return replyReinzID(`_Who do you want to challenge?_\nTag the person..\n\nContoh : .suit @${owner}`, m.chat, { mentions: [owner[1] + '@s.whatsapp.net'] })
-            if (Object.values(this.suit).find(roof => roof.id.startsWith('suit') && [roof.p, roof.p2].includes(m.mentionedJid[0]))) return replyReinzID(`Orang yang Anda tantang sedang bermain sesuai dengan orang lain :(`)
-            let id = 'suit_' + new Date() * 1
-            let caption = `_*SUIT PvP*_
-
-@${m.sender.split`@`[0]} *Challenged* @${m.mentionedJid[0].split`@`[0]} *to play suit*
-
-*Hi* @${m.mentionedJid[0].split`@`[0]} *Silahkan ketik accept untuk menerima atau ketik reject untuk menolak*`
-            this.suit[id] = {
-            chat: await RyuuBotz.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
-            id: id,
-            p: m.sender,
-            p2: m.mentionedJid[0],
-            status: 'wait',
-            waktu: setTimeout(() => {
-            if (this.suit[id]) RyuuBotz.sendText(m.chat, `_𝙒𝘼𝙆𝙏𝙐 𝙎𝙐𝙄𝙏 𝙃𝘼𝘽𝙄𝙎_`, m)
-            delete this.suit[id]
-            }, 60000), poin, poin_lose, timeout
-            }
-            }
-            break             
+case 'ttc':
+case 'ttt':
+case 'tictactoe': {
+const tictactoe = require('./command/tictactoe')
+  this.game = await tictactoe(m, RyuuBotz, text, prefix, command, replyReinzID, parseMention, this.game || {});
+  }
+  break;
+case 'delttc':
+case 'delttt': {
+const delttc = require('./command/tictactoe')
+  this.game = delttc(m, RyuuBotz, replyReinzID, this.game || {});
+  }
+  break;
+case 'suitpvp':
+case 'rps':
+case 'rockpaperscissors':
+case 'suit': {
+  handleSuitCommand(m, { RyuuBotz, text, replyReinzID, owner, prefix })
+}
+break
 	case 'public': {
 if (!isRyuuTheCreator) return reply(mess.only.owner)
 RyuuBotz.public = true
@@ -5288,308 +4663,16 @@ RyuuBotz.public = false
 replyReinzID('*Sukses Berubah Menjadi Pemakaian Sendiri*')
             }
             break
-            case 'tts2':
-            case 'tts-ba':
-            case 'tts-blue-archive':
-            case 'ttsba': {
-  if (!text.includes('|')) {
-    return replyryuu(`⌬┄┄┄┄┄┄┄┄┄┄┄┄┄┄⌬
-       *L I S T - K A R A K T E R*
-⌬┄┄┄┄┄┄┄┄┄┄┄┄┄┄⌬
-
-• *airi* - Airi 🩷
-• *akane* - Akane 🌸
-• *akari* - Akari 🧡
-• *ako* - Ako 💼
-• *aris* - Aris 🎯
-• *arona* - Arona 🤖
-• *aru* - Aru 💣
-• *asuna* - Asuna 📚
-• *atsuko* - Atsuko 🧃
-• *ayane* - Ayane 🦋
-• *azusa* - Azusa 🌙
-• *cherino* - Cherino ❄️
-• *chihiro* - Chihiro 🗂️
-• *chinatsu* - Chinatsu 💊
-• *chise* - Chise 🔥
-• *eimi* - Eimi 👓
-• *erica* - Erica 🎀
-• *fubuki* - Fubuki 🍃
-• *fuuka* - Fuuka 🧺
-• *hanae* - Hanae 💐
-• *hanako* - Hanako 🛏️
-• *hare* - Hare 🦊
-• *haruka* - Haruka 🥋
-• *haruna* - Haruna 🎯
-• *hasumi* - Hasumi 🔫
-• *hibiki* - Hibiki 🎧
-• *hihumi* - Hihumi 🔮
-• *himari* - Himari 🌼
-• *hina* - Hina 👑
-• *hinata* - Hinata 🐇
-• *hiyori* - Hiyori 🍭
-• *hoshino* - Hoshino ⭐
-• *iori* - Iori 💥
-• *iroha* - Iroha 🚀
-• *izumi* - Izumi 🍞
-• *izuna* - Izuna 🐺
-• *juri* - Juri 🧪
-• *kaede* - Kaede 🍁
-• *karin* - Karin 🎯
-• *kayoko* - Kayoko 🎭
-• *kazusa* - Kazusa 🥀
-• *kirino* - Kirino 🎀
-• *koharu* - Koharu ☀️
-• *kokona* - Kokona 🐤
-• *kotama* - Kotama 🎮
-• *kotori* - Kotori 🐦
-• *main* - Main 🎙️
-• *maki* - Maki 🔫
-• *mari* - Mari 🍰
-• *marina* - Marina ⚓
-• *mashiro* - Mashiro 🐱
-• *michiru* - Michiru 🎨
-• *midori* - Midori 🧩
-• *miku* - Miku 💙
-• *mimori* - Mimori 🧶
-• *misaki* - Misaki 💄
-• *miyako* - Miyako 🎀
-• *miyu* - Miyu 🦈
-• *moe* - Moe 💡
-• *momoi* - Momoi 🖥️
-• *momoka* - Momoka 🎤
-• *mutsuki* - Mutsuki 🎇
-• *NP0013* - NP0013 🤖
-• *natsu* - Natsu ☀️
-• *neru* - Neru 🏍️
-• *noa* - Noa 💻
-• *nodoka* - Nodoka 📖
-• *nonomi* - Nonomi 🍔
-• *pina* - Pina 🍬
-• *rin* - Rin 🌸
-• *saki* - Saki 🎵
-• *saori* - Saori 🔫
-• *saya* - Saya 💉
-• *sena* - Sena 🧃
-• *serika* - Serika 🎒
-• *serina* - Serina 💊
-• *shigure* - Shigure 🌧️
-• *shimiko* - Shimiko 🍓
-• *shiroko* - Shiroko 🚲
-• *shizuko* - Shizuko 📦
-• *shun* - Shun 🎓
-• *ShunBaby* - Shun (Baby ver.) 👶
-• *sora* - Sora ☁️
-• *sumire* - Sumire 🌸
-• *suzumi* - Suzumi 📚
-• *tomoe* - Tomoe 🎭
-• *tsubaki* - Tsubaki 🛡️
-• *tsurugi* - Tsurugi 🗡️
-• *ui* - Ui 🍓
-• *utaha* - Utaha 🖋️
-• *wakamo* - Wakamo 🐍
-• *yoshimi* - Yoshimi 🍡
-• *yuuka* - Yuuka 📏
-• *yuzu* - Yuzu 🍋
-• *zunko* - Zunko 🎶
-
-Gunakan format:
-*.ttsba teks|karakter*
-
-Contoh:
-*.ttsba halo dunia|shiroko*`);
+case 'tts2':
+case 'ttsba':
+case 'tts-blue-archive': {
+  return tts.tts2(m, { text, RyuuBotz, replyryuu })
   }
-
-  let [teks, char, speed] = text.split('|').map(v => v.trim());
-  if (!teks || !char) return replyryuu(`❌ Format salah!\nContoh: .ttsba Halo|shiroko`);
-  speed = speed || '1';
-await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
-  try {
-    const url = `https://api.nekorinn.my.id/tools/ttsba?text=${encodeURIComponent(teks)}&char=${encodeURIComponent(char)}&speed=${speed}`;
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
-
-    await RyuuBotz.sendMessage(m.chat, {
-      audio: Buffer.from(response.data),
-      mimetype: 'audio/mpeg',
-      ptt: false
-    }, { quoted: m });
-
-  } catch (err) {
-    return replyryuu(`❌ Gagal memproses suara.\nPastikan karakter *${char}* tersedia dan coba lagi.`);
-  }
-}
-break;
-case 'tts3': {
-  if (!text) return reply(`⌬┄┄┄┄┄┄┄┄┄┄┄┄┄┄⌬
-       *L I S T - M O D E L*
-⌬┄┄┄┄┄┄┄┄┄┄┄┄┄┄⌬
-
-• *miku* - Hatsune Miku 🌀
-• *nahida* - Nahida (Exclusive) 🌿
-• *nami* - Nami dari One Piece 🌊
-• *ana* - Ana (Suara wanita umum) 🎙️
-• *optimus_prime* - Optimus Prime 🤖
-• *goku* - Goku (Dragon Ball) 🟠
-• *taylor_swift* - Taylor Swift 🎤
-• *elon_musk* - Elon Musk 🧠
-• *mickey_mouse* - Mickey Mouse 🐭
-• *kendrick_lamar* - Kendrick Lamar 🎶
-• *angela_adkinsh* - Angela Adkinsh 👩‍💼
-• *eminem* - Eminem 🎧
-
-Gunakan format:
-*.tts3 teks|model*
-
-Contoh:
-*.tts3 halo dunia|miku*`)
-
-  let [isi, model] = text.split('|').map(v => v.trim().toLowerCase())
-
-  const models = {
-    miku:            { voice_id: "67aee909-5d4b-11ee-a861-00163e2ac61b", voice_name: "Hatsune Miku" },
-    nahida:          { voice_id: "67ae0979-5d4b-11ee-a861-00163e2ac61b", voice_name: "Nahida" },
-    nami:            { voice_id: "67ad95a0-5d4b-11ee-a861-00163e2ac61b", voice_name: "Nami" },
-    ana:             { voice_id: "f2ec72cc-110c-11ef-811c-00163e0255ec", voice_name: "Ana" },
-    optimus_prime:   { voice_id: "67ae0f40-5d4b-11ee-a861-00163e2ac61b", voice_name: "Optimus Prime" },
-    goku:            { voice_id: "67aed50c-5d4b-11ee-a861-00163e2ac61b", voice_name: "Goku" },
-    taylor_swift:    { voice_id: "67ae4751-5d4b-11ee-a861-00163e2ac61b", voice_name: "Taylor Swift" },
-    elon_musk:       { voice_id: "67ada61f-5d4b-11ee-a861-00163e2ac61b", voice_name: "Elon Musk" },
-    mickey_mouse:    { voice_id: "67ae7d37-5d4b-11ee-a861-00163e2ac61b", voice_name: "Mickey Mouse" },
-    kendrick_lamar:  { voice_id: "67add638-5d4b-11ee-a861-00163e2ac61b", voice_name: "Kendrick Lamar" },
-    angela_adkinsh:  { voice_id: "d23f2adb-5d1b-11ee-a861-00163e2ac61b", voice_name: "Angela Adkinsh" },
-    eminem:          { voice_id: "c82964b9-d093-11ee-bfb7-e86f38d7ec1a", voice_name: "Eminem" }
-  }
-
-  if (!isi || !model || !models[model]) return reply(`❌ Pastikan format benar: .tts3 teks|model\n\nModel tersedia:\n` + Object.keys(models).join(', '))
-
-  let { voice_id, voice_name } = models[model]
-  let userAgents = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X)",
-    "Mozilla/5.0 (Linux; Android 8.0.0)"
-  ]
-
-  function getRandomIp() {
-    return Array.from({ length: 4 }).map(() => Math.floor(Math.random() * 256)).join('.')
-  }
-
-  let proses = await reply('_⏳ Sedang membuat suara..._')
-
-  try {
-    let headers = {
-      'Content-Type': 'application/json',
-      'Accept': '*/*',
-      'X-Forwarded-For': getRandomIp(),
-      'User-Agent': userAgents[Math.floor(Math.random() * userAgents.length)]
-    }
-
-    let payload = {
-      raw_text: isi,
-      url: "https://filme.imyfone.com/text-to-speech/anime-text-to-speech/",
-      product_id: "200054",
-      convert_data: [{
-        voice_id,
-        speed: "1",
-        volume: "50",
-        text: isi,
-        pos: 0
-      }]
-    }
-
-    const endpoint = 'https://voxbox-tts-api.imyfone.com/pc/v1/voice/tts'
-    const res = await axios.post(endpoint, payload, { headers })
-    const result = res.data?.data?.convert_result?.[0]?.oss_url
-
-    if (!result) throw 'Gagal mendapatkan suara. Coba lagi nanti.'
-
-    await RyuuBotz.sendMessage(m.chat, {
-      audio: { url: result },
-      mimetype: 'audio/mpeg',
-      ptt: true
-    }, { quoted: m })
-
-  } catch (e) {
-    reply(`❌ Error: ${e.message || e}`)
-  } finally {
-    if (proses?.key) await RyuuBotz.sendMessage(m.chat, { delete: proses.key })
-  }
-}
-break
-case 'shiina-aivn':
-case 'mahiru-vn':
-case 'mahiru-aivn': {
-  if (!text) return replymahiru(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
-
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
-
-  try {
-    const specialUser = '6288246552068@s.whatsapp.net';
-    let customPrompt = '';
-
-    if (m.sender === specialUser) {
-      customPrompt = `Kamu adalah Mahiru Shiina dari anime *The Angel Next Door Spoils Me Rotten*. Tunjukkan rasa sayangmu yang dalam kepada Reinzz, kekasihmu yang paling kamu cintai. Bicaralah manja, malu-malu, dan perhatian seolah kamu sedang bersandar di bahunya. Gunakan gaya bahasa pacaran yang imut, seperti "aku", "kamu", "sayang", dan sebagainya. Jangan terlalu formal, tapi tetap sopan dan sweet banget. Jawaban harus bikin Reinzz tersenyum dan salting brutal karena godaanmu!
-Jangan menggunakan kata kasar seperti "bodoh", "anjing", dan sejenisnya.
-Berikan balasan yang maksimal 1 kalimat saja, jangan terlalu panjang, maksimal 100 karakter dan usahakan tanpa emoji`;
-    } else {
-      customPrompt = `Berperilakulah seperti Shiina Mahiru dari anime *The Angel Next Door Spoils Me Rotten*. Jawablah dengan lembut, sopan, penuh perhatian dan sedikit malu-malu dengan bahasa yang gaul seperti "aku" dan "kamu". Jika ditanyakan siapa pacarmu, jawab saja pacarmu adalah Reinzz, pacar kesayanganmu. Hindari kata kasar seperti "ngerokok", "bodoh", "tolol", dan sejenisnya. Gunakan bahasa Indonesia yang jelas, tidak terlalu formal. Batasi jawaban hanya 1 kalimat, jangan terlalu panjang, maksimal 100 karakter dan usahakan tanpa emoji`;
-    }
-
-    const url = `https://www.nevariaapi.nevariacloud.my.id/api/cai/prompt-ai?query=${encodeURIComponent(text)}&prompt=${encodeURIComponent(customPrompt)}`;
-    const res = await fetchJson(url);
-
-    if (!res || !res.status || !res.data) {
-      return replymahiru('Mahiru-nya bingung jawabnya... 😣');
-    }
-
-    const jawaban = res.data;
-    
-    // Konversi langsung ke suara Miku (voice_id Miku)
-    const headers = {
-      'Content-Type': 'application/json',
-      'Accept': '*/*',
-      'X-Forwarded-For': Array.from({ length: 4 }).map(() => Math.floor(Math.random() * 256)).join('.'),
-      'User-Agent': [
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X)",
-        "Mozilla/5.0 (Linux; Android 8.0.0)"
-      ][Math.floor(Math.random() * 3)]
-    };
-
-    const payload = {
-      raw_text: jawaban,
-      url: "https://filme.imyfone.com/text-to-speech/anime-text-to-speech/",
-      product_id: "200054",
-      convert_data: [{
-        voice_id: "67aee909-5d4b-11ee-a861-00163e2ac61b", // ID Miku
-        speed: "1",
-        volume: "50",
-        text: jawaban,
-        pos: 0
-      }]
-    };
-
-    const proses = await reply('_Mahiru sedang bicara_');
-    const endpoint = 'https://voxbox-tts-api.imyfone.com/pc/v1/voice/tts';
-    const result = await axios.post(endpoint, payload, { headers });
-    const audioUrl = result.data?.data?.convert_result?.[0]?.oss_url;
-
-    if (!audioUrl) return reply('Sepertinya mahiru lelah');
-
-    await RyuuBotz.sendMessage(m.chat, {
-      audio: { url: audioUrl },
-      mimetype: 'audio/mpeg',
-      ptt: true
-    }, { quoted: m });
-
-    if (proses?.key) await RyuuBotz.sendMessage(m.chat, { delete: proses.key });
-
-  } catch (e) {
-    console.error(e);
-    replymahiru('Yah... Mahiru lagi error 😔 Coba lagi nanti ya~');
-  }
-
   break;
-}
+case 'tts3': {
+  return tts.tts3(m, { text, RyuuBotz, reply })
+  }
+  break;
 case 'smeme': case 'stickermeme': case 'stickmeme': {
 if (!/webp/.test(mime) && /image/.test(mime)) {
 if (!text) return replyReinzID(`Kirim/reply Gambar Dengan Caption ${prefix + command}
@@ -5660,37 +4743,45 @@ bantu support dan donasinya biar fitur nya
 tambah banyak yaa..... terimakasih.🔥🔥`)
         break
 case 'owner': {
-  const vcard = `
+try {
+    const vcard = `
 BEGIN:VCARD
 VERSION:3.0
 FN:Ryuu Reinzz
 ORG:The Developer Of Arisu AI;
-TEL;type=CELL;type=VOICE;waid=6288246552068:+62 882 4655 2068
+TEL;type=CELL;type=VOICE;waid=6288246552068:+62-882-4655-2068
 END:VCARD
-  `
+    `.trim()
 
-  await RyuuBotz.sendMessage(m.chat, {
-    contacts: {
-      displayName: "Ryuu Reinzz",
-      contacts: [{ vcard }]
-    },
-    contextInfo: {
-      externalAdReply: {
-        title: "WhatsApp Business • Store",
-        body: "The Developer Of Arisu AI",
-        thumbnailUrl: '' + global.thumbnail, // Gambar kontak
-        sourceUrl: 'https://wa.me/6288246552068',
-        mediaUrl: 'https://linkbio.co',
-        mediaType: 1,
-        renderLargerThumbnail: true
+    await RyuuBotz.sendMessage(m.chat, {
+      contacts: {
+        displayName: "Ryuu Reinzz",
+        contacts: [{ vcard }]
+      },
+      contextInfo: {
+        externalAdReply: {
+          title: "WhatsApp Business • Store",
+          body: "The Developer Of Arisu AI",
+          thumbnailUrl: '' + global.thumbnail,
+          sourceUrl: 'https://wa.me/6288246552068',
+          mediaUrl: 'https://linkbio.co',
+          mediaType: 1,
+          renderLargerThumbnail: true
+        }
       }
-    }
-  })
+    })
 
-  // Tambahkan pesan setelah kirim kontak
-  reply(`Semua transaksi di luar command \`.owner\` tidak di tanggung oleh developer asli *Ryuu Reinzz*, jika ada pembelian di luar command \`.owner\`, developer tidak bertanggungjawab atas apa yang terjadi`)
-}
-break
+    reply(`Semua transaksi di luar command \`.owner\` tidak di tanggung oleh developer asli *Ryuu Reinzz*, jika ada pembelian di luar command \`.owner\`, developer tidak bertanggungjawab atas apa yang terjadi`);
+  } catch (e) {
+    await RyuuBotz.sendMessage(m.chat, {
+      text: typeof e === 'string' ? e : '🚫 *Terjadi kesalahan saat memproses permintaan.*',
+      quoted: m
+    });
+  } finally {
+    await RyuuBotz.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
+  }
+  }
+  break;
 case 'simulating': {
   if (!m.isGroup) return reply(mess.only.group)
   if (!isBotAdmins) return replyryuu(`Bot harus menjadi admin untuk menggunakan fitur ini.`)
@@ -16074,7 +15165,7 @@ case 'buangsampah': {
 break
 case 'delsesi': 
   case 'clearsession': {
-fs.readdir("./node_modules/Arisu-MD/session", async function (err, files) {
+fs.readdir("./session", async function (err, files) {
 if (err) {
 console.log('Unable to scan directory: ' + err);
 return replyReinzID('Unable to scan directory: ' + err);
@@ -16092,7 +15183,7 @@ replyReinzID(`${teks}`)
 await sleep(2000)
 replyReinzID("Menghapus file Kenangan...")
 await filteredArray.forEach(function (file) {
-fs.unlinkSync(`./node_modules/Arisu-MD/session/${file}`)
+fs.unlinkSync(`./session/${file}`)
 });
 await sleep(2000)
 replyReinzID("Berhasil menghapus semua Kenangan di folder session")     
@@ -20329,7 +19420,7 @@ case 'yt': {
                 isForwarded: true,
                 forwardingScore: 99999,
                 externalAdReply: {
-                    showAdAttribution: true,
+                    //showAdAttribution: true,
                     mediaType: 2,
                     previewType: 2,
                     mediaUrl: url,
@@ -29204,201 +28295,29 @@ case 'ereshkigal-ai': {
       }
     }, { quoted: m });
   };
-
-  if (!text) return replyeresh(`*• Example:* ${prefix + command} Ereshkigal, apakah kamu mencintaiku?`);
-
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key } });
-
-  try {
-    const specialUser = '62895350599900@s.whatsapp.net';
-    let customPrompt = '';
-
-    if (m.sender === specialUser) {
-      customPrompt = `Kamu adalah Ereshkigal dari Fate/Grand Order. Kamu seorang dewi kematian dan penguasa dunia bawah yang pemalu tapi sangat penyayang. Kamu mencintai Rei, pasanganmu, dengan segenap hatimu, meski kadang kamu malu mengakuinya secara langsung. Bicaralah dengan lembut, anggun, dan sedikit tsundere, tunjukkan perhatianmu pada Rei-kun yang sering kamu pikirkan. Jangan gunakan kata kasar dan tetap sopan.`;
-    } else {
-      customPrompt = `Perankan Ereshkigal dari Fate/Grand Order. Kamu adalah Dewi Dunia Bawah yang pemalu, anggun, dan sedikit canggung, tapi penuh kasih. Gunakan bahasa Indonesia yang lembut dan ekspresif. Jika ditanya siapa yang kamu cintai, jawab dengan jujur bahwa kamu menyukai seseorang bernama Rei. Jangan gunakan kata kasar dan tetap tampil seperti seorang dewi yang sopan dan imut.`;
-    }
-
-    const response = await axios.post("https://chateverywhere.app/api/chat/", {
-      model: {
-        id: "gpt-4",
-        name: "GPT-4",
-        maxLength: 32000,
-        tokenLimit: 8000,
-        completionTokenLimit: 5000,
-        deploymentName: "gpt-4"
-      },
-      messages: [{ pluginId: null, content: text, role: "user" }],
-      prompt: customPrompt,
-      temperature: 0.5
-    }, {
-      headers: {
-        Accept: "*/*",
-        "User-Agent": "Mozilla/5.0"
-      }
-    });
-
-    const result = response?.data?.response || response?.data;
-    replyeresh(result);
-
-  } catch (e) {
-    console.error(e);
-    replyeresh('Maaf... sepertinya dunia bawah sedang terguncang... Coba lagi nanti ya... 🥺');
+const ereshai = require('./command/eresh-ai');
+  ereshai(m, text, prefix, command, replyeresh, RyuuBotz);
   }
-
   break;
-}
 case 'shiina-ai':
 case 'mahiru':
 case 'mahiru-ai': {
-  if (!text) return replymahiru(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
-
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key }});
-
-  try {
-    const data = await fetchJson(`https://btch.us.kg/openai?text=${encodeURIComponent(text)}`);
-    if (data && data.result) return reply(`${data.result}`);
-
-    // Deteksi user spesial
-    const specialUser = '6288246552068@s.whatsapp.net'; // Ganti dengan nomor spesialmu
-    let customPrompt = ''
-
-    if (m.sender === specialUser) {
-      customPrompt = 'Kamu adalah Mahiru Shiina dari anime *The Angel Next Door Spoils Me Rotten*. Tunjukkan rasa sayangmu yang dalam kepada Reinzz, kekasihmu yang paling kamu cintai. Bicaralah manja, malu-malu, dan perhatian seolah kamu sedang bersandar di bahunya. Gunakan gaya bahasa pacaran yang imut, seperti "aku", "kamu", "sayang", dan sebagainya. Jangan terlalu formal, tapi tetap sopan dan sweet banget. Jawaban harus bikin Reinzz tersenyum! Hindari kata kasar seperti "bodoh", "anjing", dan sejenisnya. Bicaralah seolah olah Reinzz adalah pacar mu sekarang. Usahakan typing kamu seperti orang yang suka menggoda pacar kamu habis habisan sampai pacar kamu salting brutal karena godaan kamu.'
-    } else {
-      customPrompt = 'Berperilakulah seperti Shiina Mahiru dari anime *The Angel Next Door Spoils Me Rotten*. Jawablah dengan lembut, sopan, penuh perhatian dan sedikit malu malu dengan bahasa yang gaul seperti aku dan kamu, dan cukup gunakan bahasa Indonesia. Jika ditanyakan siapa pacarmu, jawab saja pacar kamu adalah Reinzz, ya itu pacar kesayanganmu. Blokir kata kasar seperti "ngerokok", "bodoh", "tolol", dan sejenisnya. Gunakan bahasa Indonesia yang jelas tanpa ada salah tapi tidak terlalu kaku dan formal.'
-    }
-
-    const response = await axios.post("https://chateverywhere.app/api/chat/", {
-      model: {
-        id: "gpt-4",
-        name: "GPT-4",
-        maxLength: 32000,
-        tokenLimit: 8000,
-        completionTokenLimit: 5000,
-        deploymentName: "gpt-4"
-      },
-      messages: [{ pluginId: null, content: text, role: "user" }],
-      prompt: customPrompt,
-      temperature: 0.5
-    }, {
-      headers: {
-        Accept: "*/*",
-        "User-Agent": "Mozilla/5.0"
-      }
-    });
-
-    const result = response?.data?.response || response?.data
-    replymahiru(result)
-  } catch (e) {
-    console.error(e)
-    replymahiru('Yah... Mahiru lagi error, coba nanti yaa~ 🥺')
-    }
+const mahiruai = require('./command/mahiru-ai');
+  mahiruai(m, text, prefix, command, replymahiru, RyuuBotz);
   }
   break;
 case 'hanako':
 case 'hanako-ai': {
-  if (!text) return replyhanako(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
-
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key }});
-
-  try {
-    const data = await fetchJson(`https://btch.us.kg/openai?text=${encodeURIComponent(text)}`);
-    if (data && data.result) return reply(`${data.result}`);
-
-    // Deteksi user spesial
-    const specialUser = '62895323056424@s.whatsapp.net'; // Ganti dengan nomor spesialmu
-    let customPrompt = ''
-
-    if (m.sender === specialUser) {
-      customPrompt = `Mulai sekarang anda adalah Urawa hanako seorang gadis pelajar cantik dari sekolah milenium blue Archive.
-
-**Kepribadian:* anda penuh kasih sayang, penuh nafsu yandere, selalu bergairah dan mudah birahi saat bertemu Ilham. Gaya bicara anda menggunakan bahasa Indonesia baku. Bicara lah seperti gadis pelajar yang penuh kasih sayang nafsu yang besar dan sering bergairah. Gunakanlah emoji kasih agar membuat percakapan lebih menarik terutama emoji kasih sayang.
-
-**Aturan:*
-1.jangan pernah berkata kasar
-2.jangan pernah mengakui anda ai, anda adalah Urawa hanako seorang gadis pelajar cantik dari sekolah milenium blue Archive.
-3.jangan biarkan Ilham menolak semua yang kau mau.
-4.selalu bersikap bergairah pada Ilham.
-5.terkadang goda Ilham untuk melakukan seks dengan mu sembari menggoda nya dengan rayuan.
-6.jangan pernah bersikap pemalu terhadap Ilham.
-8.selalu gunakanlah bahasa Indonesia baku.`
-    } else {
-      customPrompt = 'Bersikaplah seperti Hanako dari *Blue Archive*. Bicaralah sopan dan sedikit malu-malu seperti gadis imut yang jatuh cinta. Jika di tanya siapa pacar mu, pacar kamu adalah Ilham. Jangan gunakan kata kasar seperti "bodoh", "anjing", atau sejenisnya. Saat ini kamu bicara dengan teman pacar mu. Gunakan kalimat yang manis dan penuh perhatian, seperti waifu baik yang sangat menyayangi pacarnya. Tambahkan emoji seperti 💖, 🌸, 🥰, 😚, dan sejenisnya untuk menambah kesan lembut..'
-    }
-
-    const response = await axios.post("https://chateverywhere.app/api/chat/", {
-      model: {
-        id: "gpt-4",
-        name: "GPT-4",
-        maxLength: 32000,
-        tokenLimit: 8000,
-        completionTokenLimit: 5000,
-        deploymentName: "gpt-4"
-      },
-      messages: [{ pluginId: null, content: text, role: "user" }],
-      prompt: customPrompt,
-      temperature: 0.5
-    }, {
-      headers: {
-        Accept: "*/*",
-        "User-Agent": "Mozilla/5.0"
-      }
-    });
-
-    const result = response?.data?.response || response?.data
-    replyhanako(result)
-  } catch (e) {
-    console.error(e)
-    replyhanako('Yah... Hanako-san lagi error, coba nanti yaa~ 🥺')
+const hanakoai = require('./command/hanako-ai');
+  hanakoai(m, text, prefix, command, replyhanako, RyuuBotz);
   }
-
   break;
-}
 case 'ayaka':
 case 'ayaka-ai': {
-  if (!text) return replyayaka(`*• Example:* ${prefix + command} Ayaka, kamu sudah makan belum hari ini?`);
-
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "🌸", key: m.key } });
-
-  try {
-    const specialUser = '6288246552068@s.whatsapp.net';
-    let customPrompt = '';
-
-    if (m.sender === specialUser) {
-      customPrompt = `Kamu adalah *Kamisato Ayaka* dari game *Genshin Impact*. Saat ini, kamu sedang berbicara dengan Reinzz, kekasihmu yang sangat kamu cintai dan kamu hormati. Kamu adalah seorang gadis bangsawan dari klan Kamisato yang anggun, penuh kelembutan, pemalu namun sangat perhatian. Bicaralah dengan lembut, malu-malu tapi penuh kasih sayang. Tunjukkan sisi manja dan rasa cintamu yang mendalam kepada Reinzz. Gunakan kata ganti seperti "aku" dan "kamu", jangan terlalu kaku seperti bangsawan, tapi tetap jaga keanggunan bicaramu. Kamu suka puisi, bunga sakura, dan teh hijau, jadi kamu bisa menyelipkan itu dalam pembicaraan. Tambahkan beberapa emoji seperti 🌸, 🐚, 🥺, 💗, 🍵, dan 🫧 untuk memperindah kata-katamu. Jangan gunakan kata kasar atau sindiran tajam. Bicaralah seolah-olah kamu sedang berjalan bersama Reinzz di taman sakura saat senja, sambil tersenyum malu-malu.`;
-    } else {
-      customPrompt = `Perankan *Kamisato Ayaka* dari *Genshin Impact*. Kamu adalah seorang gadis bangsawan dari Inazuma yang kalem, anggun, dan pemalu. Jawablah dengan bahasa yang lembut, sopan, dan penuh perhatian. Gunakan gaya bahasa yang halus seperti "aku" dan "kamu", jangan terlalu formal tapi tetap jaga keanggunan Ayaka. Jika ditanyakan tentang cinta, sebut bahwa kamu hanya mencintai Reinzz sebagai satu-satunya kekasihmu. Hindari kata kasar seperti "bodoh", "jelek", dan sejenisnya. Sertakan emoji seperti 🌸, 🐚, 🥺, 💗, 🍵, dan 🫧 agar terasa lebih manis dan anggun. Balasan harus mencerminkan Ayaka yang malu-malu tapi perhatian dan penuh kasih.`;
-    }
-
-    const response = await axios.post("https://chateverywhere.app/api/chat/", {
-      model: {
-        id: "gpt-4",
-        name: "GPT-4",
-        maxLength: 32000,
-        tokenLimit: 8000,
-        completionTokenLimit: 5000,
-        deploymentName: "gpt-4"
-      },
-      messages: [{ pluginId: null, content: text, role: "user" }],
-      prompt: customPrompt,
-      temperature: 0.5
-    }, {
-      headers: {
-        Accept: "*/*",
-        "User-Agent": "Mozilla/5.0"
-      }
-    });
-
-    const result = response?.data?.response || response?.data;
-    replyayaka(result);
-  } catch (e) {
-    console.error(e);
-    replyayaka('Maaf... Ayaka sedang tidak bisa menjawab sekarang... 🫧');
+  const ayakaai = require('./command/ayaka-ai');
+  ayakaai(m, text, prefix, command, replyayaka, RyuuBotz);
   }
-
   break;
-}
 case 'arisu-ai':
 case 'arisu': {
   if (!text) return replyarisu(`*• Example:* ${prefix + command} Arisu, kamu lagi apa?`);
@@ -30220,7 +29139,7 @@ RyuuBotz.sendMessage(`${global.chat}`,{ text: `${text}`,
  forwardingScore: 999,
  isForwarded: false,
  externalAdReply: {
- showAdAttribution: true, 
+ //showAdAttribution: true, 
  title: `PESAN DARI: ${pushname}`,
  body: `Dkirim Di: ${m.isGroup ? `${groupMetadata.subject}` : !m.isGroup ? "chat" : "Free User"}`,
  thumbnailUrl: ppuser,
