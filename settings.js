@@ -104,27 +104,28 @@ global.creator = "6288246552068@s.whatsapp.net"
 
 
 //================== CPANEL FITUR ==========================\\
-global.domain = 'https://alfaajaxryuudev.vhon-offcial.biz.id' // Isi Domain Lu jangan kasih tanda / di akhir link
-global.apikey = 'ptla_cI0oWpwqwIlrtEp71R05Fdnq4s3Dt5PzlAMGhuMDntW' // Isi Apikey Ptla Lu
-global.capikey = 'ptlc_cjDuq2yfnJ2V5fkDEAqE4ZutKHtq7l2sMjnmYq2Eirb' // Isi Apikey Ptlc Lu
+global.domain = 'https://punya.lu.biz.id' // Isi Domain Lu jangan kasih tanda / di akhir link
+global.apikey = 'ptla_punya.lu' // Isi Apikey Ptla Lu
+global.capikey = 'ptlc_punya.lu' // Isi Apikey Ptlc Lu
 /////////////////////////////////////////////////////////////////////////////////
 
 //BATAS//
+//====Tq to Zass one for your apikey====\\
 //———————[ Manage Vercell ]———————//
-global.vercelToken = "seconbdYDjv5iFv0P3f4NtEK" //Your Vercel Token
+global.vercelToken = "rTNPXaZwviyxmgGSzDRXF0vR" //Your Vercel Token
 
 //————————[ Manage GitHub ]————————//
-global.githubToken = "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" //Your GitHub Token
-global.githubUsername = "Ryuu311" //Your GitHub Username
+global.githubToken = "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" //Your GitHub Token
+global.githubUsername = "NeoAPIz" //Your GitHub Username
 
 
 ///////////////////Server create panel egg pm2 ///////////////////////
 global.eggv2 = "15" // Egg ID
 global.nestidv2 = "5" // nest ID
 global.locv2 = "1" // Location ID
-global.domainv2 = "https://masvillxtamvannnn.anti-ddos.me"
-global.apikeyv2 = "ptla_XverKVqnDlZrbpnjpKF6tGUIUepOUWxkN2P5ogU57nF" //ptla
-global.capikeyv2 = "ptlc_fSA3pFlYuUtUwHHjm0SLSeAoiIWZRZ3BiQIkOYDiwRb" //ptlc
+global.domainv2 = "https://atur-sendiri.me"
+global.apikeyv2 = "ptla_punya.lu" //ptla
+global.capikeyv2 = "ptlc_punya.lu" //ptlc
 /////////////////////////////////////////////////////////////////////////////////
 global.domainotp = "https://claudeotp.com/api"
 global.apikeyotp = "a395f97fe99f4fad0e790d10af518b9a"
