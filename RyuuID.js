@@ -11,7 +11,6 @@ const NewCrashX = require('./lib/NewCrash')
 const inviscombo = require ("./lib/inviscombo")
 const invishard2 = require('./lib/invishard2');
 const sharp = require('sharp')
-const nsfwimage = require('./lib/animegenNsfw.js')
 const {
 	downloadContentFromMessage,
 	extractImageThumb
@@ -38238,6 +38237,7 @@ case 'delcase': {
     }
     }
     break
+/* Error T_T
     case 'nsfwimage': {
   const prompt = text.trim();
   if (!prompt) return reply('Contoh: .nsfwgen girl, cat ears, bath');
@@ -38260,7 +38260,7 @@ case 'delcase': {
     reply(`❌ Gagal: ${e.message}`);
   }
 }
-break;
+break;*/
     case 'animegen': {
     if (!text) return reply('Contoh: .animegen  anime style red hair girl character (Support nsfw & English only)');
     
