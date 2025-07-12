@@ -3771,30 +3771,6 @@ function randomId() {
 	return Math.floor(100000 + Math.random() * 900000);
 }
 
-async function igstalk(Username) {
-  return new Promise((resolve, reject) => {
-    axios.get('https://dumpor.com/v/'+Username, {
-      headers: {
-        "cookie": "_inst_key=SFMyNTY.g3QAAAABbQAAAAtfY3NyZl90b2tlbm0AAAAYWGhnNS1uWVNLUU81V1lzQ01MTVY2R0h1.fI2xB2dYYxmWqn7kyCKIn1baWw3b-f7QvGDfDK2WXr8",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
-      }
-    }).then(res => {
-      const $ = cheerio.load(res.data)
-      const result = {
-        profile: $('#user-page > div.user > div.row > div > div.user__img').attr('style').replace(/(background-image: url\(\'|\'\);)/gi, ''),
-        fullname: $('#user-page > div.user > div > div.col-md-4.col-8.my-3 > div > a > h1').text(),
-        username: $('#user-page > div.user > div > div.col-md-4.col-8.my-3 > div > h4').text(),
-        post: $('#user-page > div.user > div > div.col-md-4.col-8.my-3 > ul > li:nth-child(1)').text().replace(' Posts',''),
-        followers: $('#user-page > div.user > div > div.col-md-4.col-8.my-3 > ul > li:nth-child(2)').text().replace(' Followers',''),
-        following: $('#user-page > div.user > div > div.col-md-4.col-8.my-3 > ul > li:nth-child(3)').text().replace(' Following',''),
-        bio: $('#user-page > div.user > div > div.col-md-5.my-3 > div').text()
-      }
-      resolve(result)
-    })
-  })
-}
-module.exports = igstalk;
-
 async function replyprem(teks) {
     reply(`Fitur ini untuk pengguna premium, hubungi pemilik untuk menjadi pengguna premium`)
 }
@@ -6072,8 +6048,30 @@ if (!xeonquotx.quoted) return replyReinzID('Pesan yang Anda reply tidak dikirim 
 await xeonquotx.quoted.copyNForward(m.chat, true)
 }
 break
-case 'igstalk2': {
-  await stalker.igstalk2({ q, m, RyuuBotz, replyReinzID, prefix, command });
+case 'igstalk': {
+  const { igstalk } = require('./command/ig-stalker');
+  if (!args[0]) return reply(`Contoh: ${prefix + command} mahirushiina`);
+
+  try {
+    const result = await igstalk(args[0]);
+
+    const caption = `
+👤 Username: ${result.username}
+📛 Nama: ${result.fullname}
+📸 Postingan: ${result.post}
+👥 Followers: ${result.followers}
+✅ Verified: ${result.verified ? "Ya" : "Tidak"}
+🧾 Bio: ${result.bio}
+📊 Engagement: ${result.engagement}
+    `.trim();
+
+    await RyuuBotz.sendMessage(m.chat, {
+      image: { url: result.profile },
+      caption
+    }, { quoted: m });
+  } catch (err) {
+    reply(err);
+  }
 }
 break;
 case 'ffstalk': {
@@ -37260,8 +37258,8 @@ thumbnailUrl: global.thumbnail,
 }, { quoted: m })
          }
      break
-case 'instagramstalk':
-case 'igstalk': {
+case 'instagramstalk2':
+case 'igstalk2': {
 if (!text) return replyReinzID(`Enter Instagram Username\n\nContoh: ${prefix + command} ReinzID`)
 RyuuBotz.sendMessage(m.chat, { react: { text: '🕒', key: m.key }})
     try {
