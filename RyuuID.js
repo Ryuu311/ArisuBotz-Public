@@ -5042,7 +5042,6 @@ case 'amelia-ai': {
 const ameliaai = require('./command/amelia-ai');
   ameliaai(m, text, prefix, command, replyamelia, RyuuBotz);
   }
-}
 break;
 case 'iroha':
 case 'ilya-ai':
