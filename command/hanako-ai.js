@@ -6,8 +6,6 @@ async function hanakoai(m, text, prefix, command, replyhanako, RyuuBotz) {
   await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key }});
 
   try {
-    const data = await fetchJson(`https://btch.us.kg/openai?text=${encodeURIComponent(text)}`);
-    if (data && data.result) return reply(`${data.result}`);
 
     // Deteksi user spesial
     const specialUser = '62895323056424@s.whatsapp.net'; // Ganti dengan nomor spesialmu

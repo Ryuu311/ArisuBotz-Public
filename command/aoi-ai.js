@@ -6,8 +6,6 @@ if (!text) return replyaoi(`*• Example:* ${prefix + command} Aoi-chan, kamu la
   await RyuuBotz.sendMessage(m.chat, { react: { text: "💙", key: m.key }});
 
   try {
-    const data = await fetchJson(`https://btch.us.kg/openai?text=${encodeURIComponent(text)}`);
-    if (data && data.result) return reply(`${data.result}`);
 
     // Deteksi user spesial
     const specialUser = '6288246552068@s.whatsapp.net'; // Ganti dengan nomor spesialmu
