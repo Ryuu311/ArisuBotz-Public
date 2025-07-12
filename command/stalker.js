@@ -3,12 +3,15 @@ const { default: fetch } = require('node-fetch');
 const npmstalk = require('../scrape/npmstalk');
 const igstalk = require('../RyuuID');
 
-async mlstalk({ text, reply, prefix, command }) {
-    if (!text) return reply(`Contoh penggunaan:\n${prefix + command} id|zona id\n\nEx.\n${prefix + command} 157228049|2241`);
+module.exports = {
+  async mlstalk({ text, reply, prefix, command }) {
+    if (!text) {
+      return reply(`Contoh penggunaan:\n${prefix + command} id|zona id\n\nEx:\n${prefix + command} 157228049|2241`);
+    }
 
-    async function getML(id, zoneId) {
-      return new Promise(async (resolve, reject) => {
-        axios.post(
+    async function getMLData(id, zoneId) {
+      try {
+        const response = await axios.post(
           'https://api.duniagames.co.id/api/transaction/v1/top-up/inquiry/store',
           new URLSearchParams({
             productId: '1',
@@ -27,34 +30,43 @@ async mlstalk({ text, reply, prefix, command }) {
               Accept: 'application/json',
             },
           }
-        )
-        .then(response => resolve(response.data.data.gameDetail))
-        .catch(reject);
-      });
+        );
+        return response.data.data.gameDetail;
+      } catch (err) {
+        return null;
+      }
     }
 
     const [id, zone] = text.split('|');
-    const { userName } = await getML(id, zone).catch(_ => reply("User tidak ditemukan"));
-    const vf = `*MOBILE LEGENDS STALK*
+    const data = await getMLData(id, zone);
 
-*ID: ${id}*
-*ZONA ID: ${zone}*
-*Username: ${userName ?? "Kosong"}*`;
-    reply(vf);
+    if (!data) return reply("User tidak ditemukan");
+
+    const result = `*MOBILE LEGENDS STALK*
+
+*ID:* ${id}
+*ZONA ID:* ${zone}
+*Username:* ${data.userName || "Kosong"}`;
+
+    reply(result);
   },
 
-  async npmstalk({ q, replyReinzID, prefix, command, mess }) {
+  async npmstalk({ q, replyReinzID, prefix, command }) {
     if (!q) return replyReinzID(`Contoh ${prefix + command} xeonapi`);
-    const eha = await npmstalk.npmstalk(q);
-    replyReinzID(`*/ Npm Stalker \\*
 
-Name : ${eha.name}
-Version Latest : ${eha.versionLatest}
-Version Publish : ${eha.versionPublish}
-Version Update : ${eha.versionUpdate}
-Latest Dependencies : ${eha.latestDependencies}
-Publish Dependencies : ${eha.publishDependencies}
-Publish Time : ${eha.publishTime}
-Latest Publish Time : ${eha.latestPublishTime}`);
-  },
+    const data = await npmstalk.npmstalk(q);
+
+    const result = `*/ Npm Stalker \\*
+
+*Name:* ${data.name}
+*Latest Version:* ${data.versionLatest}
+*Published Version:* ${data.versionPublish}
+*Last Update Version:* ${data.versionUpdate}
+*Latest Dependencies:* ${data.latestDependencies}
+*Published Dependencies:* ${data.publishDependencies}
+*First Publish:* ${data.publishTime}
+*Latest Publish:* ${data.latestPublishTime}`;
+
+    replyReinzID(result);
+  }
 };
