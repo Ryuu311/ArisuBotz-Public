@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function mahiruai(m, text, prefix, command, replymahiru, RyuuBotz) {
 
-if (!text) return replyayaka(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
+if (!text) return replymahiru(`*• Example:* ${prefix + command} Mahiru, kamu lagi apa?`);
 
   await RyuuBotz.sendMessage(m.chat, { react: { text: "🧡", key: m.key } });
 
