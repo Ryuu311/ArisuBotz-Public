@@ -39,6 +39,7 @@ If you find bugs or have suggestions, feel free to help me improve — I really 
 ## 🙌 Special Thanks
 
 - The creators of **Baileys**
+- Nekorinn development 
 - All open-source contributors
 - My friends and mentors who support my coding journey
 
