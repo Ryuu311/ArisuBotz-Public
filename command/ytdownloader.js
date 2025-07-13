@@ -86,7 +86,6 @@ async function yytmp4(m, RyuuBotz, text, prefix, reply) {
           sourceUrl: text,
           mediaType: 2,
           renderLargerThumbnail: true,
-          showAdAttribution: true
         }
       }
     }, { quoted: m });
@@ -125,7 +124,6 @@ async function yytmp3(m, RyuuBotz, text, prefix, reply) {
           sourceUrl: text,
           mediaType: 1,
           renderLargerThumbnail: true,
-          showAdAttribution: true
         }
       }
     }, { quoted: m });
