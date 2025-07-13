@@ -443,7 +443,7 @@ await RyuuBotz.sendMessage(m.chat, {
   ],
   headerType: 1,
   viewOnce: true,
-  document: fs.readFileSync("./node_modules/Arisu-MD/ReinzID.json"),
+  document: fs.readFileSync("./node_modules/Arisu-MD/ReinzID.js"),
   fileName: `YANG KAMU MAKSUD?`,
   mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   fileLength: 9999999999999,
