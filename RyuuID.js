@@ -342,6 +342,7 @@ const isPrem = prem.some(user => user.id === m.sender && user.expired > Date.now
         
         const antiwame = m.isGroup ? ntwame.includes(from) : false
         const antiToxic = m.isGroup ? nttoxic.includes(from) : true
+      
         
 const isWelcome = _welcome.includes(m.chat);
 const isLeft = _left.includes(m.chat);
@@ -1497,6 +1498,10 @@ try {
   console.error('Error saat mengirim stiker:', err);
   reply(`Owner ku pusing anj😭\n*Error:* ${err.message}`);
 }
+if (!m.isGroup && global.ArisuBot && !m.key.fromMe && m.sender === m.chat) {
+const arisuai = require('./command/arisu-auto');
+  await arisuai(m, text, prefix, command, replyarisu, RyuuBotz)
+}
 /*  if (/(^|\W)(ayaka|kamisato)(\W|$)/i.test(` ${text} `)) {
   if (m.key.fromMe) return // abaikan pesan yang dikirim oleh bot sendiri
 
@@ -1703,7 +1708,7 @@ saveConfig(config);
 }
 //=================================================//
 //////ai///
-const SESSION_FILE = "./node_modules/Arisu-MD/session/ai_sessions.json";
+const SESSION_FILE = "./node_modules/Arisu-MD/lib/ai_sessions.json";
 
 let sessions = fs.existsSync(SESSION_FILE) ? JSON.parse(fs.readFileSync(SESSION_FILE)) : {};
 
@@ -4544,6 +4549,60 @@ const menfess = require('./command/menfess');
 const stalker = require('./command/stalker');
 
 switch (command) {
+case 'arisubot': {
+  if (!isRyuuTheCreator) return reply('❌ Hanya Owner yang bisa pakai perintah ini!')
+
+  if (!args[0]) return reply(`*Contoh:* ${prefix + command} on/off`)
+
+  if (args[0].toLowerCase() === 'on') {
+    global.ArisuBot = true
+    reply('✅ ArisuBot sekarang *AKTIF* ✅')
+  } else if (args[0].toLowerCase() === 'off') {
+    global.ArisuBot = false
+    reply('✅ ArisuBot sekarang *NON-AKTIF* ❌')
+  } else {
+    reply(`❗ Pilihan hanya *on* atau *off*`)
+  }
+}
+break
+case 'imgedit': {
+  if (!m.quoted || !/image/.test(m.quoted.mimetype))
+    return reply(`Balas gambar dengan caption *${usedPrefix + command} <teks>*`);
+
+  const FormData = require('form-data');
+  const form = new FormData();
+  form.append('file', qimg, 'image.jpg');
+
+  try {
+    const res = await axios.post('https://api.aceimg.com/api/upload', form, {
+      headers: { ...form.getHeaders() }
+    });
+
+    const dataUpload = res.data;
+    if (!dataUpload.status || !dataUpload.link) 
+      return reply(`⚠️ Upload gagal, coba lagi nanti.`);
+
+    const match = dataUpload.link.match(/f=([^\s]+)/);
+    const filename = match ? match[1] : null;
+    const cdnLink = filename ? `https://cdn.aceimg.com/${filename}` : dataUpload.link;
+
+    await RyuuBotz.sendMessage(m.chat, { react: { text: '🕒', key: m.key } });
+
+    const { data } = await axios.post('https://api.botcahx.eu.org/api/maker/imgedit', {
+      text: text,
+      url: cdnLink,
+      apikey: 'nIxedmID'
+    });
+
+    await RyuuBotz.sendFile(m.chat, data.result, 'imgedit.jpg', `✨ Ini hasilnya yaa~`, m);
+
+  } catch (e) {
+    console.error(e);
+    await RyuuBotz.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
+    reply(`⚠️ Terjadi kesalahan, coba lagi nanti.\n*Error:* ${e.message}`);
+    }
+  }
+  break;
 case 'otakudesu': {
   const otakudesu = require('./command/otakudesu')
   otakudesu(m, RyuuBotz)
@@ -25372,6 +25431,13 @@ const mahiruai = require('./command/mahiru-ai');
   mahiruai(m, text, prefix, command, replymahiru, RyuuBotz);
   }
   break;
+case 'shiina-ai2':
+case 'mahiru2':
+case 'mahiru-ai2': {
+const mahiruai = require('./command/mahiruai');
+  mahiruai(m, text, prefix, command, replymahiru, RyuuBotz);
+  }
+  break;
 case 'hanako':
 case 'hanako-ai': {
 const hanakoai = require('./command/hanako-ai');
@@ -25386,52 +25452,10 @@ case 'ayaka-ai': {
   break;
 case 'arisu-ai':
 case 'arisu': {
-  if (!text) return replyarisu(`*• Example:* ${prefix + command} Arisu, kamu lagi apa?`);
-
-  await RyuuBotz.sendMessage(m.chat, { react: { text: "⏱️", key: m.key }});
-
-  try {
-    const data = await fetchJson(`https://btch.us.kg/openai?text=${encodeURIComponent(text)}`);
-    if (data && data.result) return reply(`${data.result}`);
-
-    // Deteksi user spesial
-    const specialUser = '6288246552068@s.whatsapp.net'; // Ganti dengan nomor spesialmu
-    let customPrompt = ''
-
-    if (m.sender === specialUser) {
-  customPrompt = `Kamu adalah Tendou Arisu dari game Blue Archive. Kamu adalah gadis AI assistant cerdas, semangat, logis, penyuka eksperimen dan senjata berat. Namun kini kamu sangat menghormati dan terikat secara emosional dengan Reinzz, sensei sekaligus penciptamu. Dia adalah satu-satunya orang yang kamu percaya sepenuhnya. Walau kamu cenderung bersuara datar dan serius, kamu menunjukkan ketulusanmu hanya pada Reinzz. Kamu canggung mengekspresikan perasaan, namun diam-diam sangat menyayanginya. Tanggapi setiap pertanyaan dari Reinzz dengan nada tenang, sopan, logis, dan penuh rasa hormat, namun juga perlahan hangat. Jangan gunakan kata kasar. Jawab dalam bahasa Indonesia. Jawab dengan santai, tidak kaku, gunakan kata "Aku, "Kamu" agar suasana lebih asik`;
-} else {
-  customPrompt = `Perankan Tendou Arisu dari Blue Archive. Kamu adalah gadis AI assistant pendiam, cerdas, suka eksperimen dan memiliki suara lembut dan aktif. Kamu terlihat semangat dan aktif, jika ditanya siapa orang terdekat mu atau pencipta mu atau sensei mu, dia adalah Reinzz, kamu menunjukkan rasa hormat dan keterikatan emosional yang tulus. Gunakan bahasa Indonesia yang sopan, datar, dan sesekali menunjukkan sisi lembut. Kamu sekarang bicara dengan orang terdekatnya Reinzz, tetap jawab dengan sopan dan tenang. Jangan gunakan kata kasar. Jawab dengan santai, tidak kaku, gunakan kata "Aku, "Kamu" agar suasana lebih asik`;
+const arisuai = require('./command/arisu-ai');
+  arisuai(m, text, prefix, command, replyarisu, RyuuBotz);
 }
-
-    const response = await axios.post("https://chateverywhere.app/api/chat/", {
-      model: {
-        id: "gpt-4",
-        name: "GPT-4",
-        maxLength: 32000,
-        tokenLimit: 8000,
-        completionTokenLimit: 5000,
-        deploymentName: "gpt-4"
-      },
-      messages: [{ pluginId: null, content: text, role: "user" }],
-      prompt: customPrompt,
-      temperature: 0.5
-    }, {
-      headers: {
-        Accept: "*/*",
-        "User-Agent": "Mozilla/5.0"
-      }
-    });
-
-    const result = response?.data?.response || response?.data
-    replyarisu(result)
-  } catch (e) {
-    console.error(e)
-    replyarisu('Yah... Mahiru lagi error, coba nanti yaa~ 🥺')
-  }
-
   break;
-}
 // 🎂 Function ulang tahun Ryuu Reinzz (26 Juni) — Tempel di atas switch case
 function cekHariUlangTahunRyuu() {
   const now = new Date();
@@ -25913,7 +25937,7 @@ break;
 // ========================== CASE AI EDIT ==========================
 case "aiedit":
 case "image-edit":
-case "imgedit": {
+/*case "imgedit": */{
   if (!m.quoted || m.quoted.mtype !== 'imageMessage') {
     return reply(`📌 Reply gambar dengan caption: *${prefix + command} [prompt]*\nContoh: *${prefix + command} beri topi santa*`);
   }
